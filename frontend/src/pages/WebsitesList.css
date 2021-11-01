@@ -1,0 +1,13 @@
+.websites-list {
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 64em) {
+  .websites-list {
+    min-height: 87vh;
+  }
+}

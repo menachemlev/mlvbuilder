@@ -1,0 +1,14 @@
+.adminTable td {
+  border: 3px solid #333;
+  padding: 0.8em 1.2em;
+  font-weight: bolder;
+}
+td.delete button {
+  background-color: rgb(218, 33, 33);
+}
+td.delete button:hover {
+  background-color: rgb(133, 42, 42);
+}
+.adminTable {
+  border-collapse: collapse;
+}

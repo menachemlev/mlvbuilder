@@ -1,0 +1,39 @@
+.iframe-widget {
+  width: fit-content;
+  border-radius: 3em;
+  background-image: linear-gradient(rgb(48, 112, 133), rgb(88, 129, 216));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-direction: column;
+  padding: 1em;
+  margin: 1em;
+  border: 3px solid #333;
+  box-shadow: 0 0 1em rgba(3, 3, 3, 0.5);
+}
+.iframe-widget__link:link,
+.iframe-widget__link:visited {
+  font-weight: bolder;
+  text-decoration: none;
+  position: relative;
+  transition: 0.3s;
+  padding: 0.5em 1em;
+  border-radius: 0.4em;
+  background-color: rgb(23, 171, 190);
+  color: white;
+}
+
+.iframe-widget__link:hover,
+.iframe-widget__link:active {
+  background-color: #333;
+  color: white;
+}
+.iframe-widget iframe {
+  border: 3px solid #333;
+  background-color: white;
+  -webkit-transform: scale(0.8);
+  transform: scale(0.8);
+  position: relative;
+  z-index: 1;
+}

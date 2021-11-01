@@ -1,0 +1,22 @@
+.page {
+  width: 100vw;
+  min-height: 90vh;
+}
+.pageTitle {
+  text-align: center;
+  background-image: linear-gradient(rgb(81, 208, 240), rgb(30, 83, 197));
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 2;
+  width: 100%;
+  font-size: 3em;
+}
+@media screen and (max-width: 64em) {
+  .link {
+    font-size: 1.4em;
+  }
+  .page {
+    min-height: 87vh;
+  }
+}

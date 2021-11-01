@@ -1,0 +1,54 @@
+.home {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home h1,
+h2 {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+.home h1 {
+  font-size: 4em;
+  animation: fadeInComponent 1s 0.2s backwards;
+}
+.home h2 {
+  margin-bottom: 2rem;
+  font-size: 2em;
+  animation: fadeInComponent 1s 0.9s backwards;
+}
+.home button {
+  padding: 0.6em 0.9em;
+  border-radius: 0.3em;
+  color: white;
+  background: rgb(95, 197, 231);
+  transition: all 0.3s;
+  font-size: 2em;
+  animation: fadeInComponent 1s 1.9s backwards;
+  cursor: pointer;
+  overflow: hidden;
+}
+.home button:hover {
+  background: linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219));
+}
+.home button span {
+  font-family: inherit;
+  font-weight: bolder;
+  display: inline-block;
+  transform: translateY(200%);
+  transition: 0.3s;
+}
+
+.home button:hover span {
+  animation: fadeUpComponent 0.4s forwards;
+  margin-left: 1rem;
+}
+@media screen and (max-width: 64em) {
+  .home {
+    min-height: 87h;
+  }
+}

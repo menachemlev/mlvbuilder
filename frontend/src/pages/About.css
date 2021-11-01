@@ -1,0 +1,64 @@
+.about {
+  display: grid;
+  place-items: center;
+}
+.about__main {
+  width: 70vw;
+  display: grid;
+  place-items: center;
+}
+.about__main p {
+  text-align: justify;
+  width: 90%;
+  z-index: 1;
+}
+.about__main img {
+  z-index: 0;
+  transform: translateY(-10%);
+  width: 50%;
+}
+.about__main__contact {
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 20vh;
+
+  flex-wrap: wrap;
+  margin-bottom: 10vh;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+}
+
+.about__main__contact > * {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  flex-basis: 33.3%;
+}
+
+.about__main__contact img {
+  height: 10vh;
+  width: 10vh;
+  transition: 0.3s;
+}
+.about__main__contact img:hover {
+  transform: translateY(-20%);
+}
+.about__main__contact-phone {
+  border: khaki 3px solid;
+}
+.about__main__contact-whatsapp {
+  border: rgb(141, 130, 31) 3px solid;
+}
+.about__main__contact-github {
+  border: rgb(27, 26, 11) 3px solid;
+}
+
+@media screen and (max-width: 64em) {
+  .about__main {
+    width: 90vw;
+  }
+  .about__main__contact > * {
+    flex-basis: 100%;
+  }
+}

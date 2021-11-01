@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 10vh;
+  background-image: linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219));
+  border-bottom: 3px solid white;
+}
+.logo-box {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+.logo {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+.link {
+  margin: 1rem;
+  color: white;
+  font-size: 1em;
+  text-decoration: none;
+}
+.active {
+  text-decoration: underline;
+}
+.header_on_portrait {
+  flex-direction: column-reverse;
+}
+
+@media screen and (max-width: 64em) {
+  .link {
+    font-size: 1.3em;
+  }
+  .header {
+    height: 13vh;
+  }
+}

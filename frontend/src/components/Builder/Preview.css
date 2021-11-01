@@ -1,0 +1,13 @@
+.builder__preview {
+  border-left: solid 3px rgb(55, 133, 185);
+  background: white;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.preview__element {
+  font-family: "Poppins";
+}
+.preview__element-active {
+  outline: solid 3px red;
+}

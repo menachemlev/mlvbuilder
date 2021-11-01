@@ -1,0 +1,10 @@
+.builder__elements > div {
+  display: grid;
+  place-items: center;
+  border-radius: 2em;
+  color: white;
+  font-weight: bolder;
+  text-shadow: 0 0 1px white;
+  cursor: grab;
+  padding: 0.5em 0.7em;
+}
