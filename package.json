@@ -13,7 +13,7 @@
     "build": "cd frontend && npm run build",
     "install-client": "cd frontend && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "start": "npm run heroku-postbuild&& cd backend && npm install && npm install express && NODE_ENV=production  node server.js",
+    "start": "cd backend && node server.js",
     "fe": "cd frontend && npm start"
   },
   "repository": {
