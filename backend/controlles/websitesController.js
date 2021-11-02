@@ -2,18 +2,32 @@ const Websites = require('../models/WebsitesModel');
 const AppError = require('../util/appError');
 const catchAsync = require('./../util/catchAsync');
 
-const htmlHeader = `
+const htmlHeader = `<!DOCTYPE html>
+<html>
+<head>
+<meta
+name="viewport"
+content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1, initial-scale=1"
+/>
 <style>
 @import
 url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+body{
+  font-size:200%;
+  font-family: "Poppins", sans-serif;
+
+}
 *{
-  font-family:'Poppins',Arial;
+font-size:inherit:
 }
 button:hover{
   filter:brightness(0.85);
 }
+button,a:link,a:visited,a:hover,a:active,pre,h1{
+  transform:translate(50%,50%);
+}
 
-</style>`;
+</style></head><body>`;
 const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
   if (window.innerHeight > window.innerWidth) {
     document.querySelectorAll(".portrait").forEach((div) => {
@@ -33,7 +47,7 @@ const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
 };
 checkIfLandspaceAndUpdate();
 setInterval(checkIfLandspaceAndUpdate, 1000);
-window.addEventListener("orientationchange", checkIfLandspaceAndUpdate);</script>`;
+window.addEventListener("orientationchange", checkIfLandspaceAndUpdate);</script></body></html>`;
 
 exports.createWebsite = catchAsync(async (req, res, next) => {
   const { email, previewElements, html, public, height } = req.body;

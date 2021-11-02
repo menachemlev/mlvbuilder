@@ -42,9 +42,16 @@ function SignupForm(props) {
     );
   };
 
+  const handleOnPasswordConfirmBlur = () => {
+    if (passwordConfirm.current.value === password.current.value)
+      setError("Passwords do not match");
+    if (passwordConfirm.current.value.length >= 8)
+      setError("Password too short(minimum 8 characters)");
+  };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    //if (!emailValid || !passwordValid || !passwordCofirmValid) return;
+    if (!emailValid || !passwordValid || !passwordCofirmValid) return;
     fetch(`${ctx.fetchProviderURL}/users/signup`, {
       method: "POST",
       body: JSON.stringify({
@@ -119,6 +126,7 @@ function SignupForm(props) {
           `}
           ref={passwordConfirm}
           onChange={handleOnPasswordConfirmChange}
+          onBlur={handleOnPasswordConfirmBlur}
           id="passwordConfirmInput"
           type="password"
           required

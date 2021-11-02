@@ -30,6 +30,7 @@ function SigninForm(props) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    if (!emailValid || !passwordValid) return;
     fetch(`${ctx.fetchProviderURL}/users/login`, {
       method: "POST",
       body: JSON.stringify({
