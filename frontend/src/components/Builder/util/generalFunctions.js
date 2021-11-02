@@ -35,18 +35,23 @@ name="viewport"
 content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1, initial-scale=1"
 />
 <style>
-@import
-url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 body{
   font-size:200%;
   font-family: "Poppins", sans-serif;
-
 }
 *{
-font-family:inherit:
+font-family:inherit;
+font-size:inherit;
 }
 button:hover{
   filter:brightness(0.85);
+}
+
+@media screen and (max-width: 64em) {
+  body{
+    font-size:250%;
+  }
 }
 </style></head><body>`;
   const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
