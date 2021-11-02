@@ -5,10 +5,10 @@ const catchAsync = require('./../util/catchAsync');
 exports.createWebsite = catchAsync(async (req, res, next) => {
   const { email, previewElements, html, public, height } = req.body;
   const html_new = public
-    ? `${htmlHeader}${html
+    ? `${html
         .replace(/display:none/g, '')
         .replace(/none/g, '')
-        .replace(/block/g, '')}${htmlEnder}`
+        .replace(/block/g, '')}`
     : '<h1>Being built...</h1>';
   const website = await Websites.create({
     html: html_new,
@@ -41,10 +41,10 @@ exports.updateWebsite = catchAsync(async (req, res, next) => {
 
   const html_new = `${
     public
-      ? `${htmlHeader}${html
+      ? `${html
           .replace(/display:/g, '')
           .replace(/none/g, '')
-          .replace(/block/g, '')}${htmlEnder}`
+          .replace(/block/g, '')}`
       : original.html
   }`;
   const website = await Websites.findByIdAndUpdate(
