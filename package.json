@@ -4,9 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "express-fileupload": "^1.2.1",
-    "promify": "^2.0.0",
-    "react-router-dom": "^5.3.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
@@ -20,6 +17,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "express": "^4.17.1",
     "express-cookie": "^4.17.1",
+    "express-fileupload": "^1.2.1",
     "express-mongo-sanitize": "^2.1.0",
     "express-rate-limit": "^5.5.0",
     "helmet": "^4.6.0",
@@ -31,13 +29,15 @@
     "nodemailer": "^6.7.0",
     "path": "^0.12.7",
     "prettier": "^2.4.1",
+    "promify": "^2.0.0",
+    "react-router-dom": "^5.3.0",
     "slugify": "^1.6.1",
     "validator": "^13.6.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {},
   "scripts": {
-    "start:dev": " npm start --prefix backend && npm start --prefix frontend ",
+    "start:dev": " node backend/server ",
     "start": "node backend/server",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false  NODE_ENV=production npm install --prefix frontend && npm run build --prefix frontend"
   },
