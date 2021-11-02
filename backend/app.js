@@ -47,7 +47,7 @@ app.use(hpp());
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: '*',
   })
 );
 app.options(
@@ -56,7 +56,7 @@ app.options(
     credentials: true,
   })
 );
-app.use(express.static(path.join(__dirname, 'frontend/build')));
+app.use(express.static(path.join(__dirname, './../frontend/build')));
 
 //Route handler
 /////////////////////////////////////////
