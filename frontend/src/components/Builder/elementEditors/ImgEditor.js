@@ -19,7 +19,7 @@ function ImgEditor(props) {
       const fd = new FormData();
       fd.append("img", fileUpload);
       fd.append("user", "menachem");
-
+      console.log(`${ctx.fetchProviderURL}/images/upload`);
       fetch(`${ctx.fetchProviderURL}/images/upload`, {
         method: "POST",
         body: fd,
