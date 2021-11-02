@@ -226,7 +226,9 @@ function Builder(props) {
   const handleOnPreview = () => {
     setCurrentElementEdited(null);
     const newWindow = window.open("", "preview");
-    newWindow.document.write(addHeaderAndEnderHTML(previewRef.current.html));
+    newWindow.document.write(
+      addHeaderAndEnderHTML(previewRef.current.innerHTML)
+    );
   };
 
   const handleGoPublic = () => {
