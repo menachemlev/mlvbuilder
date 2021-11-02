@@ -18,15 +18,11 @@ body{
 
 }
 *{
-font-size:inherit:
+font-family:inherit:
 }
 button:hover{
   filter:brightness(0.85);
 }
-button,a:link,a:visited,a:hover,a:active,pre,h1{
-  transform:translate(50%,50%);
-}
-
 </style></head><body>`;
 const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
   if (window.innerHeight > window.innerWidth) {
