@@ -211,7 +211,6 @@ const generateButtonElement = (elm, props) => {
         cursor: "grab",
         left: elm.left,
         zIndex: 1,
-        fontFamily: "Poppins",
       }}
       alt={""}
       href={elm.url || "#"}
@@ -249,7 +248,6 @@ const generateButtonElement = (elm, props) => {
       <button
         draggable={true}
         style={{
-          fontFamily: "Poppins",
           padding: "0.6em 1em",
           color: elm.color,
           background: elm.background,
@@ -294,7 +292,6 @@ const generateParagraphElement = (elm, props) => {
         cursor: "grab",
         left: elm.left,
         zIndex: 1,
-        fontFamily: "Poppins",
         color: elm.color,
       }}
       alt={""}
@@ -347,8 +344,7 @@ const generatTitleElement = (elm, props) => {
         cursor: "grab",
         left: elm.left,
         zIndex: 1,
-        fontFamily: "Poppins",
-        fontSize: "2rem",
+        fontSize: "2em",
         color: elm.color,
       }}
       src={elm.src}
@@ -405,9 +401,7 @@ const generatBackgroundElement = (elm, props) => {
         width: elm.width,
         height: elm.height,
         zIndex: 0,
-        fontFamily: "Poppins",
         background: elm.background,
-        fontSize: "2rem",
       }}
       onClick={() => {
         props.onElementClick(elm.id);

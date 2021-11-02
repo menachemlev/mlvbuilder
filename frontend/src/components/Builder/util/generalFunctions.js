@@ -44,7 +44,6 @@ body{
 }
 *{
 font-family:inherit;
-font-size:inherit;
 }
 button:hover{
   filter:brightness(0.85);
