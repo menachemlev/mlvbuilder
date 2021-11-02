@@ -13,6 +13,7 @@ import {
   isItMobile,
   generateHeaders,
   toPercentages,
+  addHeaderAndEnderHTML,
 } from "../components/Builder/util/generalFunctions";
 
 function Builder(props) {
@@ -225,7 +226,7 @@ function Builder(props) {
   const handleOnPreview = () => {
     setCurrentElementEdited(null);
     const newWindow = window.open("", "preview");
-    newWindow.document.write(previewRef.current.innerHTML);
+    newWindow.document.write(addHeaderAndEnderHTML(previewRef.current.html));
   };
 
   const handleGoPublic = () => {

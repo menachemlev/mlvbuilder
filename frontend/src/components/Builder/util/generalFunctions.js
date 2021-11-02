@@ -25,3 +25,49 @@ export function generateHeaders(ctx) {
     "Content-type": "Application/json",
   };
 }
+
+export function addHeaderAndEnderHTML(htmlcode) {
+  const htmlHeader = `<!DOCTYPE html>
+<html>
+<head>
+<meta
+name="viewport"
+content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1, initial-scale=1"
+/>
+<style>
+@import
+url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+body{
+  font-size:200%;
+  font-family: "Poppins", sans-serif;
+
+}
+*{
+font-family:inherit:
+}
+button:hover{
+  filter:brightness(0.85);
+}
+</style></head><body>`;
+  const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
+  if (window.innerHeight > window.innerWidth) {
+    document.querySelectorAll(".portrait").forEach((div) => {
+      div.style.display = "block";
+    });
+    document.querySelectorAll(".landspace").forEach((div) => {
+      div.style.display = "none";
+    });
+  } else {
+    document.querySelectorAll(".portrait").forEach((div) => {
+      div.style.display = "none";
+    });
+    document.querySelectorAll(".landspace").forEach((div) => {
+      div.style.display = "block";
+    });
+  }
+};
+checkIfLandspaceAndUpdate();
+setInterval(checkIfLandspaceAndUpdate, 1000);
+window.addEventListener("orientationchange", checkIfLandspaceAndUpdate);</script></body></html>`;
+  return `${htmlHeader}${htmlcode}${htmlEnder}`;
+}
