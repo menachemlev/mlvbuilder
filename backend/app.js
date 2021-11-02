@@ -13,7 +13,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
-
+const path = require('path');
 const multer = require('multer');
 const AppError = require('./util/appError');
 const storage = multer.diskStorage({
@@ -56,7 +56,7 @@ app.options(
     credentials: true,
   })
 );
-app.use(express.static(`../frontend/build`));
+app.use(express.static(path.join(__dirname, 'frontend/build')));
 
 //Route handler
 /////////////////////////////////////////

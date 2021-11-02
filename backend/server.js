@@ -1,7 +1,7 @@
-/*const dotenv = require('dotenv');
+const dotenv = require('dotenv');
 dotenv.config({
   path: './config.env',
-});*/
+});
 process.on('uncaughtException', (err) => {
   console.log(err);
   process.exit(1);
