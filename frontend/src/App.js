@@ -28,6 +28,9 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
+        <Route path="/website/:id?">
+          <UserWebsite />
+        </Route>
         <Route path="/builder/:id?">
           <Builder />
         </Route>
@@ -36,9 +39,6 @@ function App() {
         </Route>
         <Route path="/account">
           <Account />
-        </Route>
-        <Route path="/website/:id?">
-          <UserWebsite />
         </Route>
         <Route path="/">
           <NotFound />

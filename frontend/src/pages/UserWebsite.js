@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import Auth from "./../Auth/Auth";
 function UserWebsite() {
-  /*const ctx = useContext(Auth);
+  const ctx = useContext(Auth);
   const params = useParams();
   document.write();
   useEffect(() => {
@@ -39,7 +39,7 @@ function UserWebsite() {
         window.addEventListener("orientationchange", checkIfLandspaceAndUpdate);
       })
       .catch((err) => console.error(err));
-  }, []);*/
+  }, []);
 
   return <></>;
 }
