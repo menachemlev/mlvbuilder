@@ -2,10 +2,61 @@ const Websites = require('../models/WebsitesModel');
 const AppError = require('../util/appError');
 const catchAsync = require('./../util/catchAsync');
 
+const htmlHeader = `<!DOCTYPE html>
+<html>
+<head>
+<meta
+
+name="viewport"
+
+content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1, initial-scale=1"
+/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+body{
+  font-size:200%;
+  font-family: "Poppins", sans-serif;
+}
+*{
+font-family:inherit;
+}
+button:hover{
+  filter:brightness(0.85);
+}
+
+@media screen and (max-width: 64em) {
+  body{
+    font-size:250%;
+  }
+}
+</style></head><body>`;
+const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
+  if (window.innerHeight > window.innerWidth) {
+    document.querySelectorAll(".portrait").forEach((div) => {
+      div.style.display = "block";
+    });
+    document.querySelectorAll(".landspace").forEach((div) => {
+      div.style.display = "none";
+    });
+  } else {
+    document.querySelectorAll(".portrait").forEach((div) => {
+      div.style.display = "none";
+    });
+    document.querySelectorAll(".landspace").forEach((div) => {
+      div.style.display = "block";
+    });
+  }
+};
+checkIfLandspaceAndUpdate();
+setInterval(checkIfLandspaceAndUpdate, 1000);
+window.addEventListener("orientationchange", checkIfLandspaceAndUpdate);</script></body></html>`;
+
 exports.createWebsite = catchAsync(async (req, res, next) => {
   const { email, previewElements, html, public, height } = req.body;
   const html_new = public
-    ? `${html.replace(/none/g, '').replace(/block/g, '')}`
+    ? `${htmlHeader}${html
+        .replace(/none/g, '')
+        .replace(/block/g, '')}${htmlEnder}`
     : '<h1>Being built...</h1>';
   const website = await Websites.create({
     html: html_new,
@@ -38,7 +89,9 @@ exports.updateWebsite = catchAsync(async (req, res, next) => {
 
   const html_new = `${
     public
-      ? `${html.replace(/none/g, '').replace(/block/g, '')}`
+      ? `${htmlHeader}${html
+          .replace(/none/g, '')
+          .replace(/block/g, '')}${htmlEnder}`
       : original.html
   }`;
   const website = await Websites.findByIdAndUpdate(
