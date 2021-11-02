@@ -31,7 +31,7 @@ function ImgEditor(props) {
         .then((res) => {
           if (res.status === "fail") throw new Error(res.message);
           props.onFormSubmit({
-            src: `${ctx.fetchProviderURL}/images/${res.fileName}`,
+            src: `/images/${res.fileName}`,
             height: `${height.current.value}%`,
             width: `${width.current.value}%`,
             top: `${top.current.value}%`,
