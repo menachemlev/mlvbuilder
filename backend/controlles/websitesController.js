@@ -12,10 +12,30 @@ url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 button:hover{
   filter:brightness(0.85);
 }
-button{
-  font-size:1.5em;
-}
+
 </style>`;
+const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
+  if (window.innerHeight > window.innerWidth) {
+    //portrait
+    document.querySelectorAll(".portrait").forEach((div) => {
+      div.style.display = "block";
+    });
+    document.querySelectorAll(".landspace").forEach((div) => {
+      div.style.display = "none";
+    });
+  } else {
+    //landspace
+    document.querySelectorAll(".portrait").forEach((div) => {
+      div.style.display = "none";
+    });
+    document.querySelectorAll(".landspace").forEach((div) => {
+      div.style.display = "block";
+    });
+  }
+};
+checkIfLandspaceAndUpdate();
+setInterval(checkIfLandspaceAndUpdate, 1000);
+window.addEventListener("orientationchange", checkIfLandspaceAndUpdate);</script>`;
 
 exports.createWebsite = catchAsync(async (req, res, next) => {
   const { email, previewElements, html, public, height } = req.body;
@@ -23,7 +43,7 @@ exports.createWebsite = catchAsync(async (req, res, next) => {
     ? `${htmlHeader}${html
         .replace(/display:none/g, '')
         .replace(/none/g, '')
-        .replace(/block/g, '')}`
+        .replace(/block/g, '')}${htmlEnder}`
     : '<h1>Being built...</h1>';
   const website = await Websites.create({
     html: html_new,
@@ -59,7 +79,7 @@ exports.updateWebsite = catchAsync(async (req, res, next) => {
       ? `${htmlHeader}${html
           .replace(/display:/g, '')
           .replace(/none/g, '')
-          .replace(/block/g, '')}`
+          .replace(/block/g, '')}${htmlEnder}`
       : original.html
   }`;
   const website = await Websites.findByIdAndUpdate(
@@ -123,10 +143,7 @@ exports.getWebsite = catchAsync(async (req, res, next) => {
     return next(new AppError('Website not found', 404));
   }
   const html = `${website.html.replace(/&lt;/g, '<').replace(/\n/g, '')}`;
-  res.status(200).json({
-    status: 'success',
-    html,
-  });
+  res.status(200).send(html);
 });
 
 exports.getPreviewElements = catchAsync(async (req, res, next) => {

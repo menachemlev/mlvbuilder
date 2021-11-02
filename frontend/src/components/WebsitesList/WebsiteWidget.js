@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./WebsiteWidget.css";
 import Auth from "./../../Auth/Auth";
 function WebsiteWidget(props) {
+  const ctx = useContext(Auth);
   const { html, _id } = props.website;
   const srcdoc = `
   <style>
@@ -14,9 +15,14 @@ function WebsiteWidget(props) {
   return (
     <div className="iframe-widget">
       <iframe title={_id} srcDoc={srcdoc}></iframe>
-      <Link className="iframe-widget__link" to={`/w/${_id}`} target="_blank">
+      <a
+        className="iframe-widget__link"
+        rel="noreferrer"
+        href={`${ctx.fetchProviderURL}/web/${_id}`}
+        target="_blank"
+      >
         Visit website
-      </Link>
+      </a>
       <br />
       <NavLink className="iframe-widget__link" to={`/builder/${_id}`}>
         Edit

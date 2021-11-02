@@ -123,9 +123,9 @@ function Menu(props) {
             : `🌐  ${portrait ? "" : "Go Public"}`}
         </b>
         {props.publishedWebsiteURL && (
-          <Link to={props.publishedWebsiteURL} target="_blank">
+          <a href={props.publishedWebsiteURL} rel="noreferrer" target="_blank">
             {`${portrait ? "🔗" : "🔗Visit"}`}
-          </Link>
+          </a>
         )}
       </div>
       <div
