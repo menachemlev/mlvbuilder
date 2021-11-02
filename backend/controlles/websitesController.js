@@ -16,7 +16,6 @@ button:hover{
 </style>`;
 const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
   if (window.innerHeight > window.innerWidth) {
-    //portrait
     document.querySelectorAll(".portrait").forEach((div) => {
       div.style.display = "block";
     });
@@ -24,7 +23,6 @@ const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
       div.style.display = "none";
     });
   } else {
-    //landspace
     document.querySelectorAll(".portrait").forEach((div) => {
       div.style.display = "none";
     });
