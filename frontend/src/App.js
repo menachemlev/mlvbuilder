@@ -28,7 +28,7 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/website/:id?">
+        <Route path="/w/:id?">
           <UserWebsite />
         </Route>
         <Route path="/builder/:id?">

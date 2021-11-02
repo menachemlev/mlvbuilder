@@ -77,7 +77,7 @@ function Builder(props) {
         .catch((err) => console.log(err));
 
       setID(params.id);
-      setPublishedWebsiteURL(`/website/${params.id}`);
+      setPublishedWebsiteURL(`/w/${params.id}`);
     } else {
       setID("");
       setPublishedWebsiteURL(``);

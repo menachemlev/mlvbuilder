@@ -14,11 +14,7 @@ function WebsiteWidget(props) {
   return (
     <div className="iframe-widget">
       <iframe title={_id} srcDoc={srcdoc}></iframe>
-      <Link
-        className="iframe-widget__link"
-        to={`/website/${_id}`}
-        target="_blank"
-      >
+      <Link className="iframe-widget__link" to={`/w/${_id}`} target="_blank">
         Visit website
       </Link>
       <br />
