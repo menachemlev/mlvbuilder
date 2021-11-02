@@ -15,7 +15,7 @@ import UserWebsite from "./pages/UserWebsite";
 
 function App() {
   return (
-    <>
+    <div className="app">
       <Header />
       <Switch>
         <Route path="/" exact>
@@ -44,7 +44,7 @@ function App() {
           <NotFound />
         </Route>
       </Switch>
-    </>
+    </div>
   );
 }
 

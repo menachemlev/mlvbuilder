@@ -73,8 +73,6 @@ app.use('/admin/', adminRouter);
 
 //PHOTO UPLOAD
 app.post('/images/upload', upload.single('img'), (req, res, next) => {
-  if (!req.file.mimetype.includes('image'))
-    return next(AppError('Can not upload not image files!', 401));
   res.status(201).json({
     status: 'success',
     fileName: req.file.filename,

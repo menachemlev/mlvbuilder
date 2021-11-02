@@ -1,6 +1,7 @@
-.page {
+.app {
   width: 100vw;
   min-height: 90vh;
+  overflow-x: hidden;
 }
 .pageTitle {
   text-align: center;
@@ -16,7 +17,7 @@
   .link {
     font-size: 1.4em;
   }
-  .page {
+  .app {
     min-height: 87vh;
   }
 }
