@@ -24,6 +24,8 @@ function ParagraphEditor(props) {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    e.preventDefault();
+
     props.onFormSubmit({
       title: title.current.value,
       top: `${top.current.value}%`,
