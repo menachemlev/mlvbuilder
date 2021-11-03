@@ -9,8 +9,8 @@ function Help(props) {
   }, []);
 
   return ReactDOM.createPortal(
-    <div
-      className={`${fadeInAnimation}`}
+    <ReactPlayer
+      url={helpVid}
       style={{
         position: "absolute",
         top: "50%",
@@ -26,6 +26,8 @@ function Help(props) {
         zIndex: "1000",
         padding: "2em",
       }}
+      controls={true}
+      autoFocus={true}
     >
       <span
         style={{ position: "fixed", top: "2%", right: "2%", cursor: "pointer" }}
@@ -35,20 +37,7 @@ function Help(props) {
       >
         ❌
       </span>
-      <ReactPlayer
-        url={helpVid}
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%,-50%)",
-          width: "100%",
-          height: "auto",
-        }}
-        controls={true}
-        autoFocus={true}
-      />
-    </div>,
+    </ReactPlayer>,
     document.getElementById("modals")
   );
 }
