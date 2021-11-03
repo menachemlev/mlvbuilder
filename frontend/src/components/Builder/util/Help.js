@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
+import ReactPlayer from "react-player";
+import helpVid from "./help.mp4";
 function Help(props) {
   const [fadeInAnimation, setFadeInAnimation] = useState("");
   useEffect(() => {
@@ -33,12 +35,7 @@ function Help(props) {
       >
         ❌
       </span>
-      {props.isItLandspace && <></>}
-      {!props.isItLandspace && (
-        <>
-          <h1>forPortrait</h1>
-        </>
-      )}
+      <ReactPlayer url={helpVid} style={{ width: "100%", height: "auto" }} />
     </div>,
     document.getElementById("modals")
   );
