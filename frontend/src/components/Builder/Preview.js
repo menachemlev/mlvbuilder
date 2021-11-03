@@ -23,7 +23,6 @@ function Preview(props) {
           left: "0",
           display: `${props.isPreviewLandspace ? "none" : "block"}`,
           overflowX: "hidden",
-          overflowY: `${props.height <= 100 ? "hidden" : "scroll"}`,
         }}
       >
         {props.elements
@@ -40,7 +39,6 @@ function Preview(props) {
           left: "0",
           display: `${props.isPreviewLandspace ? "block" : "none"}`,
           overflowX: "hidden",
-          overflowY: "scroll",
         }}
       >
         {props.elements

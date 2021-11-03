@@ -33,11 +33,7 @@ function Help(props) {
       >
         ❌
       </span>
-      {props.isItLandspace && (
-        <>
-          <h1>forLandspace</h1>
-        </>
-      )}
+      {props.isItLandspace && <></>}
       {!props.isItLandspace && (
         <>
           <h1>forPortrait</h1>
