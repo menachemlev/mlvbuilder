@@ -212,7 +212,7 @@ const generateButtonElement = (elm, props) => {
         cursor: "grab",
         left: elm.left,
         zIndex: 1,
-        width: elm.width,
+        minWidth: elm.width,
         height: elm.height,
         textAlign: "center",
       }}
