@@ -38,7 +38,7 @@ function Help(props) {
       <ReactPlayer
         url={helpVid}
         style={{
-          width: "100%",
+          width: "90%",
           height: "100%",
         }}
         controls={true}
