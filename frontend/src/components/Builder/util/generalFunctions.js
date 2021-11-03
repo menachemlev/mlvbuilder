@@ -30,6 +30,7 @@ export function addHeaderAndEnderHTML(htmlcode) {
   const htmlHeader = `<!DOCTYPE html>
 <html>
 <head>
+<title>Preview</title>
 <meta
 
 name="viewport"

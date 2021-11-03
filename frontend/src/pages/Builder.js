@@ -22,7 +22,7 @@ function Builder(props) {
   const history = useHistory();
 
   const [id, setID] = useState("");
-
+  const [previewWindow, setPreviewWindow] = useState(null);
   const [previewElements, setPreviewElements] = useState([]);
   const [currentElementEdited, setCurrentElementEdited] = useState(null);
   const [backup, setBackup] = useState([]);
@@ -97,6 +97,8 @@ function Builder(props) {
       setDeletingLoading(false);
       setIsPreviewLandspace(true);
       setHeight(100);
+      previewWindow.close();
+      setPreviewWindow(null);
     };
   }, [params]);
 
@@ -225,8 +227,9 @@ function Builder(props) {
 
   const handleOnPreview = () => {
     setCurrentElementEdited(null);
-    const newWindow = window.open("", "preview");
-    newWindow.document.write(
+    previewWindow.close();
+    setPreviewWindow(window.open("", "preview"));
+    previewWindow.document.write(
       addHeaderAndEnderHTML(previewRef.current.innerHTML)
     );
   };
