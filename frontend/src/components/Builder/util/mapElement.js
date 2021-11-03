@@ -297,6 +297,7 @@ const generateParagraphElement = (elm, props) => {
         left: elm.left,
         zIndex: 1,
         color: elm.color,
+        textAlign: "center",
       }}
       alt={""}
       onClick={() => {
@@ -350,6 +351,7 @@ const generatTitleElement = (elm, props) => {
         zIndex: 1,
         fontSize: "2em",
         color: elm.color,
+        textAlign: "center",
       }}
       src={elm.src}
       alt={""}
