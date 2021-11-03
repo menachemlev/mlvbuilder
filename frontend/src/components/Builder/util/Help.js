@@ -33,7 +33,16 @@ function Help(props) {
       >
         ❌
       </span>
-      <h1>Hello help</h1>
+      {props.isItLandspace && (
+        <>
+          <h1>forLandspace</h1>
+        </>
+      )}
+      {!props.isItLandspace && (
+        <>
+          <h1>forPortrait</h1>
+        </>
+      )}
     </div>,
     document.getElementById("modals")
   );

@@ -71,7 +71,12 @@ function Menu(props) {
         </div>
       )}
 
-      {showHelp && <Help setShowHelp={setShowHelp} />}
+      {showHelp && (
+        <Help
+          isItLandspace={props.isPreviewLandspace}
+          setShowHelp={setShowHelp}
+        />
+      )}
       {showEditor && (
         <EditorPop
           onCloseEditor={() => {
