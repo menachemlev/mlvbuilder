@@ -97,7 +97,6 @@ function Builder(props) {
       setDeletingLoading(false);
       setIsPreviewLandspace(true);
       setHeight(100);
-      previewWindow.close();
       setPreviewWindow(null);
     };
   }, [params]);
