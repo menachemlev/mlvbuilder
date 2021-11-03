@@ -37,9 +37,16 @@ function Help(props) {
       </span>
       <ReactPlayer
         url={helpVid}
-        width={"100%"}
-        height={"auto"}
-        context={true}
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%,-50%)",
+          width: "100%",
+          height: "auto",
+        }}
+        controls={true}
+        autoFocus={true}
       />
     </div>,
     document.getElementById("modals")
