@@ -35,7 +35,12 @@ function Help(props) {
       >
         ❌
       </span>
-      <ReactPlayer url={helpVid} style={{ width: "100%", height: "auto" }} />
+      <ReactPlayer
+        url={helpVid}
+        width={"100%"}
+        height={"auto"}
+        context={true}
+      />
     </div>,
     document.getElementById("modals")
   );
