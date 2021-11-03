@@ -13,7 +13,7 @@
 }
 .UI-card form > div {
   margin: 0.5rem;
-  width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,12 +22,14 @@
   font-weight: bolder;
   color: white;
   font-size: 1.1em;
+  max-width: 50%;
 }
 .UI-card form input,
 textarea {
   font-size: 1.1em;
   background: #333;
   border: none;
+  max-width: 50%;
   color: white;
   border-radius: 0.3em;
   font-weight: bolder;

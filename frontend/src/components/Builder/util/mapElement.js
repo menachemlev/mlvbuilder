@@ -156,6 +156,7 @@ const generateLinkElement = (elm, props) => {
         zIndex: 1,
         width: elm.width,
         height: elm.height,
+        textAlign: "center",
         fontFamily: "Poppins",
         color: elm.color,
       }}
@@ -211,6 +212,9 @@ const generateButtonElement = (elm, props) => {
         cursor: "grab",
         left: elm.left,
         zIndex: 1,
+        width: elm.width,
+        height: elm.height,
+        textAlign: "center",
       }}
       alt={""}
       href={elm.url || "#"}
