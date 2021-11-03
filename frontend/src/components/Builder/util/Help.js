@@ -40,6 +40,7 @@ function Help(props) {
         style={{
           width: "90%",
           height: "100%",
+          border: "ridge 3px cyan",
         }}
         controls={true}
       />
