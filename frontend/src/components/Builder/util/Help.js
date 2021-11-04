@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import ReactPlayer from "react-player";
 import helpVid from "./help.mp4";
+import { isItMobile } from "./generalFunctions";
 function Help(props) {
   const [fadeInAnimation, setFadeInAnimation] = useState("");
   useEffect(() => {
@@ -38,8 +39,8 @@ function Help(props) {
       <ReactPlayer
         url={helpVid}
         style={{
-          width: "90%",
-          height: "100%",
+          width: isItMobile() ? "40%" : "90%",
+          height: isItMobile() ? "50%" : "100%",
           border: "ridge 3px cyan",
         }}
         controls={true}
