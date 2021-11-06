@@ -1,8 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import laptop1 from "./../photos/laptop1.png";
-import laptop2 from "./../photos/laptop1.png";
-import laptop3 from "./../photos/laptop1.png";
+import background from "./../photos/background.jpg";
 
 import Auth from "../Auth/Auth";
 import "./Home.css";
@@ -16,7 +14,7 @@ function Home(props) {
     });
   }, []);
   return (
-    <div className="home">
+    <div className="home" style={{ background: `url${background}` }}>
       <h1>
         {ctx.loggedIn ? `Welcome back ${ctx.name || ""}` : "Build your website"}
       </h1>

@@ -5,6 +5,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  background-size: cover;
+  background-image: center;
 }
 
 .home h1,
