@@ -33,7 +33,11 @@ function Home(props) {
         <button
           style={{ fontSize: "1em" }}
           onClick={() => {
-            ctx.login("guest@mlvbuilder.com", "12345678", "guest");
+            ctx.login({
+              email: "guest@mlvbuilder.com",
+              password: "12345678",
+              name: "guest",
+            });
             setTimeout(() => {
               history.push("/");
             }, 1000);
