@@ -27,6 +27,9 @@ function App() {
     <div className="app">
       <Header />
       <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
         <Route path="/about">
           <About />
         </Route>
@@ -42,10 +45,7 @@ function App() {
         <Route path="/account">
           <Account />
         </Route>
-        <Route path="/:guest?">
-          <Home />
-        </Route>
-        <Route path="">
+        <Route path="guest/:guest?">
           <Home />
         </Route>
       </Switch>
