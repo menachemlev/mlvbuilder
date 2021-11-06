@@ -255,8 +255,6 @@ const generateButtonElement = (elm, props) => {
           padding: "0.6em 1em",
           color: elm.color,
           background: elm.background,
-          width: elm.width,
-          height: elm.height,
           cursor: "pointer",
           transition: "0.33s",
           fontWeight: "bolder",
