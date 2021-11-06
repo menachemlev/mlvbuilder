@@ -6,8 +6,6 @@ import Home from "./pages/Home";
 import Header from "./components/Header/Header";
 import About from "./pages/About";
 
-import { useLocation } from "react-router-dom";
-
 import Login from "./pages/Login";
 
 import Builder from "./pages/Builder";
@@ -18,14 +16,12 @@ import UserWebsite from "./pages/UserWebsite";
 import Auth from "./Auth/Auth";
 
 function App() {
-  const location = useLocation();
   const ctx = useContext(Auth);
   useEffect(() => {
-    console.log(new URLSearchParams(location.search).get("guest"));
-    if (new URLSearchParams(location.search).get("guest") && !ctx.loggedIn) {
+    if (document.documentURI.includes("guest") && !ctx.loggedIn) {
       ctx.login("guest@mlvbuilder.com", "12345678", "guest");
     }
-  }, [location]);
+  }, []);
   return (
     <div className="app">
       <Header />
