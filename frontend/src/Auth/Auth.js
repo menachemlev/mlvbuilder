@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 const Auth = createContext({
   loggedIn: false,
@@ -11,19 +12,26 @@ const Auth = createContext({
 });
 
 export const AuthProvider = (props) => {
+  const history = useHistory();
+  const params = useParams();
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const fetchProviderURL = "https://mlvbuilder.herokuapp.com";
   useEffect(() => {
-    if (typeof localStorage === undefined) return;
-    if (!localStorage.getItem("loginData")) return;
-    const { email, password, name, date } = JSON.parse(
-      localStorage.getItem("loginData")
-    );
-    if (Date.now() > date + 90 * 24 * 60 * 60 * 1000) return logOut(); //30 days
-
+    let email = "guest@mlvbuilder.com",
+      password = "12345678";
+    if (!params.guest) {
+      if (typeof localStorage === undefined) return;
+      if (!localStorage.getItem("loginData")) return;
+      const localStorageData = JSON.parse(localStorage.getItem("loginData"));
+      const date = localStorageData.date;
+      email = localStorageData.email;
+      password = localStorage.password;
+      if (Date.now() > date + 90 * 24 * 60 * 60 * 1000) return logOut(); //30 days
+    }
     fetch(`${fetchProviderURL}/users/auto-login`, {
       method: "POST",
       body: JSON.stringify({
