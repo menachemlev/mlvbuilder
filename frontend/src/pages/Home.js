@@ -33,7 +33,7 @@ function Home(props) {
         <button
           style={{ fontSize: "1em" }}
           onClick={() => {
-            ctx.login({
+            ctx.logIn({
               email: "guest@mlvbuilder.com",
               password: "12345678",
               name: "guest",
