@@ -29,7 +29,7 @@ button:hover{
     font-size:200%;
   }
   .portrait{
-    font-size:400%;
+    font-size:300%;
   }
 }
 </style></head><body>`;
