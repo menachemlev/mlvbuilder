@@ -18,11 +18,11 @@ import Auth from "./Auth/Auth";
 function App() {
   const params = useParams();
   const ctx = useContext(Auth);
-  useEffect(() => {
+  /* useEffect(() => {
     if (params.guest && !ctx.loggedIn) {
       ctx.login("guest@mlvbuilder.com", "12345678", params.guest);
     }
-  }, [params]);
+  }, [params]);*/
   return (
     <div className="app">
       <Header />
