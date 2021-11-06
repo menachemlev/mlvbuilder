@@ -212,8 +212,7 @@ const generateButtonElement = (elm, props) => {
         cursor: "grab",
         left: elm.left,
         zIndex: 1,
-        width: elm.width,
-        height: elm.height,
+
         textAlign: "center",
       }}
       alt={""}
@@ -252,7 +251,7 @@ const generateButtonElement = (elm, props) => {
       <button
         draggable={true}
         style={{
-          padding: "0.6em 1em",
+          padding: "0.6em",
           color: elm.color,
           background: elm.background,
           cursor: "pointer",
@@ -260,6 +259,7 @@ const generateButtonElement = (elm, props) => {
           fontWeight: "bolder",
           borderRadius: "0.5em",
           fontSize: elm.fontSize || "1em",
+          width: `${elm.title.length * 1 + 2}%`,
         }}
       >
         {elm.title || "Some button"}
