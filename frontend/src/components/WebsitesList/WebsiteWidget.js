@@ -24,9 +24,11 @@ function WebsiteWidget(props) {
         Visit website
       </a>
       <br />
-      <NavLink className="iframe-widget__link" to={`/builder/${_id}`}>
-        Edit
-      </NavLink>
+      {ctx.name !== "guest" && (
+        <NavLink className="iframe-widget__link" to={`/builder/${_id}`}>
+          Edit
+        </NavLink>
+      )}
     </div>
   );
 }

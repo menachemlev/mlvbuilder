@@ -27,9 +27,14 @@ function Header(props) {
           About
         </NavLink>
         {!loggedIn && (
-          <NavLink className="link" activeClassName="active" to="/Login">
-            Login
-          </NavLink>
+          <>
+            <NavLink className="link" activeClassName="active" to="/Login">
+              Login
+            </NavLink>
+            <NavLink className="link" activeClassName="active" to="/guest">
+              Guest
+            </NavLink>
+          </>
         )}
         {loggedIn && (
           <>
