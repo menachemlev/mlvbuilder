@@ -28,10 +28,6 @@ function App() {
     <div className="app">
       <Header />
       <Switch>
-        <Route path="/:guest?" exact>
-          <Home />
-        </Route>
-
         <Route path="/about">
           <About />
         </Route>
@@ -50,8 +46,8 @@ function App() {
         <Route path="/account">
           <Account />
         </Route>
-        <Route path="/">
-          <NotFound />
+        <Route path="/:guest?">
+          <Home />
         </Route>
       </Switch>
     </div>
