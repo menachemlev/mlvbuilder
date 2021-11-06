@@ -34,9 +34,6 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
-        <Route path="/w/:id?">
-          <UserWebsite />
-        </Route>
         <Route path="/builder/:id?">
           <Builder />
         </Route>
@@ -47,6 +44,9 @@ function App() {
           <Account />
         </Route>
         <Route path="/:guest?">
+          <Home />
+        </Route>
+        <Route path="">
           <Home />
         </Route>
       </Switch>
