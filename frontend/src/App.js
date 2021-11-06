@@ -1,6 +1,8 @@
 import "./App.css";
 import React, { useContext } from "react";
 import { Route, Switch } from "react-router-dom";
+import { useHistory } from "react-router";
+
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
 import About from "./pages/About";
@@ -16,6 +18,7 @@ import Auth from "./Auth/Auth";
 
 function App() {
   const { login } = useContext(Auth);
+  const history = useHistory();
   return (
     <div className="app">
       <Header />
@@ -39,11 +42,16 @@ function App() {
           <Account />
         </Route>
         <Route path="/guest">
-          <div
+          <h1
             onLoad={() => {
               login("guest@mlvbuilder.com", "12345678", "guest");
+              setTimeout(() => {
+                history.push("/");
+              }, 1000);
             }}
-          />
+          >
+            Logging you in as a guest...
+          </h1>
         </Route>
         <Route path="/">
           <NotFound />
