@@ -212,7 +212,7 @@ const generateButtonElement = (elm, props) => {
         cursor: "grab",
         left: elm.left,
         zIndex: 1,
-        minWidth: elm.width,
+        width: elm.width,
         height: elm.height,
         textAlign: "center",
       }}
@@ -255,6 +255,8 @@ const generateButtonElement = (elm, props) => {
           padding: "0.6em 1em",
           color: elm.color,
           background: elm.background,
+          width: elm.width,
+          height: elm.height,
           cursor: "pointer",
           transition: "0.33s",
           fontWeight: "bolder",
@@ -298,6 +300,8 @@ const generateParagraphElement = (elm, props) => {
         zIndex: 1,
         color: elm.color,
         textAlign: "center",
+        width: elm.width,
+        height: elm.height,
       }}
       alt={""}
       onClick={() => {
@@ -352,6 +356,8 @@ const generatTitleElement = (elm, props) => {
         fontSize: "2em",
         color: elm.color,
         textAlign: "center",
+        width: elm.width,
+        height: elm.height,
       }}
       src={elm.src}
       alt={""}
