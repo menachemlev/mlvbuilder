@@ -11,6 +11,7 @@ import Builder from "./pages/Builder";
 import WebsitesList from "./pages/WebsitesList";
 import Account from "./pages/Account";
 import Guest from "./pages/Guest";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path="/guest">
           <Guest />
+        </Route>
+        <Route path="/">
+          <NotFound />
         </Route>
       </Switch>
     </div>
