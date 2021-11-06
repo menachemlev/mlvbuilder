@@ -32,7 +32,8 @@ h2 {
   border: 0;
   background: rgb(95, 197, 231);
   transition: all 0.3s;
-  font-size: 1em;
+  font-size: 1.7em;
+  margin-bottom: 3px;
   animation: fadeInComponent 1s 1.9s backwards;
   cursor: pointer;
   overflow: hidden;

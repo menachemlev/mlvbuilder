@@ -31,6 +31,7 @@ function Home(props) {
       </Link>
       {!ctx.loggedIn && (
         <button
+          style={{ fontSize: "1em" }}
           onClick={() => {
             ctx.login("guest@mlvbuilder.com", "12345678", "guest");
             setTimeout(() => {
