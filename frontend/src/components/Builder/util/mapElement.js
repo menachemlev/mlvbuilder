@@ -154,8 +154,6 @@ const generateLinkElement = (elm, props) => {
         left: elm.left,
         cursor: "grab",
         zIndex: 1,
-        width: elm.width,
-        height: elm.height,
         textAlign: "center",
         fontFamily: "Poppins",
         color: elm.color,
@@ -298,8 +296,6 @@ const generateParagraphElement = (elm, props) => {
         zIndex: 1,
         color: elm.color,
         textAlign: "center",
-        width: elm.width,
-        height: elm.height,
       }}
       alt={""}
       onClick={() => {
@@ -354,8 +350,6 @@ const generatTitleElement = (elm, props) => {
         fontSize: "2em",
         color: elm.color,
         textAlign: "center",
-        width: elm.width,
-        height: elm.height,
       }}
       src={elm.src}
       alt={""}

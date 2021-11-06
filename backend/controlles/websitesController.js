@@ -14,7 +14,7 @@ content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 body{
-  font-size:200%;
+  font-size:150%;
   font-family: "Poppins", sans-serif;
 }
 *{
@@ -26,7 +26,7 @@ button:hover{
 
 @media screen and (max-width: 64em) {
   body{
-    font-size:250%;
+    font-size:200%;
   }
 }
 </style></head><body>`;
