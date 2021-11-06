@@ -212,7 +212,6 @@ const generateButtonElement = (elm, props) => {
         cursor: "grab",
         left: elm.left,
         zIndex: 1,
-
         textAlign: "center",
       }}
       alt={""}
@@ -259,7 +258,8 @@ const generateButtonElement = (elm, props) => {
           fontWeight: "bolder",
           borderRadius: "0.5em",
           fontSize: elm.fontSize || "1em",
-          width: `${(elm?.title?.length || 20) * 1 + 2}%`,
+          width: "100%",
+          height: "100%",
         }}
       >
         {elm.title || "Some button"}
