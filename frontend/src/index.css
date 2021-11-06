@@ -38,17 +38,21 @@ body {
 @keyframes fadeInComponent {
   0% {
     opacity: 0;
+    letter-spacing: 3px;
   }
   100% {
     opacity: 1;
+    letter-spacing: 0px;
   }
 }
 @-webkit-keyframes fadeInComponent {
   0% {
     opacity: 0;
+    letter-spacing: 3px;
   }
   100% {
     opacity: 1;
+    letter-spacing: 0px;
   }
 }
 

@@ -18,7 +18,9 @@ function Home(props) {
   return (
     <div className="home">
       <h1>
-        {ctx.loggedIn ? `Welcome back ${ctx.name || ""}` : "Build your website"}
+        {ctx.loggedIn && ctx.name !== "guest"
+          ? `Welcome back ${ctx.name || ""}`
+          : "Build your website"}
       </h1>
       <h2>
         {ctx.loggedIn ? `Start building your website` : "Easy, fast & free"}
