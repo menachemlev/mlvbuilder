@@ -14,7 +14,7 @@ function Home(props) {
     });
   }, []);
   return (
-    <div className="home" style={{ background: `url${background}` }}>
+    <div className="home" style={{ background: `url('${background}')` }}>
       <h1>
         {ctx.loggedIn ? `Welcome back ${ctx.name || ""}` : "Build your website"}
       </h1>
