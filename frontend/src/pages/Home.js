@@ -16,15 +16,15 @@ function Home(props) {
   return (
     <div className="home">
       <h1>
-        {ctx.loggedIn ? `ברוך שובך ${ctx.name || ""}` : "בנה את האתר שלך"}
+        {ctx.loggedIn ? `Welcome back ${ctx.name || ""}` : "Build your website"}
       </h1>
       <h2>
-        {ctx.loggedIn ? `לחץ בשביל לבנות את האתר שלך` : "בקלות, במהירות ובחינם"}
+        {ctx.loggedIn ? `Start building your website` : "Easy, fast & free"}
       </h2>
 
       <Link to={ctx.loggedIn ? "/builder" : "/login"}>
         <button>
-          {ctx.loggedIn ? "לבונה" : "לכניסה"}
+          {ctx.loggedIn ? "Builder" : "Login"}
           <span>{" >"}</span>
         </button>
       </Link>
