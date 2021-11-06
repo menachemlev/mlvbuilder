@@ -19,10 +19,11 @@ import Auth from "./Auth/Auth";
 
 function App() {
   const location = useLocation();
-  const { login } = useContext(Auth);
+  const ctx = useContext(Auth);
   useEffect(() => {
-    if (new URLSearchParams(location.search).get("guest")) {
-      login("guest@mlvbuilder.com", "12345678", "guest");
+    console.log(new URLSearchParams(location.search).get("guest"));
+    if (new URLSearchParams(location.search).get("guest") && !ctx.loggedIn) {
+      ctx.login("guest@mlvbuilder.com", "12345678", "guest");
     }
   }, [location]);
   return (
