@@ -41,7 +41,7 @@ function App() {
         <Route path="/account">
           <Account />
         </Route>
-        <Route path="/guest">
+        <Route path="/guest1">
           <center>
             <br />
             <button
