@@ -8,7 +8,6 @@ import About from "./pages/About";
 
 import Login from "./pages/Login";
 
-import { useParams } from "react-router";
 import Builder from "./pages/Builder";
 import WebsitesList from "./pages/WebsitesList";
 import Account from "./pages/Account";
@@ -16,13 +15,15 @@ import NotFound from "./pages/NotFound";
 import Auth from "./Auth/Auth";
 
 function App() {
-  const params = useParams();
-  const ctx = useContext(Auth);
   /* useEffect(() => {
     if (params.guest && !ctx.loggedIn) {
       ctx.login("guest@mlvbuilder.com", "12345678", params.guest);
     }
-  }, [params]);*/
+  }, [params]);
+  <Route path="/guest/:guest?">
+          <Home />
+        </Route>
+  */
   return (
     <div className="app">
       <Header />
@@ -44,9 +45,6 @@ function App() {
         </Route>
         <Route path="/account">
           <Account />
-        </Route>
-        <Route path="/guest/:guest?">
-          <Home />
         </Route>
       </Switch>
     </div>
