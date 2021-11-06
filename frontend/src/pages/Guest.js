@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { useHistory } from "react-router";
 import Auth from "../Auth/Auth";
 
-export default function Guest(props) {
+function Guest(props) {
   const history = useHistory();
   const { login } = useContext(Auth);
   useEffect(() => {
@@ -13,3 +13,5 @@ export default function Guest(props) {
   }, []);
   return <h1> You're logged in as a guest...</h1>;
 }
+
+export default Guest;
