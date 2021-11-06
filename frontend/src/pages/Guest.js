@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { useHistory } from "react-router";
 import Auth from "../Auth/Auth";
 
-export default function Guest() {
+export default function Guest(props) {
   const history = useHistory();
   const { login } = useContext(Auth);
   useEffect(() => {
