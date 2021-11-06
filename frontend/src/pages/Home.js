@@ -14,17 +14,17 @@ function Home(props) {
     });
   }, []);
   return (
-    <div className="home" style={{ background: `url('${background}')` }}>
+    <div className="home">
       <h1>
-        {ctx.loggedIn ? `Welcome back ${ctx.name || ""}` : "Build your website"}
+        {ctx.loggedIn ? `ברוך שובך ${ctx.name || ""}` : "בנה את האתר שלך"}
       </h1>
       <h2>
-        {ctx.loggedIn ? `Start building your website` : "Easy, fast & free"}
+        {ctx.loggedIn ? `לחץ בשביל לבנות את האתר שלך` : "בקלות, במהירות ובחינם"}
       </h2>
 
       <Link to={ctx.loggedIn ? "/builder" : "/login"}>
         <button>
-          {ctx.loggedIn ? "Builder" : "Login"}
+          {ctx.loggedIn ? "לבונה" : "לכניסה"}
           <span>{" >"}</span>
         </button>
       </Link>
