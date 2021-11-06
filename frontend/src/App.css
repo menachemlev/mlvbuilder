@@ -13,6 +13,19 @@
   width: 100%;
   font-size: 3em;
 }
+
+.guestButton {
+  background-color: rgb(47, 167, 207);
+  margin: 0.3rem;
+  color: white;
+  border-radius: 0.3em;
+  padding: 0.4em 0.6em;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.guestButton:hover {
+  background-color: rgb(44, 123, 150);
+}
 @media screen and (max-width: 64em) {
   .link {
     font-size: 1.4em;

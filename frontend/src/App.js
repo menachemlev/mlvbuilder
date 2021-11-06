@@ -42,16 +42,20 @@ function App() {
           <Account />
         </Route>
         <Route path="/guest">
-          <h1
-            onLoad={() => {
-              login("guest@mlvbuilder.com", "12345678", "guest");
-              setTimeout(() => {
-                history.push("/");
-              }, 1000);
-            }}
-          >
-            Logging you in as a guest...
-          </h1>
+          <center>
+            <br />
+            <button
+              className="guestButton"
+              onClick={() => {
+                login("guest@mlvbuilder.com", "12345678", "guest");
+                setTimeout(() => {
+                  history.push("/");
+                }, 1000);
+              }}
+            >
+              Log in as a guest
+            </button>
+          </center>
         </Route>
         <Route path="/">
           <NotFound />
