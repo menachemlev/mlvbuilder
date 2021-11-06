@@ -259,7 +259,7 @@ const generateButtonElement = (elm, props) => {
           fontWeight: "bolder",
           borderRadius: "0.5em",
           fontSize: elm.fontSize || "1em",
-          width: `${elm.title.length * 1 + 2}%`,
+          width: `${(elm.title.length || 20) * 1 + 2}%`,
         }}
       >
         {elm.title || "Some button"}
