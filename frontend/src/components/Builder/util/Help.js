@@ -39,8 +39,8 @@ function Help(props) {
       <ReactPlayer
         url={helpVid}
         style={{
-          width: isItMobile() ? "40%" : "90%",
-          height: isItMobile() ? "50%" : "100%",
+          width: props.isItLandspace ? "100%" : "40%",
+          height: props.isItLandspace ? "50%" : "100%",
           border: "ridge 3px cyan",
         }}
         controls={true}
