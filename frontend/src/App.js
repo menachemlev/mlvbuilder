@@ -24,7 +24,7 @@ function App() {
     if (new URLSearchParams(location.search).get("guest")) {
       login("guest@mlvbuilder.com", "12345678", "guest");
     }
-  }, [params]);
+  }, [location]);
   return (
     <div className="app">
       <Header />
