@@ -25,8 +25,11 @@ button:hover{
 }
 
 @media screen and (max-width: 64em) {
-  body{
+  .landspace{
     font-size:200%;
+  }
+  .portrait{
+    font-size:400%;
   }
 }
 </style></head><body>`;
