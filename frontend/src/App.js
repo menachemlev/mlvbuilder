@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Header from "./components/Header/Header";
 import About from "./pages/About";
 
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import Login from "./pages/Login";
 
@@ -18,10 +18,10 @@ import UserWebsite from "./pages/UserWebsite";
 import Auth from "./Auth/Auth";
 
 function App() {
-  const params = useParams();
+  const location = useLocation();
   const { login } = useContext(Auth);
   useEffect(() => {
-    if (params.guest) {
+    if (new URLSearchParams(location.search).get("guest")) {
       login("guest@mlvbuilder.com", "12345678", "guest");
     }
   }, [params]);
