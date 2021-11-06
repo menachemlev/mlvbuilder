@@ -21,7 +21,7 @@ function App() {
   const ctx = useContext(Auth);
   useEffect(() => {
     if (params.guest && !ctx.loggedIn) {
-      ctx.login("guest@mlvbuilder.com", "12345678", "guest");
+      ctx.login("guest@mlvbuilder.com", "12345678", params.guest);
     }
   }, [params]);
   return (
