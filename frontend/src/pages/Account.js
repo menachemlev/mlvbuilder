@@ -11,6 +11,15 @@ function Account(props) {
   const history = useHistory();
   const [message, setMessage] = useState(false);
   const [error, setError] = useState(false);
+  const [portrait, setPortrait] = useState(
+    window.innerHeight > window.innerWidth
+  );
+
+  useEffect(() => {
+    setInterval(() => {
+      setPortrait(window.innerHeight > window.innerWidth);
+    }, []);
+  }, []);
 
   const [users, setUsers] = useState([]);
   const fetchUsers = () => {
@@ -92,12 +101,10 @@ function Account(props) {
         <div style={{ color: "red" }}>{error}</div>
         <br />
         <br />
-        {isItMobile() ? (
-          <p>Admin panel is not available on mobile</p>
+        {users.length > 0 && portrait ? (
+          <p>Landspace your phone to view admin panel</p>
         ) : (
-          users.length > 0 && (
-            <AdminAccess onchange={fetchUsers} users={users} />
-          )
+          <AdminAccess onchange={fetchUsers} users={users} />
         )}
         <br />
         <br />
