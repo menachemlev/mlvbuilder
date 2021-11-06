@@ -45,7 +45,7 @@ function App() {
         <Route path="/account">
           <Account />
         </Route>
-        <Route path="guest/:guest?">
+        <Route path="/guest/:guest?">
           <Home />
         </Route>
       </Switch>
