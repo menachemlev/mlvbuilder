@@ -13,7 +13,6 @@ import Builder from "./pages/Builder";
 import WebsitesList from "./pages/WebsitesList";
 import Account from "./pages/Account";
 import NotFound from "./pages/NotFound";
-import UserWebsite from "./pages/UserWebsite";
 import Auth from "./Auth/Auth";
 
 function App() {
