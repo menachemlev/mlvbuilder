@@ -35,7 +35,7 @@ body {
 .fadeIn {
   animation: fadeInComponent 1s backwards;
 }
-@keyframes fadeInComponent {
+@keyframes fadeInComponentLS {
   0% {
     opacity: 0;
     letter-spacing: 3px;
@@ -48,7 +48,7 @@ body {
     letter-spacing: 0px;
   }
 }
-@-webkit-keyframes fadeInComponent {
+@-webkit-keyframes fadeInComponentLS {
   0% {
     opacity: 0;
     letter-spacing: 3px;
@@ -59,6 +59,27 @@ body {
   100% {
     opacity: 1;
     letter-spacing: 0px;
+  }
+}
+
+@keyframes fadeInComponent {
+  0% {
+    opacity: 0;
+  }
+  50% {
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeInComponent {
+  0% {
+    opacity: 0;
+  }
+  50% {
+  }
+  100% {
+    opacity: 1;
   }
 }
 

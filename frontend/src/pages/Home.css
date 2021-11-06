@@ -18,12 +18,12 @@ h2 {
 }
 .home h1 {
   font-size: 4em;
-  animation: fadeInComponent 1s 0.2s backwards;
+  animation: fadeInComponentLS 1s 0.2s backwards;
 }
 .home h2 {
   margin-bottom: 2rem;
   font-size: 2em;
-  animation: fadeInComponent 1s 0.9s backwards;
+  animation: fadeInComponentLS 1s 0.9s backwards;
 }
 .home button {
   padding: 0.6em 0.9em;
