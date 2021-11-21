@@ -61,9 +61,7 @@ app.options(
   })
 );
 app.use(express.static(path.join(__dirname, './../frontend/build')));
-app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, './../frontend/build/index.html'))
-);
+
 //Route handler
 /////////////////////////////////////////
 app.use('/users/login', limiter);
@@ -87,5 +85,7 @@ app.get('/images/:filename', (req, res, next) => {
 
 //ERROR CONTROLL
 app.use('*', errorController);
-
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, './../frontend/build/index.html'))
+);
 module.exports = app;
