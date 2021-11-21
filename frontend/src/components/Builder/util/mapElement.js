@@ -255,7 +255,7 @@ const generateButtonElement = (elm, props) => {
           transition: "0.33s",
           fontWeight: "bolder",
           borderRadius: "0.5em",
-          fontSize: elm.fontSize || "1em",
+          fontSize: elm?.fontSize || "1em",
           width: "100%",
           height: "100%",
         }}

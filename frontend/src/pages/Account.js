@@ -96,7 +96,9 @@ function Account(props) {
         >
           Logout
         </button>
-        <button onClick={deleteAccount}>Delete</button>
+        {ctx.name !== "guest" && (
+          <button onClick={deleteAccount}>Delete</button>
+        )}
         {message}
         <div style={{ color: "red" }}>{error}</div>
         <br />
