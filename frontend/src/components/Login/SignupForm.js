@@ -48,17 +48,38 @@ function SignupForm(props) {
 
   const handleOnInputBlur = () => {
     //HANDLING DISPLAYING ERRORS
-    if (emailInputChanged && !emailValid)
-      setError((prev) => `${prev} ${emailNotValidMessage}`);
-    else setError((prev) => prev.replace(emailNotValidMessage, ""));
 
-    if (passwordInputChanged && !passwordValid)
-      setError((prev) => `${prev} ${passwordNotValidMessage}`);
-    else setError((prev) => prev.replace(passwordNotValidMessage, ""));
+    const emailError =
+      emailInputChanged && !emailValid ? emailNotValidMessage : "";
+    const passwordError =
+      passwordInputChanged && !passwordValid ? passwordNotValidMessage : "";
+    const passwordConfirmError =
+      passwordConfirmInputChanged && !passwordCofirmValid
+        ? passwordConfirmNotValidMessage
+        : "";
 
-    if (passwordConfirmInputChanged && !passwordCofirmValid)
-      setError((prev) => `${prev} ${passwordConfirmNotValidMessage}`);
-    else setError((prev) => prev.replace(passwordConfirmNotValidMessage, ""));
+    setError(
+      <>
+        {emailError && (
+          <>
+            {emailError}
+            <br />
+          </>
+        )}
+        {passwordError && (
+          <>
+            {passwordError}
+            <br />
+          </>
+        )}
+        {passwordConfirmError && (
+          <>
+            {passwordConfirmError}
+            <br />
+          </>
+        )}
+      </>
+    );
   };
 
   const handleFormSubmit = (e) => {

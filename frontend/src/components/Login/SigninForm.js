@@ -33,13 +33,27 @@ function SigninForm(props) {
 
   const handleOnInputBlur = () => {
     //HANDLING DISPLAYING ERRORS
-    if (emailInputChanged && !emailValid)
-      setError((prev) => `${prev} ${emailNotValidMessage}`);
-    else setError((prev) => prev.replace(emailNotValidMessage, ""));
 
-    if (passwordInputChanged && !passwordValid)
-      setError((prev) => `${prev} ${passwordNotValidMessage}`);
-    else setError((prev) => prev.replace(passwordNotValidMessage, ""));
+    const emailError =
+      emailInputChanged && !emailValid ? emailNotValidMessage : "";
+    const passwordError =
+      passwordInputChanged && !passwordValid ? passwordNotValidMessage : "";
+    setError(
+      <>
+        {emailError && (
+          <>
+            {emailError}
+            <br />
+          </>
+        )}
+        {passwordError && (
+          <>
+            {passwordError}
+            <br />
+          </>
+        )}
+      </>
+    );
   };
 
   const handleFormSubmit = (e) => {
