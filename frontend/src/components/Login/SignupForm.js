@@ -22,6 +22,10 @@ function SignupForm(props) {
   const password = useRef(null);
   const passwordConfirm = useRef(null);
 
+  const emailNotValidMessage = `Email is not valid!`;
+  const passwordNotValidMessage = `Password is not valid (Should be atleast 8 characters)!`;
+  const passwordConfirmNotValidMessage = `Password confirm is not valid (Should be atleast 8 characters and matches the password)!`;
+
   const handleOnEmailChange = () => {
     setEmailInputChanged(true);
     const re =
@@ -42,11 +46,19 @@ function SignupForm(props) {
     );
   };
 
-  const handleOnPasswordConfirmBlur = () => {
-    if (passwordConfirm.current.value === password.current.value)
-      setError("Passwords do not match");
-    if (passwordConfirm.current.value.length >= 8)
-      setError("Password too short(minimum 8 characters)");
+  const handleOnInputBlur = () => {
+    //HANDLING DISPLAYING ERRORS
+    if (emailInputChanged && !emailValid)
+      setError((prev) => `${prev} ${emailNotValidMessage}`);
+    else setError((prev) => prev.replace(emailNotValidMessage, ""));
+
+    if (passwordInputChanged && !passwordValid)
+      setError((prev) => `${prev} ${passwordNotValidMessage}`);
+    else setError((prev) => prev.replace(passwordNotValidMessage, ""));
+
+    if (passwordConfirmInputChanged && !passwordCofirmValid)
+      setError((prev) => `${prev} ${passwordConfirmNotValidMessage}`);
+    else setError((prev) => prev.replace(passwordConfirmNotValidMessage, ""));
   };
 
   const handleFormSubmit = (e) => {
@@ -102,6 +114,7 @@ function SignupForm(props) {
           type="email"
           placeholder="Your E-mail"
           onChange={handleOnEmailChange}
+          onBlur={handleOnInputBlur}
         />
       </div>
       <div>
@@ -113,6 +126,7 @@ function SignupForm(props) {
           ref={password}
           id="passwordInput"
           onChange={handleOnPasswordChange}
+          onBlur={handleOnInputBlur}
           type="password"
           required
         />
@@ -126,7 +140,7 @@ function SignupForm(props) {
           `}
           ref={passwordConfirm}
           onChange={handleOnPasswordConfirmChange}
-          onBlur={handleOnPasswordConfirmBlur}
+          onBlur={handleOnInputBlur}
           id="passwordConfirmInput"
           type="password"
           required

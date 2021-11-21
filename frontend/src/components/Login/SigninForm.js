@@ -16,6 +16,9 @@ function SigninForm(props) {
   const email = useRef(null);
   const password = useRef(null);
 
+  const emailNotValidMessage = `Email is not valid!`;
+  const passwordNotValidMessage = `Password is not valid (Should be atleast 8 characters)!`;
+
   const handleOnEmailChange = () => {
     setEmailInputChanged(true);
     const re =
@@ -26,6 +29,17 @@ function SigninForm(props) {
   const handleOnPasswordChange = () => {
     setPasswordInputChanged(true);
     setPasswordValid(password.current.value.length >= 8);
+  };
+
+  const handleOnInputBlur = () => {
+    //HANDLING DISPLAYING ERRORS
+    if (emailInputChanged && !emailValid)
+      setError((prev) => `${prev} ${emailNotValidMessage}`);
+    else setError((prev) => prev.replace(emailNotValidMessage, ""));
+
+    if (passwordInputChanged && !passwordValid)
+      setError((prev) => `${prev} ${passwordNotValidMessage}`);
+    else setError((prev) => prev.replace(passwordNotValidMessage, ""));
   };
 
   const handleFormSubmit = (e) => {
@@ -76,6 +90,7 @@ function SigninForm(props) {
           type="email"
           placeholder="Your E-mail"
           onChange={handleOnEmailChange}
+          onBlur={handleOnInputBlur}
         />
       </div>
       <div>
@@ -87,6 +102,7 @@ function SigninForm(props) {
           ref={password}
           id="passwordInput"
           onChange={handleOnPasswordChange}
+          onBlur={handleOnInputBlur}
           type="password"
           required
         />
