@@ -31,8 +31,11 @@ button:hover{
   .portrait{
     font-size:200%;
   }
-  button{
+  .portrait button{
     font-size:70%;
+  }
+  .portrait button{
+    font-size:200%;
   }
 }
 </style></head><body>`;
