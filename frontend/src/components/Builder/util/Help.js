@@ -42,18 +42,19 @@ function Help(props) {
       >
         ❌
       </span>
-      <ReactPlayer
-        url={helpVid}
+      <video
         style={{
           position: "absolute",
           left: "0",
           top: "0",
-          width: props.isItLandspace ? "100%" : "40%",
-          height: props.isItLandspace ? "50%" : "100%",
+          width: props.isItLandspace ? "90%" : "40%",
+          height: "100%",
           border: "ridge 3px cyan",
         }}
         controls={true}
-      />
+      >
+        <source src={helpVid} type={"video/mp4"} />
+      </video>
     </div>,
     document.getElementById("modals")
   );
