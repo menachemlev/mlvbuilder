@@ -106,7 +106,9 @@ function Account(props) {
         {users.length > 0 && portrait ? (
           <p>Landspace your phone to view admin panel</p>
         ) : (
-          users.length > 0(<AdminAccess onchange={fetchUsers} users={users} />)
+          users.length > 0 && (
+            <AdminAccess onchange={fetchUsers} users={users} />
+          )
         )}
         <br />
         <br />
