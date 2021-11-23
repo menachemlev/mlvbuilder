@@ -107,8 +107,20 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   }
 
   user.active = false;
-  website.email = `deleted - ${website.email}`;
-
+  const userWebsites = await Websites.aggregate([
+    {
+      $match: {
+        email,
+      },
+    },
+  ]);
+  if (!Array.isArray(userWebsites)) {
+    return next(new AppError('Something went very wrong!', 500));
+  }
+  userWebsites.forEach((website) => {
+    website.email == `${website.email} -- deleted`;
+  });
+  await userWebsites.save({ validatorBeforeSave: false });
   await user.save({ validatorBeforeSave: false });
 
   res.status(203).json({
