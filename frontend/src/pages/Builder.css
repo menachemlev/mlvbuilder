@@ -21,19 +21,19 @@
   align-items: center;
 }
 .builder__elements {
-  flex-basis: 25%;
+  flex-basis: 33%;
   height: 100%;
   display: grid;
   place-items: center;
   position: relative;
 }
 .builder__preview {
-  flex-basis: 25%;
+  flex-basis: 33%;
   height: 100%;
   position: relative;
 }
 .long {
-  flex-basis: 75%;
+  flex-basis: 67%;
 }
 @media screen and (max-width: 64em) {
   .builder {
