@@ -16,7 +16,7 @@
   color: #333;
   border-radius: 1em;
   font-size: 1em;
-  animation: fadeInAndOut 1.5s forwards;
+  animation: fadeInAndOut 1s 1.5s forwards;
   z-index: 1000;
 }
 

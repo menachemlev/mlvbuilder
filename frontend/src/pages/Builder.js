@@ -61,7 +61,7 @@ function Builder(props) {
     }
 
     if (params.id) {
-      fetch(`/web/elements/${params.id}`)
+      fetch(`${ctx.fetchProviderURL}/web/elements/${params.id}`)
         .then((res) => {
           if (!res) throw new Error("Something went wrong");
           return res.json();
@@ -240,7 +240,8 @@ function Builder(props) {
   const handleGoPublic = () => {
     setPublishingLoading(true);
     setCurrentElementEdited(null);
-    fetch(`${id ? `/web/${id}` : `/web/`}`, {
+    console.log(`${id ? `/web/${id}` : `/web/`}`);
+    fetch(`${ctx.fetchProviderURL}${id ? `/web/${id}` : `/web/`}`, {
       method: `${id ? "PATCH" : "POST"}`,
       body: JSON.stringify({
         public: true,
@@ -266,7 +267,7 @@ function Builder(props) {
   const handleOnSave = () => {
     setSavingLoading(true);
     setCurrentElementEdited(null);
-    fetch(`${id ? `/web/${id}` : `/web/`}`, {
+    fetch(`${ctx.fetchProviderURL}${id ? `/web/${id}` : `/web/`}`, {
       method: `${id ? "PATCH" : "POST"}`,
       body: JSON.stringify({
         public: false,

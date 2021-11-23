@@ -135,7 +135,6 @@ const generateImgElement = (elm, props) => {
         top: elm.top,
         width: elm.width,
         height: elm.height,
-
         left: elm.left,
         zIndex: 1,
       }}

@@ -17,37 +17,39 @@ function Home(props) {
   }, []);
   return (
     <div className="home">
-      <h1>
-        {ctx.loggedIn && ctx.name !== "guest"
-          ? `Welcome back ${ctx.name || ""}`
-          : "Build your website"}
-      </h1>
-      <h2>
-        {ctx.loggedIn ? `Start building your website` : "Easy, fast & free"}
-      </h2>
-      <Link to={ctx.loggedIn ? "/builder" : "/login"}>
-        <button>
-          {ctx.loggedIn ? "Builder" : "Login"}
-          <span>{" >"}</span>
-        </button>
-      </Link>
-      {!ctx.loggedIn && (
-        <button
-          style={{ fontSize: "1em" }}
-          onClick={() => {
-            ctx.logIn({
-              email: "guest@mlvbuilder.com",
-              password: "12345678",
-              name: "guest",
-            });
-            setTimeout(() => {
-              history.push("/");
-            }, 1000);
-          }}
-        >
-          Be a guest
-        </button>
-      )}
+      <div className="home__content-container">
+        <h1>
+          {ctx.loggedIn && ctx.name !== "guest"
+            ? `Welcome back ${ctx.name || ""}`
+            : "Build your website"}
+        </h1>
+        <h2>
+          {ctx.loggedIn ? `Start building your website` : "Easy, fast & free"}
+        </h2>
+        <Link to={ctx.loggedIn ? "/builder" : "/login"}>
+          <button>
+            {ctx.loggedIn ? "Builder" : "Login"}
+            <span>{" >"}</span>
+          </button>
+        </Link>
+        {!ctx.loggedIn && (
+          <button
+            style={{ fontSize: "1em" }}
+            onClick={() => {
+              ctx.logIn({
+                email: "guest@mlvbuilder.com",
+                password: "12345678",
+                name: "guest",
+              });
+              setTimeout(() => {
+                history.push("/");
+              }, 1000);
+            }}
+          >
+            Be a guest
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -60,19 +60,21 @@ app.options(
     credentials: true,
   })
 );
+
+app.use('/api/photos', express.static(path.join(__dirname, './photos')));
 app.use(express.static(path.join(__dirname, './../frontend/build')));
 
 //Route handler
 /////////////////////////////////////////
-app.use('/users/login', limiter);
-app.use('/users/signup', limiter);
+app.use('/api/users/login', limiter);
+app.use('/api/users/signup', limiter);
 
-app.use('/web/', websitesRouter);
-app.use('/users/', userRouter);
-app.use('/admin/', adminRouter);
+app.use('/api/web/', websitesRouter);
+app.use('/api/users/', userRouter);
+app.use('/api/admin/', adminRouter);
 
 //PHOTO UPLOAD
-app.post('/images/upload', upload.single('img'), (req, res, next) => {
+app.post('/api/images/upload', upload.single('img'), (req, res, next) => {
   res.status(201).json({
     status: 'success',
     fileName: req.file.filename,
