@@ -4,6 +4,50 @@
   grid-template-rows: 1fr;
   position: relative;
 }
+/*Instructions*/
+.builder__menu::after {
+  position: absolute;
+  content: "👆 Drag elements to the preview";
+  top: 103%;
+  left: 3%;
+  padding: 3em;
+  background-color: white;
+  border: aqua 3px solid;
+  color: #333;
+  border-radius: 1em;
+  font-size: 1em;
+  animation: fadeInAndOut 1.5s forwards;
+  z-index: 1000;
+}
+
+@keyframes fadeInAndOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  99% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%) scale(0, 0);
+  }
+}
+@-webkit-keyframes fadeInAndOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  99% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(100%) scale(0, 0);
+  }
+}
+/**********************************/
+
 .builder__menu > div {
   border-right: 1px solid white;
   color: white;
