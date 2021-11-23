@@ -92,6 +92,7 @@ function ImgEditor(props) {
           type="number"
           min="0"
           max="100"
+          step="0.1"
           placeholder="width(%)"
         />
       </div>
@@ -103,6 +104,7 @@ function ImgEditor(props) {
           type="number"
           min="0"
           max="100"
+          step="0.1"
           placeholder="height(%)"
         />
       </div>
@@ -114,6 +116,7 @@ function ImgEditor(props) {
           type="number"
           min="0"
           max="100"
+          step="0.1"
         />
       </div>
       <div>
@@ -125,6 +128,7 @@ function ImgEditor(props) {
           type="number"
           min="0"
           max="100"
+          step="0.1"
         />
       </div>
       <div>

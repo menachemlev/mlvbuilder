@@ -6,6 +6,7 @@ import ButtonEditor from "./elementEditors/ButtonEditor";
 import TitleEditor from "./elementEditors/TitleEditor";
 import ParagraphEditor from "./elementEditors/ParagraphEditor";
 import BackgroundEditor from "./elementEditors/BackgroundEditor";
+import VideoEditor from "./elementEditors/VideoEditor";
 import Card from "./../UI/Card";
 
 function EditorPop(props) {
@@ -57,6 +58,12 @@ function EditorPop(props) {
         )}
         {props.data.currentElementEdited?.type === "background" && (
           <BackgroundEditor
+            currentElementEdited={props.data.currentElementEdited}
+            onFormSubmit={props.handleFormSubmit}
+          />
+        )}
+        {props.data.currentElementEdited?.type === "video" && (
+          <VideoEditor
             currentElementEdited={props.data.currentElementEdited}
             onFormSubmit={props.handleFormSubmit}
           />

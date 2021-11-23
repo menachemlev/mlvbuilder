@@ -1,13 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 
 function ButtonEditor(props) {
+  const height = useRef(null);
+  const width = useRef(null);
+  const fontSize = useRef(null);
   const url = useRef(null);
   const title = useRef(null);
   const top = useRef(null);
   const left = useRef(null);
   const color = useRef(null);
   const background = useRef(null);
-  const fontSize = useRef(null);
   const [defaultValues, setDefaultValues] = useState({});
   const [colorWasChanged, setColorWasChanged] = useState(false);
   const [backgroundColorWasChanged, setBackgroundColorWasChanged] =
@@ -18,6 +20,9 @@ function ButtonEditor(props) {
     props.onFormSubmit({
       url: url.current.value,
       title: title.current.value,
+      height: `${height.current.value}%`,
+      width: `${width.current.value}%`,
+      fontSize: `${fontSize.current.value}`,
       top: `${top.current.value}%`,
       left: `${left.current.value}%`,
       color: `${colorWasChanged ? color.current.value : defaultValues.color}`,
@@ -26,7 +31,6 @@ function ButtonEditor(props) {
           ? background.current.value
           : defaultValues.background
       }`,
-      fontSize: `${fontSize.current.value}em`,
     });
   };
   useEffect(() => {
@@ -41,6 +45,7 @@ function ButtonEditor(props) {
     });
     setDefaultValues(newDefaultValues);
   }, [props.currentElementEdited]);
+
   return (
     <form onSubmit={handleFormSubmit}>
       <div>
@@ -70,6 +75,7 @@ function ButtonEditor(props) {
           min="0"
           max="100"
           step="0.1"
+          step="0.1"
         />
       </div>
       <div>
@@ -82,6 +88,32 @@ function ButtonEditor(props) {
           min="0"
           max="100"
           step="0.1"
+          step="0.1"
+        />
+      </div>
+      <div>
+        <label>Width:</label>
+        <input
+          ref={width}
+          type="number"
+          min="0"
+          max="100"
+          step="0.1"
+          step="0.1"
+          defaultValue={defaultValues.width}
+        />
+      </div>
+      <div>
+        <label>Height:</label>
+
+        <input
+          ref={height}
+          type="number"
+          min="0"
+          max="100"
+          step="0.1"
+          step="0.1"
+          defaultValue={defaultValues.height}
         />
       </div>
       <div>
@@ -89,10 +121,10 @@ function ButtonEditor(props) {
 
         <input
           ref={fontSize}
-          defaultValue={defaultValues.fontSize}
+          defaultValue={+defaultValues.fontSize}
           type="number"
-          min="1"
-          max="7"
+          min="0.6"
+          max="2"
           step="0.1"
         />
       </div>

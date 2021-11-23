@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import background from "./../photos/background.jpg";
 
 import Auth from "../Auth/Auth";

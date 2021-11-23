@@ -13,6 +13,7 @@ import {
   isItMobile,
   generateHeaders,
   toPercentages,
+  toPercentagesNum,
   addHeaderAndEnderHTML,
 } from "../components/Builder/util/generalFunctions";
 
@@ -22,7 +23,6 @@ function Builder(props) {
   const history = useHistory();
 
   const [id, setID] = useState("");
-  const [previewWindow, setPreviewWindow] = useState(null);
   const [previewElements, setPreviewElements] = useState([]);
   const [currentElementEdited, setCurrentElementEdited] = useState(null);
   const [backup, setBackup] = useState([]);
@@ -97,7 +97,6 @@ function Builder(props) {
       setDeletingLoading(false);
       setIsPreviewLandspace(true);
       setHeight(100);
-      setPreviewWindow(null);
     };
   }, [params]);
 
@@ -156,10 +155,16 @@ function Builder(props) {
       type: typeOfNewElement,
       width: isItImage
         ? "25%"
-        : toPercentages(widthElm, previewRef.current, "width"),
+        : `${
+            toPercentagesNum(widthElm, previewRef.current, "width") *
+            (typeOfNewElement === "video" ? 2 : 1)
+          }%`,
       height: isItImage
         ? undefined
-        : toPercentages(heightElm, previewRef.current, "height"),
+        : `${
+            toPercentagesNum(widthElm, previewRef.current, "height") *
+            (typeOfNewElement === "video" ? 2 : 1)
+          }%`,
       background,
       forLandspace: isPreviewLandspace,
     };
@@ -226,9 +231,8 @@ function Builder(props) {
 
   const handleOnPreview = () => {
     setCurrentElementEdited(null);
-    previewWindow.close();
-    setPreviewWindow(window.open("", "preview"));
-    previewWindow.document.write(
+    const newWindow = window.open("", "_blank");
+    newWindow.document.write(
       addHeaderAndEnderHTML(previewRef.current.innerHTML)
     );
   };

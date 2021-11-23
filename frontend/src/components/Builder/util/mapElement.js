@@ -84,6 +84,43 @@ const handleOnTouchEnd = (
   );
 };
 
+const generateDraggingElemProps = (elm, props) => {
+  return {
+    onClick: (e) => {
+      e.preventDefault();
+      props.onElementClick(elm.id);
+    },
+    onDragStart: (e) => {
+      handleDragStart(e);
+    },
+    onDragEnd: (e) => {
+      handleDragEnd(
+        e,
+        elm,
+        props.refFoward,
+        props.height,
+        props.updatePreviewElement
+      );
+    },
+    onTouchStart: (e) => {
+      handleOnTouchStart(e);
+    },
+    onTouchMove: (e) => {
+      handleOnTouchMove(e, elm.type);
+    },
+    onTouchEnd: (e) => {
+      handleOnTouchEnd(
+        e,
+        elm,
+        props.refFoward,
+        props.height,
+        props.updatePreviewElement
+      );
+    },
+    draggable: true,
+  };
+};
+
 const generateImgElement = (elm, props) => {
   return (
     <img
@@ -96,46 +133,18 @@ const generateImgElement = (elm, props) => {
       style={{
         position: "absolute",
         top: elm.top,
-        cursor: "grab",
-        left: elm.left,
-        zIndex: 1,
         width: elm.width,
         height: elm.height,
+
+        left: elm.left,
+        zIndex: 1,
       }}
       src={
         elm.src ||
         "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png"
       }
       alt={""}
-      onClick={() => {
-        props.onElementClick(elm.id);
-      }}
-      draggable={true}
-      onDragStart={(e) => {
-        handleDragStart(e);
-      }}
-      onDragEnd={(e) => {
-        handleDragEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
-      onTouchStart={(e) => {
-        handleOnTouchStart(e);
-      }}
-      onTouchMove={(e) => handleOnTouchMove(e, "image")}
-      onTouchEnd={(e) => {
-        handleOnTouchEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
+      {...generateDraggingElemProps(elm, props)}
     />
   );
 };
@@ -152,44 +161,21 @@ const generateLinkElement = (elm, props) => {
         position: "absolute",
         top: elm.top,
         left: elm.left,
-        cursor: "grab",
+
         zIndex: 1,
         textAlign: "center",
         fontFamily: "Poppins",
+        width: elm.width,
+        height: elm.height,
         color: elm.color,
+        display: "inline-block",
+        fontSize: `${elm?.fontSize}em` || "0.6em",
+        overflowWrap: "break-word",
+        wordWrap: "break-word",
       }}
       alt={""}
       href={elm.url || "#"}
-      onClick={(e) => {
-        e.preventDefault();
-        props.onElementClick(elm.id);
-      }}
-      draggable={true}
-      onDragStart={(e) => {
-        handleDragStart(e);
-      }}
-      onDragEnd={(e) => {
-        handleDragEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
-      onTouchStart={(e) => {
-        handleOnTouchStart(e);
-      }}
-      onTouchMove={(e) => handleOnTouchMove(e, "Link")}
-      onTouchEnd={(e) => {
-        handleOnTouchEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
+      {...generateDraggingElemProps(elm, props)}
     >
       {elm.title || "Some link"}
     </a>
@@ -207,43 +193,19 @@ const generateButtonElement = (elm, props) => {
       style={{
         position: "absolute",
         top: elm.top,
-        cursor: "grab",
+
         left: elm.left,
         zIndex: 1,
         textAlign: "center",
+        width: elm.width,
+        height: elm.height,
+        display: "inline-block",
+        overflowWrap: "break-word",
+        wordWrap: "break-word",
       }}
       alt={""}
       href={elm.url || "#"}
-      onClick={(e) => {
-        e.preventDefault();
-        props.onElementClick(elm.id);
-      }}
-      draggable={true}
-      onDragStart={(e) => {
-        handleDragStart(e);
-      }}
-      onDragEnd={(e) => {
-        handleDragEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
-      onTouchStart={(e) => {
-        handleOnTouchStart(e);
-      }}
-      onTouchMove={(e) => handleOnTouchMove(e, "button")}
-      onTouchEnd={(e) => {
-        handleOnTouchEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
+      {...generateDraggingElemProps(elm, props)}
     >
       <button
         draggable={true}
@@ -255,9 +217,12 @@ const generateButtonElement = (elm, props) => {
           transition: "0.33s",
           fontWeight: "bolder",
           borderRadius: "0.5em",
-          fontSize: elm?.fontSize || "1em",
+          fontSize: `${elm?.fontSize}em` || "0.6em",
+          fontFamily: "Poppins",
           width: "100%",
           height: "100%",
+          overflowWrap: "break-word",
+          wordWrap: "break-word",
         }}
       >
         {elm.title || "Some button"}
@@ -266,22 +231,8 @@ const generateButtonElement = (elm, props) => {
   );
 };
 const generateParagraphElement = (elm, props) => {
-  const addEnters = (text = "A paragraph") => {
-    const charsArray = text.split("");
-    let charsCounter = 0;
-    for (let i = 0; i < charsArray.length; i++) {
-      charsCounter++;
-      if (text.charCodeAt(i) === 13) charsCounter = 0;
-      if (text.charCodeAt(i) === 32) {
-        if (charsCounter < 30) continue;
-        charsArray[i] = "\n";
-        charsCounter = 0;
-      }
-    }
-    return charsArray.join("");
-  };
   return (
-    <pre
+    <p
       className={`preview__element ${
         props.currentElementEdited?.id === elm.id
           ? "preview__element-active"
@@ -291,45 +242,24 @@ const generateParagraphElement = (elm, props) => {
       style={{
         position: "absolute",
         top: elm.top,
-        cursor: "grab",
+
         left: elm.left,
         zIndex: 1,
         color: elm.color,
         textAlign: "center",
+        fontSize: `${elm?.fontSize}em` || "0.6em",
+        width: elm.width,
+        fontFamily: "Poppins",
+        height: elm.height,
+        display: "inline-block",
+        overflowWrap: "break-word",
+        wordWrap: "break-word",
       }}
       alt={""}
-      onClick={() => {
-        props.onElementClick(elm.id);
-      }}
-      draggable={true}
-      onDragStart={(e) => {
-        handleDragStart(e);
-      }}
-      onDragEnd={(e) => {
-        handleDragEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
-      onTouchStart={(e) => {
-        handleOnTouchStart(e);
-      }}
-      onTouchMove={(e) => handleOnTouchMove(e, "paragraph")}
-      onTouchEnd={(e) => {
-        handleOnTouchEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
+      {...generateDraggingElemProps(elm, props)}
     >
-      {addEnters(elm.title)}
-    </pre>
+      {elm.title || `A very long paragraph`}
+    </p>
   );
 };
 const generatTitleElement = (elm, props) => {
@@ -344,51 +274,29 @@ const generatTitleElement = (elm, props) => {
       style={{
         position: "absolute",
         top: elm.top,
-        cursor: "grab",
+
         left: elm.left,
         zIndex: 1,
-        fontSize: "2em",
+        fontSize: `${elm?.fontSize}em` || "2em",
+        width: elm.width,
+        height: elm.height,
         color: elm.color,
+        display: "inline-block",
         textAlign: "center",
+        fontFamily: "Poppins",
+        overflowWrap: "break-word",
+        wordWrap: "break-word",
       }}
       src={elm.src}
       alt={""}
-      onClick={() => {
-        props.onElementClick(elm.id);
-      }}
-      draggable={true}
-      onDragStart={(e) => {
-        handleDragStart(e);
-      }}
-      onDragEnd={(e) => {
-        handleDragEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
-      onTouchStart={(e) => {
-        handleOnTouchStart(e);
-      }}
-      onTouchMove={(e) => handleOnTouchMove(e, "title")}
-      onTouchEnd={(e) => {
-        handleOnTouchEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
+      {...generateDraggingElemProps(elm, props)}
     >
       {elm.title || "a title"}
     </h1>
   );
 };
 
-const generatBackgroundElement = (elm, props) => {
+const generateBackgroundElement = (elm, props) => {
   return (
     <div
       className={`preview__element ${
@@ -400,43 +308,50 @@ const generatBackgroundElement = (elm, props) => {
       style={{
         position: "absolute",
         top: elm.top,
-        cursor: "grab",
+
         left: elm.left,
         width: elm.width,
         height: elm.height,
         zIndex: 0,
         background: elm.background,
       }}
-      onClick={() => {
-        props.onElementClick(elm.id);
-      }}
-      draggable={true}
-      onDragStart={(e) => {
-        handleDragStart(e);
-      }}
-      onDragEnd={(e) => {
-        handleDragEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
-      onTouchStart={(e) => {
-        handleOnTouchStart(e);
-      }}
-      onTouchMove={(e) => handleOnTouchMove(e, "background")}
-      onTouchEnd={(e) => {
-        handleOnTouchEnd(
-          e,
-          elm,
-          props.refFoward,
-          props.height,
-          props.updatePreviewElement
-        );
-      }}
+      {...generateDraggingElemProps(elm, props)}
     ></div>
+  );
+};
+
+const generateVideoElement = (elm, props) => {
+  return (
+    <div
+      className="iframe-holder-preview"
+      style={{
+        position: "absolute",
+        top: elm.top,
+        left: elm.left,
+        width: elm.width,
+        height: elm.height,
+        zIndex: 1,
+      }}
+      {...generateDraggingElemProps(elm, props)}
+    >
+      <iframe
+        title={`${Math.random() * 100000}`}
+        className={`preview__element ${
+          props.currentElementEdited?.id === elm.id
+            ? "preview__element-active"
+            : ""
+        }`}
+        key={elm.id}
+        style={{
+          width: "100%",
+          height: "100%",
+        }}
+        src={
+          elm.url?.replace("watch?v=", "embed/") ||
+          "https://www.youtube.com/embed/RDV3Z1KCBvo"
+        }
+      ></iframe>
+    </div>
   );
 };
 
@@ -459,7 +374,10 @@ const mapElements = (elm, props) => {
     elementToReturn = generatTitleElement(elm, props);
   }
   if (elm.type === "background") {
-    elementToReturn = generatBackgroundElement(elm, props);
+    elementToReturn = generateBackgroundElement(elm, props);
+  }
+  if (elm.type === "video") {
+    elementToReturn = generateVideoElement(elm, props);
   }
   return elementToReturn;
 };

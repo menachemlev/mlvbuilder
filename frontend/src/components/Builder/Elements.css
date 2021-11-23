@@ -1,3 +1,6 @@
+.builder__elements {
+  overflow-y: scroll;
+}
 .builder__elements > div {
   display: grid;
   place-items: center;
@@ -7,4 +10,5 @@
   text-shadow: 0 0 1px white;
   cursor: grab;
   padding: 0.5em 0.7em;
+  margin: 1em;
 }

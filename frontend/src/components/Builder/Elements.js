@@ -111,6 +111,19 @@ function Elements(props) {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         onTouchStart={handleOnTouchStart}
+        onTouchMove={(e) => handleOnTouchMove(e, "video")}
+        onTouchEnd={handleOnTouchEnd}
+        className="builder__elements-element builder__elements-element-video"
+        style={{ background: "rgb(210,70,70)" }}
+      >
+        🎥 Video
+      </div>
+
+      <div
+        draggable={true}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onTouchStart={handleOnTouchStart}
         onTouchMove={(e) => handleOnTouchMove(e, "link")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-link"

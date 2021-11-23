@@ -6,6 +6,23 @@
 
 .preview__element {
   font-family: "Poppins";
+  cursor: "grab";
+  position: relative;
+}
+.iframe-holder-preview {
+  position: relative;
+}
+.iframe-holder-preview::before {
+  position: absolute;
+  cursor: grab;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  content: "";
+  background: transparent;
+  pointer-events: all;
+  width: 100%;
+  height: 100%;
 }
 .preview__element-active {
   outline: solid 3px red;

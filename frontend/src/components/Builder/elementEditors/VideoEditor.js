@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 
-function LinkEditor(props) {
+function VideoEditor(props) {
   const height = useRef(null);
   const width = useRef(null);
   const fontSize = useRef(null);
@@ -16,13 +16,10 @@ function LinkEditor(props) {
     e.preventDefault();
     props.onFormSubmit({
       url: url.current.value,
-      title: title.current.value,
       top: `${top.current.value}%`,
       left: `${left.current.value}%`,
       height: `${height.current.value}%`,
       width: `${width.current.value}%`,
-      fontSize: `${fontSize.current.value}`,
-      color: `${colorWasChanged ? color.current.value : defaultValues.color}`,
     });
   };
 
@@ -38,17 +35,9 @@ function LinkEditor(props) {
     });
     setDefaultValues(newDefaultValues);
   }, [props.currentElementEdited]);
+
   return (
     <form onSubmit={handleFormSubmit}>
-      <div>
-        <label>Title:</label>
-        <input
-          ref={title}
-          type="text"
-          defaultValue={defaultValues.title}
-          placeholder="title"
-        />
-      </div>
       <div>
         <label>URL:</label>
         <input
@@ -81,15 +70,7 @@ function LinkEditor(props) {
           step="0.1"
         />
       </div>
-      <div>
-        <input
-          ref={color}
-          onChange={() => {
-            setColorWasChanged(true);
-          }}
-          type="color"
-        />{" "}
-      </div>
+
       <div>
         <label>Width:</label>
         <input
@@ -114,22 +95,10 @@ function LinkEditor(props) {
         />
       </div>
       <div>
-        <label>Font size:</label>
-
-        <input
-          ref={fontSize}
-          type="number"
-          defaultValue={+defaultValues.fontSize}
-          min="0.6"
-          max="2"
-          step="0.1"
-        />
-      </div>
-      <div>
         <button>Save</button>
       </div>
     </form>
   );
 }
 
-export default LinkEditor;
+export default VideoEditor;
