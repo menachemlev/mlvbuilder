@@ -29,7 +29,13 @@ function Help(props) {
       }}
     >
       <span
-        style={{ position: "fixed", top: "2%", right: "2%", cursor: "pointer" }}
+        style={{
+          position: "fixed",
+          top: "2%",
+          right: "2%",
+          cursor: "pointer",
+          zIndex: "200",
+        }}
         onClick={() => {
           props.setShowHelp(false);
         }}
@@ -39,6 +45,9 @@ function Help(props) {
       <ReactPlayer
         url={helpVid}
         style={{
+          position: "absolute",
+          left: "0",
+          top: "0",
           width: props.isItLandspace ? "100%" : "40%",
           height: props.isItLandspace ? "50%" : "100%",
           border: "ridge 3px cyan",
