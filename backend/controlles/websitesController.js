@@ -31,6 +31,9 @@ button:hover{
   .portrait{
     font-size:200%;
   }
+  button{
+    font-size:70%;
+  }
 }
 </style></head><body>`;
 const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
