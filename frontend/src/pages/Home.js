@@ -24,7 +24,9 @@ function Home(props) {
             : "Build your website"}
         </h1>
         <h2>
-          {ctx.loggedIn ? `Start building your website` : "Easy, fast & free"}
+          {ctx.loggedIn && ctx.name !== "guest"
+            ? `Start building your website`
+            : "Easy, fast & free"}
         </h2>
         <Link to={ctx.loggedIn ? "/builder" : "/login"}>
           <button>
