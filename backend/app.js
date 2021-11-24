@@ -5,17 +5,16 @@ const websitesRouter = require('./routes/websitesRoute');
 const userRouter = require('./routes/usersRoutes');
 const errorController = require('./controlles/errorController');
 
-const compression = require('compression');
-const cors = require('cors');
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
-const hpp = require('hpp');
-const cookieParser = require('cookie-parser');
-const path = require('path');
+const aws = require('aws-sdk');
+const getStream = require('get-stream').buffer;
 const multer = require('multer');
-const AppError = require('./util/appError');
+const multerS3 = require('multer-s3');
+
+const s3 = new aws.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+});
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, __dirname + '\\uploads');
@@ -29,6 +28,29 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
+const uploadS3 = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'mlvbuilder111',
+    acl: 'public-read',
+    metadata: function (req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: function (req, file, cb) {
+      cb(null, Date.now().toString() + '-' + Math.round(Math.random() * 1e9));
+    },
+  }),
+});
+const compression = require('compression');
+const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const AppError = require('./util/appError');
 
 const app = express();
 
@@ -74,10 +96,12 @@ app.use('/api/users/', userRouter);
 app.use('/api/admin/', adminRouter);
 
 //PHOTO UPLOAD
+
 app.post('/api/images/upload', upload.single('img'), (req, res, next) => {
+  console.log(req.file);
   res.status(201).json({
     status: 'success',
-    fileName: req.file.filename,
+    location: `/images/${file.filename}`,
   });
 });
 
@@ -91,3 +115,20 @@ app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, './../frontend/build/index.html'))
 );
 module.exports = app;
+
+/*
+  const params = {
+      Bucket: 'mlvbuilder111',
+      Key: req.file.filename,
+      Body: await getStream(req.file.path),
+    };
+    s3.upload(params, function (s3Err, data) {
+      if (s3Err) throw s3Err;
+      else {
+        res.status(201).json({
+          status: 'success',
+          location: data.Location,
+        });
+      }
+    });
+*/

@@ -29,8 +29,9 @@ function ImgEditor(props) {
         })
         .then((res) => {
           if (res.status === "fail") throw new Error(res.message);
+          console.log(res.location);
           props.onFormSubmit({
-            src: `/images/${res.fileName}`,
+            src: res.location,
             height: `${height.current.value}%`,
             width: `${width.current.value}%`,
             top: `${top.current.value}%`,
