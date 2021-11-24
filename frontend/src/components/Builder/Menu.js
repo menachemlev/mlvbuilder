@@ -119,7 +119,7 @@ function Menu(props) {
           : `💾  ${portrait ? "" : "Save"}`}
       </div>
       <div className="builder__menu__preview" onClick={props.onPreview}>
-        👁 Preview
+        {`👁  ${portrait ? "" : "Preview"}`}
       </div>
       <div className="builder__menu__publish-button">
         <b onClick={props.goPublic}>
