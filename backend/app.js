@@ -30,14 +30,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 const uploadS3 = multer({
   storage: multerS3({
-    s3: s3,
+    s3,
     bucket: 'mlvbuilder111',
     acl: 'public-read',
     metadata: function (req, file, cb) {
       cb(null, { fieldName: file.fieldname });
     },
     key: function (req, file, cb) {
-      cb(null, Date.now().toString() + '-' + Math.round(Math.random() * 1e9));
+      cb(null, Date.now().toString());
     },
   }),
 });
@@ -97,11 +97,11 @@ app.use('/api/admin/', adminRouter);
 
 //PHOTO UPLOAD
 
-app.post('/api/images/upload', upload.single('img'), (req, res, next) => {
+app.post('/api/images/upload', uploadS3.single('img'), (req, res, next) => {
   console.log(req.file);
   res.status(201).json({
     status: 'success',
-    location: `/images/${file.filename}`,
+    location: req.file.location,
   });
 });
 

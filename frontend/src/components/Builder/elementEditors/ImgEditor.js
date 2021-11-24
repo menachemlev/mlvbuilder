@@ -8,6 +8,8 @@ function ImgEditor(props) {
   const left = useRef(null);
   const file = useRef(null);
 
+  const [loading, setLoading] = useState("");
+
   const ctx = useContext(Auth);
 
   const [defaultValues, setDefaultValues] = useState({});
@@ -16,6 +18,7 @@ function ImgEditor(props) {
     e.preventDefault();
     const fileUpload = file.current.files[0];
     if (fileUpload) {
+      setLoading("⏳");
       const fd = new FormData();
       fd.append("img", fileUpload);
       fd.append("user", "menachem");
@@ -30,6 +33,7 @@ function ImgEditor(props) {
         .then((res) => {
           if (res.status === "fail") throw new Error(res.message);
           console.log(res.location);
+          setLoading("");
           props.onFormSubmit({
             src: res.location,
             height: `${height.current.value}%`,
@@ -131,6 +135,7 @@ function ImgEditor(props) {
           step="0.1"
         />
       </div>
+      <div>{loading}</div>
       <div>
         <button>Save</button>
       </div>
