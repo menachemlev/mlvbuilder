@@ -47,7 +47,7 @@ function Help(props) {
           position: "absolute",
           left: "0",
           top: "0",
-          width: props.isItLandspace ? "90%" : "40%",
+          width: "90%",
           height: "100%",
           border: "ridge 3px cyan",
         }}
