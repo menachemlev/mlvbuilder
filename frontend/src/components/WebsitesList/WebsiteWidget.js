@@ -6,11 +6,12 @@ function WebsiteWidget(props) {
   const ctx = useContext(Auth);
   const { html, _id } = props.website;
   const srcdoc = `
-  <style>
-  .landspace{display:block}
-  .portrait{display:none}
-  </style>
-  ${html.replace(/&lt;/g, "<")}`;
+  ${html.replace(/&lt;/g, "<").substring(0, html.indexOf("<script>"))}
+  <script>
+  const landspace = document.querySelector('landspace').innerHTML;
+    document.querySelector('portrait').style.display=landspace?"none":"block";
+    document.querySelector('landspace').style.display=landspace?"block":"none";
+  </script>`;
 
   return (
     <div className="iframe-widget">

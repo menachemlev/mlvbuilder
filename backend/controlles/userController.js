@@ -92,11 +92,12 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   if (email === process.env.ADMIN_MAIL) {
     return next(new AppError('Cant delete admin mail!', 401));
   }
-
+  if (email === 'guest@mlvbuilder.com') {
+    return next(new AppError('You can not delete guest account!', 403));
+  }
   if (!email || !password) {
     return next(new AppError('Please provide password and email!', 404));
   }
-
   const user = await User.findOne({
     email,
   }).select('+password');
@@ -105,8 +106,7 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   if (!user || !correct) {
     return next(new AppError('Incorrect email or passowrd!', 404));
   }
-
-  user.active = false;
+  await user.remove();
   const userWebsites = await Websites.aggregate([
     {
       $match: {
@@ -117,11 +117,9 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   if (!Array.isArray(userWebsites)) {
     return next(new AppError('Something went very wrong!', 500));
   }
-  userWebsites.forEach((website) => {
-    website.email == `${website.email} -- deleted`;
+  userWebsites.forEach(async (website) => {
+    await website.remove();
   });
-  await userWebsites.save({ validatorBeforeSave: false });
-  await user.save({ validatorBeforeSave: false });
 
   res.status(203).json({
     status: 'success',
