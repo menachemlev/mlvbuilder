@@ -6,7 +6,6 @@ const userRouter = require('./routes/usersRoutes');
 const errorController = require('./controlles/errorController');
 
 const aws = require('aws-sdk');
-const getStream = require('get-stream').buffer;
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 
@@ -118,20 +117,3 @@ app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, './../frontend/build/index.html'))
 );
 module.exports = app;
-
-/*
-  const params = {
-      Bucket: 'mlvbuilder111',
-      Key: req.file.filename,
-      Body: await getStream(req.file.path),
-    };
-    s3.upload(params, function (s3Err, data) {
-      if (s3Err) throw s3Err;
-      else {
-        res.status(201).json({
-          status: 'success',
-          location: data.Location,
-        });
-      }
-    });
-*/
