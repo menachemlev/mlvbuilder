@@ -74,16 +74,17 @@ function AdminTableRow(props) {
         <button onClick={deleteWebsite}>Delete website</button>
       </td>
       <td>
-        {" "}
-        <Link
-          to={
-            selectedWebsiteID &&
-            `${ctx.fetchProviderURL}/web/${selectedWebsiteID}`
+        <a
+          rel="noreferrer"
+          href={
+            selectedWebsiteID
+              ? `${ctx.fetchProviderURL}/web/${selectedWebsiteID}`
+              : "#"
           }
           target="_blank"
         >
           <button>Visit website</button>
-        </Link>
+        </a>
       </td>
     </tr>
   );
