@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import background from "./../photos/background.jpg";
@@ -8,6 +8,7 @@ import "./Home.css";
 function Home(props) {
   const ctx = useContext(Auth);
   const history = useHistory();
+  const [loading, setLoading] = useState("");
   useEffect(() => {
     [...document.querySelectorAll("#signature path")].forEach((path, delay) => {
       setTimeout(() => {
@@ -38,19 +39,21 @@ function Home(props) {
           <button
             style={{ fontSize: "1em" }}
             onClick={() => {
-              ctx.logIn({
-                email: "guest@mlvbuilder.com",
-                password: "12345678",
-                name: "guest",
-              });
+              setLoading("⏳ Getting you in... ");
               setTimeout(() => {
-                history.push("/");
+                ctx.logIn({
+                  email: "guest@mlvbuilder.com",
+                  password: "12345678",
+                  name: "guest",
+                });
+                setLoading("");
               }, 1000);
             }}
           >
             Be a guest
           </button>
         )}
+        <b>{loading}</b>
       </div>
     </div>
   );

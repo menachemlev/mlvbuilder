@@ -32,7 +32,8 @@ const uploadS3 = multer({
   fileFilter: (req, file, cb) => {
     const type = file.mimetype;
     const isImage = type.includes('image');
-    cb(null, isImage);
+    if (!isImage) return cb(new AppError('You can upload only images!', 403));
+    return cb(null, true);
   },
   storage: multerS3({
     s3,

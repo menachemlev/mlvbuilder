@@ -9,7 +9,7 @@ function ImgEditor(props) {
   const file = useRef(null);
 
   const [loading, setLoading] = useState("");
-
+  const [error, setError] = useState("");
   const ctx = useContext(Auth);
 
   const [defaultValues, setDefaultValues] = useState({});
@@ -43,7 +43,7 @@ function ImgEditor(props) {
           });
         })
         .catch((err) => {
-          console.log(err);
+          setError(err.message);
         });
     } else {
       props.onFormSubmit({
@@ -136,6 +136,7 @@ function ImgEditor(props) {
         />
       </div>
       <div>{loading}</div>
+      <div style={{ color: "red", fontWeight: "bolder" }}>{error}</div>
       <div>
         <button>Save</button>
       </div>
