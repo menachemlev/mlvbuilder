@@ -17,8 +17,7 @@ function WebsiteWidget(props) {
     landspaceHTMLs.forEach((landspace, index) => {
       setInterval(() => {
         const isLandspace = landspace && landspace.innerHTML.length > 0;
-        landspace.style.display =
-          landspace.i !== isLandspace ? "block" : "none";
+        landspace.style.display = isLandspace ? "block" : "none";
         portraitHTMLs[index].style.display = !isLandspace ? "block" : "none";
       }, 1000);
     });
