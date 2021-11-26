@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
 
 const Auth = createContext({
   loggedIn: false,

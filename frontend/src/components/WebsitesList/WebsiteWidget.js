@@ -1,21 +1,29 @@
-import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useContext, useEffect, useRef } from "react";
+import { NavLink } from "react-router-dom";
 import "./WebsiteWidget.css";
 import Auth from "./../../Auth/Auth";
 function WebsiteWidget(props) {
   const ctx = useContext(Auth);
+  const iframeRef = useRef(null);
+
   const { html, _id } = props.website;
-  const srcdoc = `
-  ${html.replace(/&lt;/g, "<").substring(0, html.indexOf("<script>"))}
-  <script>
-  const landspace = document.querySelector('landspace').innerHTML;
-    document.querySelector('portrait').style.display=landspace?"none":"block";
-    document.querySelector('landspace').style.display=landspace?"block":"none";
-  </script>`;
+  const srcdoc = html.replace(/&lt;/g, "<").split("<script>")[0];
+
+  useEffect(() => {
+    const iframeDocument = iframeRef.current.contentDocument;
+    const landspaceHTMLs = [...iframeDocument.querySelectorAll(".landspace")];
+    const portraitHTMLs = [...iframeDocument.querySelectorAll(".portrait")];
+
+    landspaceHTMLs.forEach((landspace, index) => {
+      const isLandspace = landspace && landspace.innerHTML.length > 0;
+      landspace.style.display = landspace.i !== isLandspace ? "block" : "none";
+      portraitHTMLs[index].style.display = !isLandspace ? "block" : "none";
+    });
+  }, []);
 
   return (
     <div className="iframe-widget">
-      <iframe title={_id} srcDoc={srcdoc}></iframe>
+      <iframe ref={iframeRef} title={_id} srcDoc={srcdoc}></iframe>
       <a
         className="iframe-widget__link"
         rel="noreferrer"
