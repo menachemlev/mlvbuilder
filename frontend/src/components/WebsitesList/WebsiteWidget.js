@@ -15,9 +15,12 @@ function WebsiteWidget(props) {
     const portraitHTMLs = [...iframeDocument.querySelectorAll(".portrait")];
 
     landspaceHTMLs.forEach((landspace, index) => {
-      const isLandspace = landspace && landspace.innerHTML.length > 0;
-      landspace.style.display = landspace.i !== isLandspace ? "block" : "none";
-      portraitHTMLs[index].style.display = !isLandspace ? "block" : "none";
+      setInterval(() => {
+        const isLandspace = landspace && landspace.innerHTML.length > 0;
+        landspace.style.display =
+          landspace.i !== isLandspace ? "block" : "none";
+        portraitHTMLs[index].style.display = !isLandspace ? "block" : "none";
+      }, 1000);
     });
   }, []);
 
