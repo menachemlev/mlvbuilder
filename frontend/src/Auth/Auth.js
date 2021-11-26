@@ -15,8 +15,11 @@ export const AuthProvider = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  //const fetchProviderURL = "http://localhost:8000/api";
-  const fetchProviderURL = "https://mlvbuilder.herokuapp.com/api";
+  const fetchProviderURL = `${
+    document.documentURI.includes("localhost")
+      ? "http://localhost:8000"
+      : "https://mlvbuilder.herokuapp.com"
+  }/api`;
   useEffect(() => {
     if (typeof localStorage === undefined) return;
     if (!localStorage.getItem("loginData")) return;
