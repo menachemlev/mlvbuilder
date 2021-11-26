@@ -76,7 +76,10 @@ function AdminTableRow(props) {
       <td>
         {" "}
         <Link
-          to={selectedWebsiteID && `/web/${selectedWebsiteID}`}
+          to={
+            selectedWebsiteID &&
+            `${ctx.fetchProviderURL}/web/${selectedWebsiteID}`
+          }
           target="_blank"
         >
           <button>Visit website</button>
