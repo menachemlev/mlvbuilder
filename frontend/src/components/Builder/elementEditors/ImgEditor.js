@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useContext } from "react";
 import Auth from "./../../../Auth/Auth";
-import LoadingIcon from "./../LoadingIcon";
+import LoadingIcon from "./../../UI/LoadingIcon";
 
 function ImgEditor(props) {
   const src = useRef(null);

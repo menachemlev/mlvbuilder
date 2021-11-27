@@ -13,6 +13,25 @@ function Preview(props) {
         isItMobile() ? "long" : props.isPreviewLandspace ? "long" : ""
       }`}
     >
+      {props.elements.length === 0 && !props.wasEdited && (
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            transform: "translate(-50%,-50%)",
+            fontSize: "1.7em",
+            textAlign: "center",
+            color: "rgba(0,0,0,0.5)",
+          }}
+        >
+          Here go your elements...
+          <br />
+          <small style={{ fontSize: "0.5em", fontStyle: "oblique" }}>
+            (👆 Drag here some elements to get started)
+          </small>
+        </div>
+      )}
       <div
         className="portrait"
         style={{

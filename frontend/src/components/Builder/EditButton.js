@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-import TouchAppSharpIcon from "@mui/icons-material/TouchAppSharp";
+import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import ReactDOM from "react-dom";
 
 import { isItMobile } from "./util/generalFunctions";
@@ -33,7 +33,7 @@ export default function EditElem(props) {
           />
 
           {isItMobile() && (
-            <TouchAppSharpIcon
+            <DragIndicatorIcon
               style={{
                 cursor: "pointer",
                 color: props.dragOnTouch ? "#6a89cf" : "cyan",

@@ -37,6 +37,11 @@ function Builder(props) {
   const [dragOnTouch, setDragOnTouch] = useState(false);
 
   const [backup, setBackup] = useState([]);
+  const [wasEdited, setWasEdited] = useState(false);
+
+  useEffect(() => {
+    setWasEdited(backup.length > 0);
+  }, [backup]);
 
   const [publishedWebsiteURL, setPublishedWebsiteURL] = useState("");
 
@@ -247,6 +252,7 @@ function Builder(props) {
   };
 
   const handleGoPublic = () => {
+    if (previewElements.length === 0) return;
     setPublishingLoading(true);
     setCurrentElementEdited(null);
     console.log(`${id ? `/web/${id}` : `/web/`}`);
@@ -274,6 +280,7 @@ function Builder(props) {
   };
 
   const handleOnSave = () => {
+    if (previewElements.length === 0) return;
     setSavingLoading(true);
     setCurrentElementEdited(null);
     fetch(`${ctx.fetchProviderURL}${id ? `/web/${id}` : `/web/`}`, {
@@ -375,6 +382,7 @@ function Builder(props) {
           onElementDragEnd={handleElementDragEnd}
         />
         <Preview
+          wasEdited={wasEdited}
           dragOnTouch={dragOnTouch}
           updatePreviewElement={handleOnUpdatePreviewElement}
           height={height}

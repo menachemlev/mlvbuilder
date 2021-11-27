@@ -1,18 +1,21 @@
 import "./WebsitesList.css";
 
+import LoadingIcon from "./../components/UI/LoadingIcon";
 import { useContext, useState, useEffect } from "react";
 import Auth from "./../Auth/Auth";
 import WebsiteWidget from "../components/WebsitesList/WebsiteWidget";
 import { useHistory } from "react-router-dom";
 function WebsitesList(props) {
   const [websites, setWebsites] = useState([]);
+  const [loading, setLoading] = useState(false);
   const ctx = useContext(Auth);
   const history = useHistory();
   const { password, email } = ctx;
   useEffect(() => {
-    if (!ctx.loggedIn) history.push("/login");
+    if (!ctx.loggedIn) history.push("/");
   }, []);
   useState(() => {
+    setLoading(true);
     fetch(`${ctx.fetchProviderURL}/web/list`, {
       method: "POST",
       body: JSON.stringify({ password, email }),
@@ -26,12 +29,12 @@ function WebsitesList(props) {
       })
       .then((response) => {
         if (response.status === "fail") throw new Error(response.message);
-
         setWebsites(response.data.websitesList);
       })
       .catch((err) => {
         console.error(err);
       });
+    setLoading(false);
   }, []);
   return (
     <div className="websites-list">
@@ -39,6 +42,7 @@ function WebsitesList(props) {
       {websites.map((website) => {
         return <WebsiteWidget key={Math.random() * 100000} website={website} />;
       })}
+      {loading && <LoadingIcon />}
     </div>
   );
 }

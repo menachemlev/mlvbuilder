@@ -8,7 +8,7 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import PreviewOutlinedIcon from "@mui/icons-material/PreviewOutlined";
 import SaveIcon from "@mui/icons-material/Save";
 import PublicIcon from "@mui/icons-material/Public";
-import LoadingIcon from "./LoadingIcon";
+import LoadingIcon from "./../UI/LoadingIcon";
 
 import { useEffect, useState } from "react";
 
@@ -131,7 +131,10 @@ function Menu(props) {
         ) : props.existingWebsite ? (
           <>{portrait ? <DeleteForeverIcon /> : <DeleteForeverIcon />}</>
         ) : (
-          <HelpIcon onClick={() => setShowHelp(true)} />
+          <HelpIcon
+            className="menu__help-icon"
+            onClick={() => setShowHelp(true)}
+          />
         )}
       </div>
       <div className="builder__menu__height">
