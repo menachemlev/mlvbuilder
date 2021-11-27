@@ -1,8 +1,9 @@
 .builder__menu {
-  display: grid;
-  grid-template-columns: 5fr 1fr 2fr 2fr 2fr 2fr 2fr 2fr;
-  grid-template-rows: 1fr;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
   position: relative;
+  background-color: rgb(48, 48, 48);
 }
 /*Instructions*/
 .builder__menu::after {
@@ -49,18 +50,24 @@
 /**********************************/
 
 .builder__menu > div {
-  border-right: 1px solid white;
   color: white;
   display: grid;
   place-items: center;
   text-align: center;
+  border-right: 3px solid white;
+  flex-basis: 16.66%;
+  cursor: pointer;
 }
+.builder__menu__delete {
+  border-right: 0;
+}
+
+/*
 .builder__menu__element-edit-menu {
   grid-row-start: 1;
   grid-row-end: 2;
   grid-column-start: 1;
   grid-column-end: 2;
-  background-image: linear-gradient(rgb(48, 112, 133), rgb(88, 129, 216));
 }
 
 .builder__menu__delete-element {
@@ -68,65 +75,6 @@
   grid-row-end: 2;
   grid-column-start: 2;
   grid-column-end: 3;
-  background: rgb(14, 185, 190);
   cursor: pointer;
 }
-.builder__menu__step-back {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 3;
-  grid-column-end: 4;
-  background: linear-gradient(rgb(48, 112, 133), rgb(88, 129, 216));
-  cursor: pointer;
-}
-.builder__menu__preview {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  background: rgb(14, 185, 190);
-
-  cursor: pointer;
-}
-.builder__menu__save {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 5;
-  grid-column-end: 6;
-  background: linear-gradient(rgb(48, 112, 133), rgb(88, 129, 216));
-
-  cursor: pointer;
-}
-.builder__menu__publish-button {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 6;
-  grid-column-end: 7;
-  background: rgb(14, 185, 190);
-  cursor: pointer;
-}
-.builder__menu__delete {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 7;
-  grid-column-end: 8;
-  background: linear-gradient(rgb(48, 112, 133), rgb(88, 129, 216));
-
-  cursor: pointer;
-}
-.builder__menu__height {
-  grid-row-start: 1;
-  grid-row-end: 2;
-  grid-column-start: 8;
-  grid-column-end: 9;
-  background: rgb(14, 185, 190);
-
-  cursor: pointer;
-}
-@media screen and (max-width: 64em) {
-  .builder__menu {
-    display: grid;
-    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr 2fr 3fr;
-    grid-template-rows: 1fr;
-  }
-}
+*/

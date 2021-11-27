@@ -2,8 +2,12 @@ import "./Menu.css";
 
 import Help from "./util/Help";
 
+//MATERIAL UI ICONS
+import HelpIcon from "@mui/icons-material/Help";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import PreviewOutlinedIcon from "@mui/icons-material/PreviewOutlined";
+
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 import { isItMobile } from "./../Builder/util/generalFunctions";
 import EditorPop from "./EditorPop";
@@ -11,7 +15,6 @@ import EditorPop from "./EditorPop";
 function Menu(props) {
   const currentElementEditedType = props.currentElementEdited?.type;
   const [showHelp, setShowHelp] = useState(false);
-  const [showEditor, setShowEditor] = useState(false);
   const [portrait, setPortrait] = useState(
     window.innerWidth < window.innerHeight
   );
@@ -21,7 +24,6 @@ function Menu(props) {
     }, 2000);
   }, []);
   const handleFormSubmit = (values) => {
-    setShowEditor(false);
     props.onElementEdited(values);
   };
   return (
@@ -77,39 +79,7 @@ function Menu(props) {
           setShowHelp={setShowHelp}
         />
       )}
-      {showEditor && (
-        <EditorPop
-          onCloseEditor={() => {
-            setShowEditor(false);
-          }}
-          handleFormSubmit={handleFormSubmit}
-          data={props}
-        />
-      )}
-      <div className="builder__menu__element-edit-menu">
-        <b
-          style={{ cursor: "pointer" }}
-          onClick={() => {
-            currentElementEditedType && setShowEditor(true);
-          }}
-        >
-          {currentElementEditedType
-            ? "✍"
-            : isItMobile()
-            ? "🚀"
-            : "No element was chosen!"}
-        </b>
-      </div>
-      <div
-        className="builder__menu__delete-element"
-        onClick={props.onDeleteElement}
-      >
-        {props.currentElementEdited ? (
-          "⛔"
-        ) : (
-          <p onClick={() => setShowHelp(true)}>❔</p>
-        )}
-      </div>
+
       <div className="builder__menu__step-back" onClick={props.onStepBack}>
         ◀ Step Back
       </div>
@@ -119,7 +89,7 @@ function Menu(props) {
           : `💾  ${portrait ? "" : "Save"}`}
       </div>
       <div className="builder__menu__preview" onClick={props.onPreview}>
-        {`👁  ${portrait ? "" : "Preview"}`}
+        <PreviewOutlinedIcon />
       </div>
       <div className="builder__menu__publish-button">
         <b onClick={props.goPublic}>
@@ -139,11 +109,13 @@ function Menu(props) {
           props.existingWebsite && props.onDelete();
         }}
       >
-        {props.deletingLoading
-          ? `⏳ ${portrait ? "" : "Loading..."}`
-          : props.existingWebsite
-          ? `${portrait ? "❌" : "❌ Delete website"}`
-          : "🍾"}
+        {props.deletingLoading ? (
+          `⏳ ${portrait ? "" : "Loading..."}`
+        ) : props.existingWebsite ? (
+          `${portrait ? <DeleteForeverIcon /> : <DeleteForeverIcon />}`
+        ) : (
+          <HelpIcon onClick={() => setShowHelp(true)} />
+        )}
       </div>
       <div className="builder__menu__height">
         {"Height(%)"}
@@ -167,3 +139,41 @@ function Menu(props) {
 }
 
 export default Menu;
+
+/*
+    {props.showEditor && (
+        <EditorPop
+          onCloseEditor={() => {
+            props.setShowEditor(false);
+          }}
+          handleFormSubmit={handleFormSubmit}
+          data={props}
+        />
+      )}
+      <div className="builder__menu__element-edit-menu">
+        <b
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            currentElementEditedType && props.setShowEditor(true);
+          }}
+        >
+          {currentElementEditedType
+            ? "✍"
+            : isItMobile()
+            ? "🚀"
+            : "No element was chosen!"}
+        </b>
+      </div>
+      <div
+        className="builder__menu__delete-element"
+        onClick={props.onDeleteElement}
+      >
+        {props.currentElementEdited ? (
+          <RemoveCircleIcon />
+        ) : (
+          <p onClick={() => setShowHelp(true)}>
+            <HelpIcon />
+          </p>
+        )}
+      </div>
+*/

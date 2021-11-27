@@ -1,5 +1,7 @@
 import { toPercentages } from "./generalFunctions";
 
+import React, { useState } from "react";
+
 const draggingPosition = { left: 0, top: 0 };
 const lastTouchPosition = { left: 0, top: 0 };
 
@@ -33,7 +35,7 @@ const processDragOrTouchEnd = (
   updatePreviewElement(elementObj.id, left, top);
 };
 
-const handleOnTouchStart = (e) => {
+const handleOnTouchStart = (e, props) => {
   const elementDraggedRect = e.target.getBoundingClientRect();
   draggingPosition.left = e.touches[0].clientX - elementDraggedRect.left;
   draggingPosition.top = e.touches[0].clientY - elementDraggedRect.top;
@@ -88,7 +90,7 @@ const generateDraggingElemProps = (elm, props) => {
   return {
     onClick: (e) => {
       e.preventDefault();
-      props.onElementClick(elm.id);
+      props.onElementClick(elm.id, e.target.getBoundingClientRect());
     },
     onDragStart: (e) => {
       handleDragStart(e);
@@ -102,8 +104,8 @@ const generateDraggingElemProps = (elm, props) => {
         props.updatePreviewElement
       );
     },
-    onTouchStart: (e) => {
-      handleOnTouchStart(e);
+    onTouchStart: (e, props) => {
+      handleOnTouchStart(e, props);
     },
     onTouchMove: (e) => {
       handleOnTouchMove(e, elm.type);

@@ -101,7 +101,6 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "image")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-img"
-        style={{ background: "yellow" }}
       >
         🖼Image{" "}
       </div>
@@ -114,7 +113,6 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "video")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-video"
-        style={{ background: "rgb(210,70,70)" }}
       >
         🎥 Video
       </div>
@@ -127,7 +125,6 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "link")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-link"
-        style={{ background: "green" }}
       >
         🔗Link
       </div>
@@ -140,7 +137,7 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "button")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-button"
-        style={{ background: "#65b0fc", color: "white" }}
+        style={{ color: "white" }}
       >
         🧈Button
       </div>
@@ -153,7 +150,6 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "paragraph")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-paragraph"
-        style={{ background: "cyan" }}
       >
         📃Paragraph
       </div>
@@ -166,7 +162,6 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "Title")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-title"
-        style={{ background: "orange" }}
       >
         👍Title
       </div>
@@ -179,7 +174,6 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "Background")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-background"
-        style={{ padding: "4%", background: "purple", textAlign: "center" }}
       >
         💻Background
       </div>

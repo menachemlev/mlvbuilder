@@ -1,14 +1,16 @@
 .builder__elements {
   overflow-y: scroll;
 }
-.builder__elements > div {
+.builder__elements-element {
   display: grid;
   place-items: center;
   border-radius: 2em;
   color: white;
   font-weight: bolder;
+  font-size: 1em;
   text-shadow: 0 0 1px white;
   cursor: grab;
-  padding: 0.5em 0.7em;
+  padding: 1em 1em;
   margin: 1em;
+  background: rgb(210, 70, 70);
 }

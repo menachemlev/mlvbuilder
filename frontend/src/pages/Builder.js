@@ -1,6 +1,7 @@
 import Elements from "../components/Builder/Elements";
 import Preview from "../components/Builder/Preview";
 import Menu from "../components/Builder/Menu";
+import EditButton from "../components/Builder/EditButton";
 
 import "./Builder.css";
 
@@ -25,6 +26,15 @@ function Builder(props) {
   const [id, setID] = useState("");
   const [previewElements, setPreviewElements] = useState([]);
   const [currentElementEdited, setCurrentElementEdited] = useState(null);
+  const [showEditButton, setShowEditButton] = useState(false);
+  const [editButtonPosition, setEditButtonPosition] = useState({
+    top: 0,
+    left: 0,
+    right: 0,
+  });
+
+  const [showEditor, setShowEditor] = useState(false);
+
   const [backup, setBackup] = useState([]);
 
   const [publishedWebsiteURL, setPublishedWebsiteURL] = useState("");
@@ -85,20 +95,11 @@ function Builder(props) {
       setPreviewElements([]);
       setBackup([]);
     }
-
-    return () => {
-      setID("");
-      setPreviewElements([]);
-      setCurrentElementEdited(null);
-      setBackup([]);
-      setPublishedWebsiteURL("");
-      setPublishingLoading(false);
-      setSavingLoading(false);
-      setDeletingLoading(false);
-      setIsPreviewLandspace(true);
-      setHeight(100);
-    };
   }, [params]);
+
+  useEffect(() => {
+    setShowEditButton(!!currentElementEdited);
+  }, [currentElementEdited]);
 
   const updateBackup = () => {
     const previewElementsClone = previewElements.map((elm) => {
@@ -172,11 +173,16 @@ function Builder(props) {
     setPreviewElements((prev) => [...prev, newElement]);
   };
 
-  const handleOnElementClick = (id) => {
+  const handleOnElementClick = (id, elementBounding) => {
+    setEditButtonPosition({
+      top: elementBounding.top,
+      left: elementBounding.left,
+      right: elementBounding.right,
+    });
     const newCurrentElementEdited = previewElements.find(
       (elm) => elm?.id === id
     );
-    setCurrentElementEdited({ ...newCurrentElementEdited });
+    setCurrentElementEdited(newCurrentElementEdited);
   };
 
   const handleOnElementEdited = (values) => {
@@ -328,7 +334,16 @@ function Builder(props) {
 
   return (
     <div className="builder page">
+      {showEditButton && (
+        <EditButton
+          position={editButtonPosition}
+          setShowEditor={setShowEditor}
+          deleteElement={handleOnDeleteElement}
+        />
+      )}
       <Menu
+        showEditor={showEditor}
+        setShowEditor={setShowEditor}
         refHeightSetInput={heightInputRef}
         height={height}
         isPreviewLandspace={isPreviewLandspace}
