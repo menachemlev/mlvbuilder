@@ -34,6 +34,7 @@ function Builder(props) {
   });
 
   const [showEditor, setShowEditor] = useState(false);
+  const [dragOnTouch, setDragOnTouch] = useState(false);
 
   const [backup, setBackup] = useState([]);
 
@@ -55,7 +56,7 @@ function Builder(props) {
       if (e.keyCode === 46) handleOnDeleteElement();
     });
 
-    if (!ctx.loggedIn) history.push("/login");
+    if (!ctx.loggedIn) history.push("/");
     setDeletingLoading(false);
     setPublishingLoading(false);
     setSavingLoading(false);
@@ -183,6 +184,7 @@ function Builder(props) {
       (elm) => elm?.id === id
     );
     setCurrentElementEdited(newCurrentElementEdited);
+    setDragOnTouch(false);
   };
 
   const handleOnElementEdited = (values) => {
@@ -231,6 +233,7 @@ function Builder(props) {
   };
   //BUILDING FUNCTIONALITY
   const handleOnStepBack = () => {
+    setCurrentElementEdited(null);
     setPreviewElements(backup[0] || []);
     if (backup.length > 1) setBackup((prev) => prev.slice(1));
   };
@@ -339,6 +342,8 @@ function Builder(props) {
           position={editButtonPosition}
           setShowEditor={setShowEditor}
           deleteElement={handleOnDeleteElement}
+          setDragOnTouch={setDragOnTouch}
+          dragOnTouch={dragOnTouch}
         />
       )}
       <Menu
@@ -370,6 +375,7 @@ function Builder(props) {
           onElementDragEnd={handleElementDragEnd}
         />
         <Preview
+          dragOnTouch={dragOnTouch}
           updatePreviewElement={handleOnUpdatePreviewElement}
           height={height}
           isPreviewLandspace={isPreviewLandspace}

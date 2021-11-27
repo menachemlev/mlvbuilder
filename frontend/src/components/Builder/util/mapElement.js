@@ -104,20 +104,22 @@ const generateDraggingElemProps = (elm, props) => {
         props.updatePreviewElement
       );
     },
-    onTouchStart: (e, props) => {
-      handleOnTouchStart(e, props);
+    onTouchStart: (e) => {
+      if (props.dragOnTouch) handleOnTouchStart(e, props);
     },
     onTouchMove: (e) => {
-      handleOnTouchMove(e, elm.type);
+      if (props.dragOnTouch) handleOnTouchMove(e, elm.type);
     },
     onTouchEnd: (e) => {
-      handleOnTouchEnd(
-        e,
-        elm,
-        props.refFoward,
-        props.height,
-        props.updatePreviewElement
-      );
+      if (props.dragOnTouch) {
+        handleOnTouchEnd(
+          e,
+          elm,
+          props.refFoward,
+          props.height,
+          props.updatePreviewElement
+        );
+      }
     },
     draggable: true,
   };

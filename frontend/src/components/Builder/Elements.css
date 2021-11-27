@@ -1,16 +1,33 @@
 .builder__elements {
   overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
 }
+.builder__elements::after {
+  content: "Elements";
+  position: absolute;
+  color: grey;
+  opacity: 0.5;
+  top: 1%;
+  left: 1%;
+  font-size: 1.5em;
+  z-index: -1;
+}
+
 .builder__elements-element {
   display: grid;
   place-items: center;
-  border-radius: 2em;
+  border-radius: 1em;
   color: white;
   font-weight: bolder;
   font-size: 1em;
   text-shadow: 0 0 1px white;
   cursor: grab;
   padding: 1em 1em;
-  margin: 1em;
-  background: rgb(210, 70, 70);
+  margin: 0.3em;
+  background: linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219));
 }

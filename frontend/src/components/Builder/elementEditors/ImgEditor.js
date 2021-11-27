@@ -1,5 +1,7 @@
 import { useRef, useState, useEffect, useContext } from "react";
 import Auth from "./../../../Auth/Auth";
+import LoadingIcon from "./../LoadingIcon";
+
 function ImgEditor(props) {
   const src = useRef(null);
   const height = useRef(null);
@@ -8,7 +10,7 @@ function ImgEditor(props) {
   const left = useRef(null);
   const file = useRef(null);
 
-  const [loading, setLoading] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const ctx = useContext(Auth);
 
@@ -18,7 +20,7 @@ function ImgEditor(props) {
     e.preventDefault();
     const fileUpload = file.current.files[0];
     if (fileUpload) {
-      setLoading("⏳");
+      setLoading(true);
       const fd = new FormData();
       fd.append("img", fileUpload);
       fd.append("user", "menachem");
@@ -33,7 +35,7 @@ function ImgEditor(props) {
         .then((res) => {
           if (res.status === "fail") throw new Error(res.message);
           console.log(res.location);
-          setLoading("");
+          setLoading(false);
           props.onFormSubmit({
             src: res.location,
             height: `${height.current.value}%`,
@@ -135,7 +137,7 @@ function ImgEditor(props) {
           step="0.1"
         />
       </div>
-      <div>{loading}</div>
+      {loading && <LoadingIcon />}
       <div style={{ color: "red", fontWeight: "bolder" }}>{error}</div>
       <div>
         <button>Save</button>

@@ -3,7 +3,16 @@
   background: white;
   overflow-x: hidden;
 }
-
+.builder__preview::after {
+  content: "Preview";
+  position: absolute;
+  color: grey;
+  opacity: 0.5;
+  top: 1%;
+  left: 1%;
+  font-size: 1.5em;
+  z-index: 0;
+}
 .preview__element {
   font-family: "Poppins";
   cursor: "grab";

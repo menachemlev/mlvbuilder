@@ -1,0 +1,28 @@
+.loading {
+  animation: rollLoading 1.5s infinite;
+}
+
+@keyframes rollLoading {
+  0%,
+  20% {
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rollLoading {
+  0%,
+  20% {
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

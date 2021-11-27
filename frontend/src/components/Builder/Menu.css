@@ -3,7 +3,11 @@
   justify-content: center;
   align-items: stretch;
   position: relative;
-  background-color: rgb(48, 48, 48);
+  background: linear-gradient(
+    rgb(164, 31, 197),
+    rgb(133, 53, 153),
+    rgb(164, 31, 197)
+  );
 }
 /*Instructions*/
 .builder__menu::after {

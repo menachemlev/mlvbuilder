@@ -23,20 +23,23 @@
 .builder__elements {
   flex-basis: 33%;
   height: 100%;
-  display: grid;
-  place-items: center;
-  position: relative;
 }
 .builder__preview {
-  flex-basis: 33%;
+  flex-basis: 23%;
   height: 100%;
   position: relative;
 }
 .long {
-  flex-basis: 67%;
+  flex-basis: 77%;
 }
 @media screen and (max-width: 64em) {
   .builder {
     grid-template-rows: 15vh 75vh;
+  }
+  .builder__preview {
+    flex-basis: 35%;
+  }
+  .long {
+    flex-basis: 65%;
   }
 }

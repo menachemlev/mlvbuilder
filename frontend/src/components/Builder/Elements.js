@@ -93,6 +93,7 @@ function Elements(props) {
       }`}
     >
       {showTouchMark.active && touchMarkComponent}
+      <div style={{ flexBasis: "100%", height: "2em" }}></div>
       <div
         draggable={true}
         onDragStart={handleDragStart}
@@ -137,7 +138,10 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "button")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-button"
-        style={{ color: "white" }}
+        style={{
+          color: "white",
+          background: "linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219))",
+        }}
       >
         🧈Button
       </div>
@@ -174,6 +178,9 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "Background")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-background"
+        style={{
+          background: "linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219))",
+        }}
       >
         💻Background
       </div>

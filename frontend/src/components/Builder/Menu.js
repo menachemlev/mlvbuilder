@@ -6,6 +6,9 @@ import Help from "./util/Help";
 import HelpIcon from "@mui/icons-material/Help";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import PreviewOutlinedIcon from "@mui/icons-material/PreviewOutlined";
+import SaveIcon from "@mui/icons-material/Save";
+import PublicIcon from "@mui/icons-material/Public";
+import LoadingIcon from "./LoadingIcon";
 
 import { useEffect, useState } from "react";
 
@@ -25,6 +28,7 @@ function Menu(props) {
   }, []);
   const handleFormSubmit = (values) => {
     props.onElementEdited(values);
+    props.setShowEditor(false);
   };
   return (
     <div
@@ -41,15 +45,18 @@ function Menu(props) {
             zIndex: "2",
             right: "1%",
             top: "102%",
-            fontSize: "2.5em",
+            fontSize: "2em",
             cursor: "pointer",
             WebkitTextStroke: " 2px lightBlue",
           }}
         >
           {props.isPreviewLandspace ? (
-            "📱"
+            "Go 📱"
           ) : (
-            <div style={{ transform: "rotate(90deg)" }}>📱</div>
+            <>
+              {"Go "}
+              <div style={{ transform: "rotate(90deg)" }}>{"📱"}</div>
+            </>
           )}
         </div>
       )}
@@ -92,18 +99,20 @@ function Menu(props) {
         ◀ Step Back
       </div>
       <div className="builder__menu__save" onClick={props.onSave}>
-        {props.savingLoading
-          ? `⏳ ${portrait ? "" : "Loading..."}`
-          : `💾  ${portrait ? "" : "Save"}`}
+        {props.savingLoading ? <LoadingIcon /> : <SaveIcon />}
       </div>
       <div className="builder__menu__preview" onClick={props.onPreview}>
         <PreviewOutlinedIcon />
       </div>
-      <div className="builder__menu__publish-button">
-        <b onClick={props.goPublic}>
-          {props.publishingLoading
-            ? `⏳ ${portrait ? "" : "Loading..."}`
-            : `🌐  ${portrait ? "" : "Go Public"}`}
+      <div className="builder__menu__publish-button" onClick={props.goPublic}>
+        <b>
+          {props.publishingLoading ? (
+            <LoadingIcon />
+          ) : (
+            <>
+              <PublicIcon /> {`${portrait ? "" : "Go Public"}`}
+            </>
+          )}
         </b>
         {props.publishedWebsiteURL && (
           <a href={props.publishedWebsiteURL} rel="noreferrer" target="_blank">
@@ -118,9 +127,9 @@ function Menu(props) {
         }}
       >
         {props.deletingLoading ? (
-          `⏳ ${portrait ? "" : "Loading..."}`
+          <LoadingIcon />
         ) : props.existingWebsite ? (
-          `${portrait ? <DeleteForeverIcon /> : <DeleteForeverIcon />}`
+          <>{portrait ? <DeleteForeverIcon /> : <DeleteForeverIcon />}</>
         ) : (
           <HelpIcon onClick={() => setShowHelp(true)} />
         )}

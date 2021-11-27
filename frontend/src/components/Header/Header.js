@@ -23,9 +23,6 @@ function Header(props) {
             🏠
           </NavLink>
         )}
-        <NavLink className="link" activeClassName="active" to="/about">
-          About
-        </NavLink>
         {!loggedIn && (
           <NavLink className="link" activeClassName="active" to="/Login">
             Login
