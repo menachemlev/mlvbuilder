@@ -79,7 +79,15 @@ function Menu(props) {
           setShowHelp={setShowHelp}
         />
       )}
-
+      {props.showEditor && (
+        <EditorPop
+          onCloseEditor={() => {
+            props.setShowEditor(false);
+          }}
+          handleFormSubmit={handleFormSubmit}
+          data={props}
+        />
+      )}
       <div className="builder__menu__step-back" onClick={props.onStepBack}>
         ◀ Step Back
       </div>
@@ -141,15 +149,7 @@ function Menu(props) {
 export default Menu;
 
 /*
-    {props.showEditor && (
-        <EditorPop
-          onCloseEditor={() => {
-            props.setShowEditor(false);
-          }}
-          handleFormSubmit={handleFormSubmit}
-          data={props}
-        />
-      )}
+    
       <div className="builder__menu__element-edit-menu">
         <b
           style={{ cursor: "pointer" }}
