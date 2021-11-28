@@ -126,6 +126,7 @@ function SignupForm(props) {
         <label for="emailInput" onChange={handleOnEmailChange} required>
           *Your email
         </label>
+
         <input
           className={`
             ${!emailValid && emailInputChanged ? "invalid" : ""}

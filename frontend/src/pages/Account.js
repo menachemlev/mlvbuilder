@@ -83,7 +83,6 @@ function Account(props) {
 
   return (
     <div className="account">
-      <h1 className="pageTitle">Account</h1>
       <center>
         <button
           onClick={() => {

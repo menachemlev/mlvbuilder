@@ -15,45 +15,34 @@ function Login(props) {
 
   return (
     <div className="login">
-      <h1 className="pageTitle">Login</h1>
-
       <div
         style={{
+          animation: "fadeInComponent 1s",
           position: "absolute",
           boxSizing: "border-box",
-          padding: "3rem",
+          padding: "3em",
           overflow: "hidden",
           left: "50%",
-          top: "30vh",
+          top: "10vh",
           transform: "translateX(-50%)",
         }}
       >
         <Card>{signupMode ? <SignupForm /> : <SigninForm />}</Card>
-        {signupMode ? (
-          <b
-            onClick={() => setSignupMode(false)}
-            style={{
-              marginTop: "1rem",
-              cursor: "pointer",
-              color: "white",
-              textDecoration: "underline",
-            }}
-          >
-            Already signed up? Sign in
-          </b>
-        ) : (
-          <b
-            onClick={() => setSignupMode(true)}
-            style={{
-              marginTop: "1rem",
-              cursor: "pointer",
-              color: "white",
-              textDecoration: "underline",
-            }}
-          >
-            Not signed up? Sign up{" "}
-          </b>
-        )}
+
+        <b
+          onClick={() => setSignupMode((prev) => !prev)}
+          style={{
+            marginTop: "1em",
+            cursor: "pointer",
+            color: "#333",
+            textDecoration: "underline",
+            background: "white",
+            padding: "2px",
+            display: "inline-block",
+          }}
+        >
+          {signupMode ? "Already signed up? Sign in" : "Not signed up? Sign up"}
+        </b>
       </div>
     </div>
   );

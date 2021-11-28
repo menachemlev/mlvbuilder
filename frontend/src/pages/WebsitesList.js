@@ -39,7 +39,6 @@ function WebsitesList(props) {
   }, []);
   return (
     <div className="websites-list">
-      <h1 className="pageTitle">Websites list</h1>
       {websites
         .sort((websiteA, websiteB) => {
           if (!localStorageWebsites) return 0;

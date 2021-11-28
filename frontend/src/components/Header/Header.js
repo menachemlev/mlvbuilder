@@ -35,7 +35,7 @@ function Header(props) {
               activeClassName="active"
               to="/websites-list"
             >
-              {`${portrait ? "List" : "Websites List"}`}
+              Websites
             </NavLink>
             {email !== "guest@mlvbuilder.com" && (
               <NavLink className="link" activeClassName="active" to="/account">

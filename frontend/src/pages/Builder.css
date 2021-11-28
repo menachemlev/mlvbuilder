@@ -44,6 +44,6 @@
     width: 65vw;
   }
   .builder {
-    grid-template-rows: 12vh 88vh;
+    grid-template-rows: 20vh 80vh;
   }
 }

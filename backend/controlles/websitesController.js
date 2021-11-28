@@ -23,19 +23,21 @@ font-family:inherit;
 button:hover{
   filter:brightness(0.85);
 }
-
+button{
+  font-size:140%;
+}
 @media screen and (max-width: 64em) {
   .landspace{
-    font-size:70%;
+    font-size:60%;
   }
   .portrait{
-    font-size:200%;
+    font-size:170%;
   }
   .portrait button{
-    font-size:70%;
+    font-size:63%;
   }
   .portrait button{
-    font-size:200%;
+    font-size:180%;
   }
 }
 </style></head><body>`;
