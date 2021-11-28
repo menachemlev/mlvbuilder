@@ -16,7 +16,7 @@ export function isItMobile() {
 }
 
 export function toPercentages(sizeInPx, element, property) {
-  const elementSize = element.getBoundingClientRect()[property];
+  const elementSize = element?.getBoundingClientRect()[property];
   const relativeSizeInPercentages = 100 * (sizeInPx / elementSize);
   return `${relativeSizeInPercentages}%`;
 }

@@ -132,7 +132,9 @@ const generateDraggingElemProps = (elm, props) => {
 const generateImgElement = (elm, props) => {
   return (
     <img
-      className={` preview__element ${
+      className={` preview__element preview__element_image_check${Math.floor(
+        elm.id
+      )} ${
         props.currentElementEdited?.id === elm.id
           ? "preview__element-active"
           : ""
@@ -390,3 +392,7 @@ const mapElements = (elm, props) => {
 };
 
 export default mapElements;
+/*
+||
+         
+*/

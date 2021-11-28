@@ -38,7 +38,7 @@ function ImgEditor(props) {
           setLoading(false);
           props.onFormSubmit({
             src: res.location,
-            height: `${height.current.value}%`,
+            height: height.current.value && `${height.current.value}%`,
             width: `${width.current.value}%`,
             top: `${top.current.value}%`,
             left: `${left.current.value}%`,
@@ -50,7 +50,7 @@ function ImgEditor(props) {
     } else {
       props.onFormSubmit({
         src: src.current.value,
-        height: `${height.current.value}%`,
+        height: height.current.value && `${height.current.value}%`,
         width: `${width.current.value}%`,
         top: `${top.current.value}%`,
         left: `${left.current.value}%`,

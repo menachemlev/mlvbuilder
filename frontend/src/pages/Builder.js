@@ -1,7 +1,6 @@
 import Elements from "../components/Builder/Elements";
 import Preview from "../components/Builder/Preview";
 import Menu from "../components/Builder/Menu";
-import EditButton from "../components/Builder/EditButton";
 
 import "./Builder.css";
 
@@ -27,11 +26,6 @@ function Builder(props) {
   const [previewElements, setPreviewElements] = useState([]);
   const [currentElementEdited, setCurrentElementEdited] = useState(null);
   const [showEditButton, setShowEditButton] = useState(false);
-  const [editButtonPosition, setEditButtonPosition] = useState({
-    top: 0,
-    left: 0,
-    right: 0,
-  });
 
   const [showEditor, setShowEditor] = useState(false);
   const [dragOnTouch, setDragOnTouch] = useState(false);
@@ -173,7 +167,7 @@ function Builder(props) {
     const isItBackground = typeOfNewElement === "background";
     //Preparing data
     const newElement = {
-      id: String(Math.random() * 100),
+      id: String(Math.random() * 100000),
       top: isItBackground
         ? "0%"
         : toPercentages(topPropertyCss, previewRef.current, "height"),
@@ -195,7 +189,8 @@ function Builder(props) {
         ? undefined
         : `${
             toPercentagesNum(widthElm, previewRef.current, "height") *
-            (typeOfNewElement === "video" ? 2 : 1)
+            (typeOfNewElement === "video" ? 2 : 1) *
+            (100 / height)
           }%`,
       background,
       forLandspace: isPreviewLandspace,
@@ -205,11 +200,6 @@ function Builder(props) {
   };
 
   const handleOnElementClick = (id, elementBounding) => {
-    setEditButtonPosition({
-      top: elementBounding.top,
-      left: elementBounding.left,
-      right: elementBounding.right,
-    });
     const newCurrentElementEdited = previewElements.find(
       (elm) => elm?.id === id
     );
@@ -259,6 +249,22 @@ function Builder(props) {
     );
     updateBackup();
     setPreviewElements([...newPreviewElements]);
+    setCurrentElementEdited(null);
+  };
+
+  const handleOnCopyElement = () => {
+    if (!currentElementEdited) return;
+    const elemTop = Number.parseFloat(currentElementEdited.top);
+    const elemLeft = Number.parseFloat(currentElementEdited.left);
+
+    const copyElem = {
+      ...currentElementEdited,
+      top: `${elemTop ? elemTop * 1.2 : 5}%`,
+      left: `${elemLeft ? elemLeft * 1.2 : 5}%`,
+      id: String(Math.random() * 100000),
+    };
+    updateBackup();
+    setPreviewElements((prev) => [...prev, copyElem]);
     setCurrentElementEdited(null);
   };
   //BUILDING FUNCTIONALITY
@@ -369,15 +375,6 @@ function Builder(props) {
 
   return (
     <div className="builder page">
-      {showEditButton && (
-        <EditButton
-          position={editButtonPosition}
-          setShowEditor={setShowEditor}
-          deleteElement={handleOnDeleteElement}
-          setDragOnTouch={setDragOnTouch}
-          dragOnTouch={dragOnTouch}
-        />
-      )}
       <Menu
         showEditor={showEditor}
         setShowEditor={setShowEditor}
@@ -408,7 +405,11 @@ function Builder(props) {
         />
         <Preview
           wasEdited={wasEdited}
+          showEditButton={showEditButton}
           dragOnTouch={dragOnTouch}
+          setDragOnTouch={setDragOnTouch}
+          deleteElement={handleOnDeleteElement}
+          copyElement={handleOnCopyElement}
           updatePreviewElement={handleOnUpdatePreviewElement}
           height={height}
           isPreviewLandspace={isPreviewLandspace}

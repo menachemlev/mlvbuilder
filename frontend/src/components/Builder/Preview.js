@@ -1,5 +1,6 @@
 import "./Preview.css";
 import mapElements from "./util/mapElement";
+import EditButton from "./EditButton";
 
 import { isItMobile } from "./../Builder/util/generalFunctions";
 function Preview(props) {
@@ -32,6 +33,18 @@ function Preview(props) {
           </small>
         </div>
       )}
+
+      {props.showEditButton && (
+        <EditButton
+          currentElementEdited={props.currentElementEdited}
+          setShowEditor={props.setShowEditor}
+          deleteElement={props.deleteElement}
+          setDragOnTouch={props.setDragOnTouch}
+          dragOnTouch={props.dragOnTouch}
+          copyElement={props.copyElement}
+        />
+      )}
+
       <div
         className="portrait"
         style={{
@@ -41,7 +54,7 @@ function Preview(props) {
           top: "0",
           left: "0",
           display: `${props.isPreviewLandspace ? "none" : "block"}`,
-          overflowX: "hidden",
+          overflow: "hidden",
         }}
       >
         {props.elements
@@ -57,7 +70,7 @@ function Preview(props) {
           top: "0",
           left: "0",
           display: `${props.isPreviewLandspace ? "block" : "none"}`,
-          overflowX: "hidden",
+          overflow: "hidden",
         }}
       >
         {props.elements
