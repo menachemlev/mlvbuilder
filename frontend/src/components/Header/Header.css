@@ -5,7 +5,6 @@
   align-items: center;
   width: 100%;
   height: 10vh;
-  background-image: linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219));
 }
 .logo-box {
   height: 100%;
@@ -22,6 +21,12 @@
   font-size: 1em;
   font-weight: bolder;
   text-decoration: none;
+  transition: 0.3s;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+.link:hover {
+  background: rgba(255, 255, 255, 0.22);
 }
 .active {
   text-decoration: underline;
@@ -31,9 +36,6 @@
 }
 
 @media screen and (max-width: 64em) {
-  .link {
-    font-size: 1.3em;
-  }
   .header {
     height: 13vh;
   }

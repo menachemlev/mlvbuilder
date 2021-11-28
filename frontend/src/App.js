@@ -12,11 +12,14 @@ import Builder from "./pages/Builder";
 import WebsitesList from "./pages/WebsitesList";
 import Account from "./pages/Account";
 import NotFound from "./pages/NotFound";
+import { useContext } from "react";
+import Auth from "./Auth/Auth";
 
 function App() {
+  const { showHeader } = useContext(Auth);
   return (
     <div className="app">
-      <Header />
+      {showHeader && <Header />}
       <Switch>
         <Route path="/" exact>
           <Home />

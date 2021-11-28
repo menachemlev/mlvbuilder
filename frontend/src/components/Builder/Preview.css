@@ -1,7 +1,10 @@
 .builder__preview {
-  border-left: solid 3px rgb(55, 133, 185);
+  border-left: solid 3px var(--color-text);
+  border-top: solid 3px var(--color-text);
+
   background: white;
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 .builder__preview::after {
   content: "Preview";
@@ -15,7 +18,7 @@
 }
 .preview__element {
   font-family: "Poppins";
-  cursor: "grab";
+  cursor: "pointer";
   position: relative;
 }
 .iframe-holder-preview {

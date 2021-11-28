@@ -1,12 +1,13 @@
 .account button {
-  background-color: rgb(47, 167, 207);
+  background-color: var(--color-primary);
   margin: 0.3rem;
   color: white;
   border-radius: 0.3em;
   padding: 0.4em 0.6em;
   transition: 0.2s;
   cursor: pointer;
+  border: none;
 }
 .account button:hover {
-  background-color: rgb(44, 123, 150);
+  background-color: var(--color-primary-dark);
 }

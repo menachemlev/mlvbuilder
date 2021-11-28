@@ -14,8 +14,10 @@ import { useEffect, useState } from "react";
 
 import { isItMobile } from "./../Builder/util/generalFunctions";
 import EditorPop from "./EditorPop";
+import { useHistory } from "react-router-dom";
 
 function Menu(props) {
+  const history = useHistory();
   const currentElementEditedType = props.currentElementEdited?.type;
   const [showHelp, setShowHelp] = useState(false);
   const [portrait, setPortrait] = useState(
@@ -36,7 +38,7 @@ function Menu(props) {
       style={{ borderBottom: "ridge 3px lightBlue" }}
     >
       {!isItMobile() && (
-        <div
+        <span
           onClick={() => {
             props.onSetIsPreviewLandspace(!props.isPreviewLandspace);
           }}
@@ -58,11 +60,11 @@ function Menu(props) {
               <div style={{ transform: "rotate(90deg)" }}>{"📱"}</div>
             </>
           )}
-        </div>
+        </span>
       )}
 
       {isItMobile() && (
-        <div
+        <span
           style={{
             position: "absolute",
             zIndex: "2",
@@ -77,7 +79,7 @@ function Menu(props) {
           ) : (
             <div style={{ transform: "rotate(90deg)" }}>📱</div>
           )}
-        </div>
+        </span>
       )}
 
       {showHelp && (
@@ -95,6 +97,14 @@ function Menu(props) {
           data={props}
         />
       )}
+      <div
+        className="builder__menu__go-back"
+        onClick={() => {
+          history.push("/");
+        }}
+      >
+        ◀ Exit
+      </div>
       <div className="builder__menu__step-back" onClick={props.onStepBack}>
         ◀ Step Back
       </div>

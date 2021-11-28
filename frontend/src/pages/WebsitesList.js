@@ -9,6 +9,7 @@ function WebsitesList(props) {
   const [websites, setWebsites] = useState([]);
   const [loading, setLoading] = useState(false);
   const ctx = useContext(Auth);
+  const localStorageWebsites = JSON.parse(localStorage?.getItem("websites"));
   const history = useHistory();
   const { password, email } = ctx;
   useEffect(() => {
@@ -39,10 +40,32 @@ function WebsitesList(props) {
   return (
     <div className="websites-list">
       <h1 className="pageTitle">Websites list</h1>
-      {websites.map((website) => {
-        return <WebsiteWidget key={Math.random() * 100000} website={website} />;
-      })}
-      {loading && <LoadingIcon />}
+      {websites
+        .sort((websiteA, websiteB) => {
+          if (!localStorageWebsites) return 0;
+          console.log(localStorageWebsites);
+          if (
+            localStorageWebsites.includes(websiteA._id) &&
+            !localStorageWebsites.includes(websiteB._id)
+          )
+            return -1;
+          if (
+            localStorageWebsites.includes(websiteB._id) &&
+            !localStorageWebsites.includes(websiteA._id)
+          )
+            return 1;
+          return 0;
+        })
+        .map((website, index) => {
+          return (
+            <WebsiteWidget
+              key={Math.random() * 100000}
+              index={index}
+              website={website}
+            />
+          );
+        })}
+      {loading && <LoadingIcon style={{ color: "white" }} />}
     </div>
   );
 }

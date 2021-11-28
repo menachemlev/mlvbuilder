@@ -3,19 +3,23 @@
   overflow-x: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
   position: relative;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.9)
+  );
 }
 .builder__elements::after {
   content: "Elements";
   position: absolute;
-  color: grey;
-  opacity: 0.5;
+  color: var(--color-text);
   top: 1%;
   left: 1%;
   font-size: 1.5em;
-  z-index: -1;
+  z-index: 0;
 }
 
 .builder__elements-element {
@@ -30,4 +34,9 @@
   padding: 1em 1em;
   margin: 0.3em;
   background: linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219));
+}
+@media screen and (max-width: 64em) {
+  .builder__elements-element {
+    font-size: 0.7em;
+  }
 }

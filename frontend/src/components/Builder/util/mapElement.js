@@ -92,6 +92,10 @@ const generateDraggingElemProps = (elm, props) => {
       e.preventDefault();
       props.onElementClick(elm.id, e.target.getBoundingClientRect());
     },
+    onDoubleClick: (e) => {
+      e.preventDefault();
+      props.setShowEditor(true);
+    },
     onDragStart: (e) => {
       handleDragStart(e);
     },

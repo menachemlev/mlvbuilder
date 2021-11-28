@@ -3,11 +3,7 @@
   justify-content: center;
   align-items: stretch;
   position: relative;
-  background: linear-gradient(
-    rgb(164, 31, 197),
-    rgb(133, 53, 153),
-    rgb(164, 31, 197)
-  );
+  animation: scaleRight 1s;
 }
 
 .menu__help-icon {
@@ -22,9 +18,10 @@
   display: grid;
   place-items: center;
   text-align: center;
-  border-right: 3px solid white;
-  flex-basis: 16.66%;
+  border-right: 0.5em solid white;
+  flex-basis: 14.28%;
   cursor: pointer;
+  border-radius: 50%;
 }
 .builder__menu__delete {
   border-right: 0;
@@ -56,6 +53,34 @@
   }
   100% {
     transform: scale(1, 1);
+  }
+}
+
+@keyframes scaleRight {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes scaleRight {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 64em) {
+  .builder__menu {
+    background-color: transparent;
+  }
+  .builder__menu > div {
+    border-right: 1px solid white;
+    border-radius: 0%;
   }
 }
 

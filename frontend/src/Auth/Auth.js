@@ -8,6 +8,8 @@ const Auth = createContext({
   logIn: ({ email, password, name }) => {},
   logOut: () => {},
   fetchProviderURL: "",
+  setShowHeader: () => {},
+  showHeader: true,
 });
 
 export const AuthProvider = (props) => {
@@ -15,6 +17,7 @@ export const AuthProvider = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [showHeader, setShowHeader] = useState(true);
   const fetchProviderURL = `${
     document.documentURI.includes("localhost")
       ? "http://localhost:8000"
@@ -77,6 +80,8 @@ export const AuthProvider = (props) => {
         password,
         name,
         fetchProviderURL,
+        setShowHeader,
+        showHeader,
       }}
     >
       {props.children}

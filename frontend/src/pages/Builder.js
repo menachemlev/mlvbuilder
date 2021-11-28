@@ -57,6 +57,7 @@ function Builder(props) {
   const heightInputRef = useRef(null);
 
   useEffect(() => {
+    ctx.setShowHeader(false);
     window.addEventListener("keydown", (e) => {
       if (e.keyCode === 46) handleOnDeleteElement();
     });
@@ -77,6 +78,18 @@ function Builder(props) {
     }
 
     if (params.id) {
+      if (localStorage) {
+        const localStorageWebsites = JSON.parse(
+          localStorage.getItem("websites")
+        );
+        if (localStorageWebsites)
+          localStorage.setItem(
+            "websites",
+            JSON.stringify([...localStorageWebsites, params.id])
+          );
+        else localStorage.setItem("websites", JSON.stringify([params.id]));
+      }
+
       fetch(`${ctx.fetchProviderURL}/web/elements/${params.id}`)
         .then((res) => {
           if (!res) throw new Error("Something went wrong");
@@ -101,6 +114,10 @@ function Builder(props) {
       setPreviewElements([]);
       setBackup([]);
     }
+
+    return () => {
+      ctx.setShowHeader(true);
+    };
   }, [params]);
 
   useEffect(() => {
@@ -153,20 +170,28 @@ function Builder(props) {
     const background = elementDragged.style.background;
 
     const isItImage = typeOfNewElement === "img";
-
+    const isItBackground = typeOfNewElement === "background";
     //Preparing data
     const newElement = {
       id: String(Math.random() * 100),
-      top: toPercentages(topPropertyCss, previewRef.current, "height"),
-      left: toPercentages(leftPropertyCss, previewRef.current, "width"),
+      top: isItBackground
+        ? "0%"
+        : toPercentages(topPropertyCss, previewRef.current, "height"),
+      left: isItBackground
+        ? "0%"
+        : toPercentages(leftPropertyCss, previewRef.current, "width"),
       type: typeOfNewElement,
-      width: isItImage
+      width: isItBackground
+        ? "100%"
+        : isItImage
         ? "25%"
         : `${
             toPercentagesNum(widthElm, previewRef.current, "width") *
             (typeOfNewElement === "video" ? 2 : 1)
           }%`,
-      height: isItImage
+      height: isItBackground
+        ? "100%"
+        : isItImage
         ? undefined
         : `${
             toPercentagesNum(widthElm, previewRef.current, "height") *
@@ -391,6 +416,7 @@ function Builder(props) {
           refFoward={previewRef}
           onElementClick={handleOnElementClick}
           elements={previewElements}
+          setShowEditor={setShowEditor}
         />
       </div>
     </div>

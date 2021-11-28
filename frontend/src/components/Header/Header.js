@@ -4,7 +4,7 @@ import Logo from "./logo.png";
 import { useContext, useEffect, useState } from "react";
 import Auth from "./../../Auth/Auth";
 function Header(props) {
-  const { loggedIn } = useContext(Auth);
+  const { loggedIn, email } = useContext(Auth);
   const [portrait, setPortrait] = useState(
     window.innerHeight > window.innerWidth
   );
@@ -20,10 +20,10 @@ function Header(props) {
       <div className="navigator">
         {!portrait && (
           <NavLink className="link" activeClassName="active" to="/" exact>
-            🏠
+            Home
           </NavLink>
         )}
-        {!loggedIn && (
+        {(!loggedIn || email === "guest@mlvbuilder.com") && (
           <NavLink className="link" activeClassName="active" to="/Login">
             Login
           </NavLink>
@@ -37,9 +37,11 @@ function Header(props) {
             >
               {`${portrait ? "List" : "Websites List"}`}
             </NavLink>
-            <NavLink className="link" activeClassName="active" to="/account">
-              Account
-            </NavLink>
+            {email !== "guest@mlvbuilder.com" && (
+              <NavLink className="link" activeClassName="active" to="/account">
+                Account
+              </NavLink>
+            )}
             <NavLink className="link" activeClassName="active" to="/builder">
               Builder
             </NavLink>

@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import ReactPlayer from "react-player";
 import helpVid from "./help.mp4";
 import { isItMobile } from "./generalFunctions";
+import CloseIcon from "@mui/icons-material/Close";
+
 function Help(props) {
   const [fadeInAnimation, setFadeInAnimation] = useState("");
   useEffect(() => {
@@ -28,7 +30,7 @@ function Help(props) {
         padding: "2em",
       }}
     >
-      <span
+      <CloseIcon
         style={{
           position: "fixed",
           top: "2%",
@@ -39,9 +41,8 @@ function Help(props) {
         onClick={() => {
           props.setShowHelp(false);
         }}
-      >
-        ❌
-      </span>
+      />
+
       <video
         style={{
           position: "absolute",

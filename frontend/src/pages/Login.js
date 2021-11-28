@@ -6,11 +6,11 @@ import Auth from "./../Auth/Auth";
 import { useHistory } from "react-router-dom";
 function Login(props) {
   const [signupMode, setSignupMode] = useState(false);
-  const { loggedIn } = useContext(Auth);
+  const { loggedIn, email } = useContext(Auth);
   const history = useHistory();
 
   useEffect(() => {
-    if (loggedIn) history.push("/");
+    if (loggedIn && email !== "guest@mlvbuilder.com") history.push("/");
   }, []);
 
   return (
@@ -22,7 +22,7 @@ function Login(props) {
           position: "absolute",
           boxSizing: "border-box",
           padding: "3rem",
-
+          overflow: "hidden",
           left: "50%",
           top: "30vh",
           transform: "translateX(-50%)",
@@ -35,7 +35,7 @@ function Login(props) {
             style={{
               marginTop: "1rem",
               cursor: "pointer",
-              color: "#333",
+              color: "white",
               textDecoration: "underline",
             }}
           >
@@ -47,7 +47,7 @@ function Login(props) {
             style={{
               marginTop: "1rem",
               cursor: "pointer",
-              color: "#333",
+              color: "white",
               textDecoration: "underline",
             }}
           >

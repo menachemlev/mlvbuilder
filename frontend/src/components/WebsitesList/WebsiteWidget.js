@@ -26,22 +26,30 @@ function WebsiteWidget(props) {
   }, []);
 
   return (
-    <div className="iframe-widget">
+    <div
+      style={{ animation: `fadeInComponent ${1 + props.index / 3}s` }}
+      className="iframe-widget"
+    >
       <iframe ref={iframeRef} title={_id} srcDoc={srcdoc}></iframe>
-      <a
-        className="iframe-widget__link"
-        rel="noreferrer"
-        href={`${ctx.fetchProviderURL}/web/${_id}`}
-        target="_blank"
-      >
-        Visit website
-      </a>
-      <br />
-      {ctx.name !== "guest" && (
-        <NavLink className="iframe-widget__link" to={`/builder/${_id}`}>
-          Edit
-        </NavLink>
-      )}
+      <div>
+        <a
+          className="iframe-widget__link"
+          rel="noreferrer"
+          href={`${ctx.fetchProviderURL}/web/${_id}`}
+          target="_blank"
+        >
+          Visit website
+        </a>
+
+        {(ctx.name !== "guest" ||
+          (localStorage &&
+            localStorage.getItem("websites") &&
+            JSON.parse(localStorage.getItem("websites")).includes(_id))) && (
+          <NavLink className="iframe-widget__link" to={`/builder/${_id}`}>
+            Edit
+          </NavLink>
+        )}
+      </div>
     </div>
   );
 }

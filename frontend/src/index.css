@@ -1,7 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
+:root {
+  --color-primary: #03a9f4;
+  --color-primary-light: #73c1e6;
+  --color-primary-dark: #24a7e4;
+  --color-text: #444;
+  --color-secondary: violet;
+}
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}
 *,
 *::after,
 a::before {
+  -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
   font-family: inherit;
   font-size: inherit;
@@ -10,7 +23,11 @@ a::before {
 }
 body {
   overflow-x: hidden;
-  background-color: rgba(157, 248, 255, 0.11);
+  background-image: linear-gradient(#333, transparent, transparent, #333),
+    url("https://mlvbuilder.herokuapp.com/api/photos/background.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
   font-family: "Poppins", sans-serif;
 }
 
@@ -25,11 +42,11 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #4d948e, #1cb7bd, #0d7c9e);
+  background: rgba(54, 54, 54, 0.7);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0d7c9e;
+  background: rgba(54, 54, 54, 1);
 }
 
 .fadeIn {

@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-
+import CloseIcon from "@mui/icons-material/Close";
 import ImgEditor from "./elementEditors/ImgEditor";
 import LinkEditor from "./elementEditors/LinkEditor";
 import ButtonEditor from "./elementEditors/ButtonEditor";
@@ -69,7 +69,7 @@ function EditorPop(props) {
           />
         )}
       </Card>
-      <div
+      <CloseIcon
         style={{
           position: "absolute",
           right: "1%",
@@ -78,9 +78,7 @@ function EditorPop(props) {
           cursor: "pointer",
         }}
         onClick={props.onCloseEditor}
-      >
-        ❌
-      </div>
+      />
     </div>,
     document.getElementById("modals")
   );

@@ -1,5 +1,5 @@
 .UI-card {
-  background-image: linear-gradient(rgb(48, 112, 133), rgb(43, 83, 170));
+  background: var(--color-primary);
   max-width: 100vw;
   height: 100%;
   display: flex;
@@ -46,8 +46,9 @@ textarea:focus {
   font-weight: bolder;
   background-color: white;
   color: #333;
+  border: none;
   transition: 0.3s;
-  padding: 0.2em 0.2em;
+  padding: 0.4em 0.5em;
 }
 .UI-card form button:hover {
   color: white;
