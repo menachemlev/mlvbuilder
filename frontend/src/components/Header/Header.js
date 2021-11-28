@@ -48,8 +48,8 @@ function Header(props) {
           </>
         )}
       </div>
-      <div className="logo-box">
-        <NavLink to="/">
+      <div style={{ background: "transparent" }} className="logo-box">
+        <NavLink style={{ background: "transparent" }} to="/">
           <img
             className="logo"
             style={{
