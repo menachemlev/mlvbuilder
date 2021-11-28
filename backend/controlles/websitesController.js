@@ -22,7 +22,6 @@ content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1
 body{
   font-size:120%;
   font-family: "Poppins", sans-serif;
-  position:absolute;
 }
 svg{
   display:none;
@@ -38,28 +37,23 @@ button{
 }
 @media screen and (max-width: 64em) {
   .landspace{
-    font-size:60%;
+    font-size:110%;
   }
   .portrait{
-    font-size:170%;
+    font-size:230%;
   }
-  .portrait button{
-    font-size:63%;
-  }
-  .portrait button{
-    font-size:180%;
-  }
+
 }
 </style></head><body>`;
   const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
     document.querySelectorAll(".portrait").forEach((div) => {
-      div.style.height = "${heightToWidthRatioPortrait * 98}vw";
-      div.style.width = "98vw";
+      div.style.height = "${heightToWidthRatioPortrait * 100}vw";
+      div.style.width = "100vw";
 
     });
     document.querySelectorAll(".landspace").forEach((div) => {
-      div.style.height = "${heightToWidthRatioLandspace * 98}vw";
-      div.style.width = "98vw";
+      div.style.height = "${heightToWidthRatioLandspace * 100}vw";
+      div.style.width = "100vw";
 
     });
   if (window.innerHeight > window.innerWidth) {

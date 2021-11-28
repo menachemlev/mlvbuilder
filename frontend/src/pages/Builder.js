@@ -121,7 +121,7 @@ function Builder(props) {
   const getHeightToWidthRatio = (landspace = false) => {
     const websiteWidth =
       window.innerWidth *
-      (landspace ? (isItMobile() ? 0.65 : 0.77) : isItMobile() ? 0.35 : 0.23);
+      (landspace ? (isItMobile() ? 0.65 : 0.77) : isItMobile() ? 0.65 : 0.23);
     const websiteHeight =
       (height / 100) * previewRef.current.getBoundingClientRect().height;
     return websiteHeight / websiteWidth;
