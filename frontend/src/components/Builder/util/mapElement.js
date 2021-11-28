@@ -273,7 +273,7 @@ const generateParagraphElement = (elm, props) => {
 };
 const generatTitleElement = (elm, props) => {
   return (
-    <h1
+    <b
       className={`preview__element ${
         props.currentElementEdited?.id === elm.id
           ? "preview__element-active"
@@ -301,7 +301,7 @@ const generatTitleElement = (elm, props) => {
       {...generateDraggingElemProps(elm, props)}
     >
       {elm.title || "a title"}
-    </h1>
+    </b>
   );
 };
 

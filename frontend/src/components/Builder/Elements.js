@@ -143,7 +143,7 @@ function Elements(props) {
           background: "linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219))",
         }}
       >
-        🧈Button
+        &#129480;Button
       </div>
 
       <div

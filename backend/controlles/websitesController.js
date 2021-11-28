@@ -2,9 +2,15 @@ const Websites = require('../models/WebsitesModel');
 const AppError = require('../util/appError');
 const catchAsync = require('./../util/catchAsync');
 
-const htmlHeader = `<!DOCTYPE html>
+function addHeaderAndEnderHTML(
+  htmlcode,
+  heightToWidthRatioLandspace,
+  heightToWidthRatioPortrait
+) {
+  const htmlHeader = `<!DOCTYPE html>
 <html>
 <head>
+<title>Preview</title>
 <meta
 
 name="viewport"
@@ -16,6 +22,10 @@ content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1
 body{
   font-size:120%;
   font-family: "Poppins", sans-serif;
+  position:absolute;
+}
+svg{
+  display:none;
 }
 *{
 font-family:inherit;
@@ -41,7 +51,17 @@ button{
   }
 }
 </style></head><body>`;
-const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
+  const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
+    document.querySelectorAll(".portrait").forEach((div) => {
+      div.style.height = "${heightToWidthRatioPortrait * 98}vw";
+      div.style.width = "98vw";
+
+    });
+    document.querySelectorAll(".landspace").forEach((div) => {
+      div.style.height = "${heightToWidthRatioLandspace * 98}vw";
+      div.style.width = "98vw";
+
+    });
   if (window.innerHeight > window.innerWidth) {
     document.querySelectorAll(".portrait").forEach((div) => {
       div.style.display = "block";
@@ -61,13 +81,26 @@ const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
 checkIfLandspaceAndUpdate();
 setInterval(checkIfLandspaceAndUpdate, 1000);
 window.addEventListener("orientationchange", checkIfLandspaceAndUpdate);</script></body></html>`;
+  return `${htmlHeader}${htmlcode}${htmlEnder}`;
+}
 
 exports.createWebsite = catchAsync(async (req, res, next) => {
-  const { email, previewElements, html, public, height } = req.body;
+  const {
+    email,
+    previewElements,
+    html,
+    public,
+    height,
+    heightToWidthRatioLandspace,
+    heightToWidthRatioPortrait,
+  } = req.body;
+
   const html_new = public
-    ? `${htmlHeader}${html
-        .replace(/none/g, '')
-        .replace(/block/g, '')}${htmlEnder}`
+    ? addHeaderAndEnderHTML(
+        html.replace(/none/g, '').replace(/block/g, ''),
+        heightToWidthRatioLandspace,
+        heightToWidthRatioPortrait
+      )
     : '<h1>Being built...</h1>';
   const website = await Websites.create({
     html: html_new,
@@ -88,7 +121,15 @@ exports.createWebsite = catchAsync(async (req, res, next) => {
   });
 });
 exports.updateWebsite = catchAsync(async (req, res, next) => {
-  const { email, previewElements, public, html, height } = req.body;
+  const {
+    email,
+    previewElements,
+    public,
+    html,
+    height,
+    heightToWidthRatioLandspace,
+    heightToWidthRatioPortrait,
+  } = req.body;
   const id = req.params.id;
   const original = await Websites.findById(id);
   if (!original) {
@@ -100,9 +141,11 @@ exports.updateWebsite = catchAsync(async (req, res, next) => {
 
   const html_new = `${
     public
-      ? `${htmlHeader}${html
-          .replace(/none/g, '')
-          .replace(/block/g, '')}${htmlEnder}`
+      ? addHeaderAndEnderHTML(
+          html.replace(/none/g, '').replace(/block/g, ''),
+          heightToWidthRatioLandspace,
+          heightToWidthRatioPortrait
+        )
       : original.html
   }`;
   const website = await Websites.findByIdAndUpdate(

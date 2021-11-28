@@ -20,7 +20,6 @@ export default function EditElem(props) {
   const height = Number.parseFloat(props.currentElementEdited?.height);
   const top = Number.parseFloat(props.currentElementEdited?.top);
   const left = Number.parseFloat(props.currentElementEdited?.left);
-  const type = props.currentElementEdited?.type;
 
   return (
     <>
@@ -59,11 +58,10 @@ export default function EditElem(props) {
           cursor: "pointer",
           color: "cyan",
           zIndex: 200,
-          transform:
-            type === "img" ? "translate(10%,0%)" : "translate(-100%,50%)",
+          transform: "translate(20%,0%)",
           position: "absolute",
           left: `${left + width}%`,
-          top: `${type === "img" ? top : top + height}%`,
+          top: `${top}%`,
         }}
         onClick={() => {
           props.copyElement();
@@ -75,11 +73,10 @@ export default function EditElem(props) {
             cursor: "pointer",
             color: props.dragOnTouch ? "#6a89cf" : "cyan",
             zIndex: 200,
-            transform:
-              type === "img" ? "translate(10%,150%)" : "translate(0%,50%)",
+            transform: "translate(20%,150%)",
             position: "absolute",
-            left: `${type === "img" ? left + width : left}%`,
-            top: `${type === "img" ? top : top + height}%`,
+            left: `${left + width}%`,
+            top: `${top}%`,
           }}
           onClick={() => {
             props.setDragOnTouch(true);

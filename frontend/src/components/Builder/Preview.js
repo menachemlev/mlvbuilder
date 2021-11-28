@@ -34,17 +34,6 @@ function Preview(props) {
         </div>
       )}
 
-      {props.showEditButton && (
-        <EditButton
-          currentElementEdited={props.currentElementEdited}
-          setShowEditor={props.setShowEditor}
-          deleteElement={props.deleteElement}
-          setDragOnTouch={props.setDragOnTouch}
-          dragOnTouch={props.dragOnTouch}
-          copyElement={props.copyElement}
-        />
-      )}
-
       <div
         className="portrait"
         style={{
@@ -57,6 +46,17 @@ function Preview(props) {
           overflow: "hidden",
         }}
       >
+        {props.showEditButton && (
+          <EditButton
+            currentElementEdited={props.currentElementEdited}
+            setShowEditor={props.setShowEditor}
+            deleteElement={props.deleteElement}
+            setDragOnTouch={props.setDragOnTouch}
+            dragOnTouch={props.dragOnTouch}
+            copyElement={props.copyElement}
+          />
+        )}
+
         {props.elements
           .filter((el) => el.forLandspace === false)
           .map((el) => mapElements(el, props))}
@@ -73,6 +73,17 @@ function Preview(props) {
           overflow: "hidden",
         }}
       >
+        {props.showEditButton && (
+          <EditButton
+            currentElementEdited={props.currentElementEdited}
+            setShowEditor={props.setShowEditor}
+            deleteElement={props.deleteElement}
+            setDragOnTouch={props.setDragOnTouch}
+            dragOnTouch={props.dragOnTouch}
+            copyElement={props.copyElement}
+          />
+        )}
+
         {props.elements
           .filter((el) => el.forLandspace === true)
           .map((el) => mapElements(el, props))}

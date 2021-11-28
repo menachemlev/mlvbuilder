@@ -33,7 +33,11 @@ export function generateHeaders(ctx) {
   };
 }
 
-export function addHeaderAndEnderHTML(htmlcode) {
+export function addHeaderAndEnderHTML(
+  htmlcode,
+  heightToWidthRatioLandspace,
+  heightToWidthRatioPortrait
+) {
   const htmlHeader = `<!DOCTYPE html>
 <html>
 <head>
@@ -49,6 +53,10 @@ content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1
 body{
   font-size:120%;
   font-family: "Poppins", sans-serif;
+  position:absolute;
+}
+svg{
+  display:none;
 }
 *{
 font-family:inherit;
@@ -59,7 +67,6 @@ button:hover{
 button{
   font-size:140%;
 }
-
 @media screen and (max-width: 64em) {
   .landspace{
     font-size:60%;
@@ -75,7 +82,18 @@ button{
   }
 }
 </style></head><body>`;
+  console.log(heightToWidthRatioPortrait);
   const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
+    document.querySelectorAll(".portrait").forEach((div) => {
+      div.style.height = "${heightToWidthRatioPortrait * 98}vw";
+      div.style.width = "98vw";
+
+    });
+    document.querySelectorAll(".landspace").forEach((div) => {
+      div.style.height = "${heightToWidthRatioLandspace * 98}vw";
+      div.style.width = "98vw";
+
+    });
   if (window.innerHeight > window.innerWidth) {
     document.querySelectorAll(".portrait").forEach((div) => {
       div.style.display = "block";

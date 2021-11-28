@@ -118,6 +118,15 @@ function Builder(props) {
     setShowEditButton(!!currentElementEdited);
   }, [currentElementEdited]);
 
+  const getHeightToWidthRatio = (landspace = false) => {
+    const websiteWidth =
+      window.innerWidth *
+      (landspace ? (isItMobile() ? 0.65 : 0.77) : isItMobile() ? 0.35 : 0.23);
+    const websiteHeight =
+      (height / 100) * previewRef.current.getBoundingClientRect().height;
+    return websiteHeight / websiteWidth;
+  };
+
   const updateBackup = () => {
     const previewElementsClone = previewElements.map((elm) => {
       return { ...elm };
@@ -159,8 +168,6 @@ function Builder(props) {
       ];
 
     const widthElm = elementDragged.getBoundingClientRect().width;
-    const heightElm = elementDragged.getBoundingClientRect().height;
-
     const background = elementDragged.style.background;
 
     const isItImage = typeOfNewElement === "img";
@@ -259,8 +266,8 @@ function Builder(props) {
 
     const copyElem = {
       ...currentElementEdited,
-      top: `${elemTop ? elemTop * 1.2 : 5}%`,
-      left: `${elemLeft ? elemLeft * 1.2 : 5}%`,
+      top: `${elemTop + 4}%`,
+      left: `${elemLeft + 4}%`,
       id: String(Math.random() * 100000),
     };
     updateBackup();
@@ -276,9 +283,14 @@ function Builder(props) {
 
   const handleOnPreview = () => {
     setCurrentElementEdited(null);
+
     const newWindow = window.open("", "_blank");
     newWindow.document.write(
-      addHeaderAndEnderHTML(previewRef.current.innerHTML)
+      addHeaderAndEnderHTML(
+        previewRef.current.innerHTML,
+        getHeightToWidthRatio(true),
+        getHeightToWidthRatio()
+      )
     );
   };
 
@@ -286,7 +298,6 @@ function Builder(props) {
     if (previewElements.length === 0) return;
     setPublishingLoading(true);
     setCurrentElementEdited(null);
-    console.log(`${id ? `/web/${id}` : `/web/`}`);
     fetch(`${ctx.fetchProviderURL}${id ? `/web/${id}` : `/web/`}`, {
       method: `${id ? "PATCH" : "POST"}`,
       body: JSON.stringify({
@@ -296,6 +307,8 @@ function Builder(props) {
         height,
         html: previewRef.current.innerHTML,
         previewElements: JSON.stringify(previewElements),
+        heightToWidthRatioLandspace: getHeightToWidthRatio(true),
+        heightToWidthRatioPortrait: getHeightToWidthRatio(),
       }),
       headers: generateHeaders(ctx),
     })
@@ -323,6 +336,8 @@ function Builder(props) {
         height,
         html: previewRef.current.innerHTML,
         previewElements: JSON.stringify(previewElements),
+        heightToWidthRatioLandspace: getHeightToWidthRatio(true),
+        heightToWidthRatioPortrait: getHeightToWidthRatio(),
       }),
       headers: generateHeaders(ctx),
     })
