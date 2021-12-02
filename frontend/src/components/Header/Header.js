@@ -23,28 +23,40 @@ function Header(props) {
             Home
           </NavLink>
         )}
-        {(!loggedIn || email === "guest@mlvbuilder.com") && (
-          <NavLink className="link" activeClassName="active" to="/Login">
-            Login
-          </NavLink>
-        )}
-        {loggedIn && (
+        {!portrait && (
           <>
-            <NavLink
-              className="link"
-              activeClassName="active"
-              to="/websites-list"
-            >
-              Websites
-            </NavLink>
-            {email !== "guest@mlvbuilder.com" && (
-              <NavLink className="link" activeClassName="active" to="/account">
-                Account
+            {(!loggedIn || email === "guest@mlvbuilder.com") && (
+              <NavLink className="link" activeClassName="active" to="/Login">
+                Login
               </NavLink>
             )}
-            <NavLink className="link" activeClassName="active" to="/builder">
-              Builder
-            </NavLink>
+            {loggedIn && (
+              <>
+                <NavLink
+                  className="link"
+                  activeClassName="active"
+                  to="/websites-list"
+                >
+                  Websites
+                </NavLink>
+                {email !== "guest@mlvbuilder.com" && (
+                  <NavLink
+                    className="link"
+                    activeClassName="active"
+                    to="/account"
+                  >
+                    Account
+                  </NavLink>
+                )}
+                <NavLink
+                  className="link"
+                  activeClassName="active"
+                  to="/builder"
+                >
+                  Builder
+                </NavLink>
+              </>
+            )}
           </>
         )}
       </div>

@@ -117,15 +117,7 @@ function Menu(props) {
         <PreviewOutlinedIcon />
       </div>
       <div className="builder__menu__publish-button" onClick={props.goPublic}>
-        <b>
-          {props.publishingLoading ? (
-            <LoadingIcon />
-          ) : (
-            <>
-              <PublicIcon /> <b>{`${portrait ? "" : "Go Public"}`}</b>
-            </>
-          )}
-        </b>
+        <b>{props.publishingLoading ? <LoadingIcon /> : <PublicIcon />}</b>
         {props.publishedWebsiteURL && (
           <a href={props.publishedWebsiteURL} rel="noreferrer" target="_blank">
             {`${portrait ? "🔗" : "🔗Visit"}`}

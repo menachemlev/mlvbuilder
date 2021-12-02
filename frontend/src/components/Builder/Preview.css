@@ -18,7 +18,7 @@
 }
 .preview__element {
   font-family: "Poppins";
-  cursor: "pointer";
+  cursor: all-scroll;
   position: relative;
 }
 .iframe-holder-preview {

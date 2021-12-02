@@ -86,7 +86,6 @@
     background-color: transparent;
   }
   .builder__menu > div {
-    border-right: 1px solid white;
     border-radius: 0%;
   }
 }

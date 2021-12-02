@@ -58,9 +58,10 @@ export default function EditElem(props) {
           cursor: "pointer",
           color: "cyan",
           zIndex: 200,
-          transform: "translate(20%,0%)",
+          transform:
+            left + width < 90 ? "translate(20%,0%)" : "translate(-120%,0%)",
           position: "absolute",
-          left: `${left + width}%`,
+          left: `${left + width < 90 ? left + width : left}%`,
           top: `${top}%`,
         }}
         onClick={() => {
@@ -73,9 +74,12 @@ export default function EditElem(props) {
             cursor: "pointer",
             color: props.dragOnTouch ? "#6a89cf" : "cyan",
             zIndex: 200,
-            transform: "translate(20%,150%)",
+            transform:
+              left + width < 90
+                ? "translate(20%,150%)"
+                : "translate(-120%,150%)",
             position: "absolute",
-            left: `${left + width}%`,
+            left: `${left + width < 90 ? left + width : left}%`,
             top: `${top}%`,
           }}
           onClick={() => {

@@ -10,7 +10,11 @@ function addHeaderAndEnderHTML(
   const htmlHeader = `<!DOCTYPE html>
 <html>
 <head>
-<title>Preview</title>
+<meta
+      name="viewport"
+      content="width=device-width,height=device-height,minimum-scale=1,maximum-scale=1, initial-scale=1"
+    />
+<title>Website</title>
 <meta
 
 name="viewport"
@@ -88,7 +92,7 @@ exports.createWebsite = catchAsync(async (req, res, next) => {
     heightToWidthRatioLandspace,
     heightToWidthRatioPortrait,
   } = req.body;
-
+  console.log(heightToWidthRatioLandspace, heightToWidthRatioPortrait);
   const html_new = public
     ? addHeaderAndEnderHTML(
         html.replace(/none/g, '').replace(/block/g, ''),

@@ -18,43 +18,42 @@
   align-items: center;
   flex-direction: column;
   position: relative;
-  background: white;
+  background: #333;
   padding: 1.5em;
   border-radius: 1em;
+  animation: fadeInComponent 1s backwards;
 }
 
 .home h1,
-h2 {
+.home h2 {
   text-align: center;
   font-family: "Poppins", sans-serif;
   color: var(--color-text);
+  color: white;
 }
 .home h1 {
   font-size: 2.5em;
   font-family: "Pacifico", cursive;
-  animation: fadeInComponent 1s backwards;
 }
 .home h2 {
   margin: 1em 0;
   font-size: 1.5em;
-  animation: fadeInComponent 1s 1s backwards;
 }
 .home button {
-  animation: fadeInComponent 1s 2.3s backwards;
-
   padding: 0.6em 0.9em;
   border-radius: 0.3em;
-  color: white;
+  color: #333;
   border: 0;
-  background: rgb(95, 197, 231);
+  background: white;
   transition: all 0.3s;
   font-size: 1.5em;
   margin-bottom: 1em;
   cursor: pointer;
   overflow: hidden;
+  font-weight: bolder;
 }
 .home button:hover {
-  background: linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219));
+  background: rgb(199, 199, 199);
 }
 .home button span {
   font-family: inherit;
@@ -65,8 +64,14 @@ h2 {
 }
 
 .home button:hover span {
-  animation: fadeUpComponent 0.4s forwards;
   margin-left: 1rem;
+}
+
+.home__link:visited,
+.home__link:link,
+.home__link {
+  color: white;
+  font-family: "Pacifico", cursive;
 }
 @media screen and (max-width: 64em) {
   .home {
