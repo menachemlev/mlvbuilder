@@ -18,7 +18,7 @@ function Home(props) {
   }, []);
 
   useEffect(() => {
-    setInterval(() => {
+    const interval = setInterval(() => {
       if (document.documentElement.scrollTop > 100) {
         if (ctx.loggedIn)
           ctx.logIn({
@@ -36,6 +36,10 @@ function Home(props) {
         }, 222);
       }
     }, 300);
+
+    return () => {
+      clearInterval(interval);
+    };
   }, []);
   return (
     <>
