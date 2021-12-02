@@ -22,17 +22,19 @@
   color: #333;
   font-size: 1.2em;
   width: 100%;
+  max-width: 70vw;
   display: block;
   margin-bottom: 1em;
 }
 .UI-card form input,
-textarea {
+.UI-card form textarea {
   font-size: 1.2em;
   background: #333;
   outline: none;
   border: none;
   border-bottom: 1px solid var(--color-secondary);
-  max-width: 100%;
+  width: 100%;
+  max-width: 70vw;
   color: white;
   border-radius: 0.3em;
   font-weight: bolder;
