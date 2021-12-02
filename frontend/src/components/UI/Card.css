@@ -64,8 +64,8 @@ textarea:active {
 }
 @media screen and (max-width: 64em) {
   .UI-card form input,
-  textarea,
-  button {
-    font-size: 1.2em;
+  .UI-card form textarea,
+  .UI-card form button {
+    font-size: 0.95em;
   }
 }

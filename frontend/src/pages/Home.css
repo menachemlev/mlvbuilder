@@ -22,6 +22,7 @@
   padding: 1.5em;
   border-radius: 1em;
   animation: fadeInComponent 1s backwards;
+  border: 2px solid #333;
 }
 
 .home h1,
