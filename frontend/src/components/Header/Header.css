@@ -31,8 +31,9 @@
   background: rgba(255, 255, 255, 0.22);
 }
 .active {
-  text-decoration: underline;
-  background: rgba(255, 255, 255, 0.22);
+  text-decoration: none;
+  background: white;
+  color: #333;
 }
 .header_on_portrait {
   flex-direction: column-reverse;

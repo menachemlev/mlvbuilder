@@ -6,11 +6,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   position: relative;
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.9),
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0.9)
-  );
+  background: #333;
 }
 .builder__elements::after {
   content: "Elements";
@@ -26,14 +22,14 @@
   display: grid;
   place-items: center;
   border-radius: 1em;
-  color: white;
+  color: #333;
   font-weight: bolder;
-  font-size: 1em;
+  font-size: 1.5em;
   text-shadow: 0 0 1px white;
   cursor: grab;
   padding: 1em 1em;
   margin: 0.3em;
-  background: linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219));
+  background: white;
 }
 @media screen and (max-width: 64em) {
   .builder__elements-element {

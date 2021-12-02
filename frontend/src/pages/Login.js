@@ -23,7 +23,9 @@ function Login(props) {
           padding: "3em",
           overflow: "hidden",
           left: "50%",
-          top: "10vh",
+          top: "15vh",
+          width: "100%",
+          minHeight: "50vh",
           transform: "translateX(-50%)",
         }}
       >

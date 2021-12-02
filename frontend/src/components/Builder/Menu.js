@@ -7,6 +7,8 @@ import HelpIcon from "@mui/icons-material/Help";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import PreviewOutlinedIcon from "@mui/icons-material/PreviewOutlined";
 import SaveIcon from "@mui/icons-material/Save";
+import SettingsBackupRestoreIcon from "@mui/icons-material/SettingsBackupRestore";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import PublicIcon from "@mui/icons-material/Public";
 import LoadingIcon from "./../UI/LoadingIcon";
 
@@ -103,10 +105,10 @@ function Menu(props) {
           history.push("/");
         }}
       >
-        ◀ Exit
+        <ExitToAppIcon style={{ transform: "rotateY(180deg)" }} />
       </div>
       <div className="builder__menu__step-back" onClick={props.onStepBack}>
-        ◀ Step Back
+        <SettingsBackupRestoreIcon />
       </div>
       <div className="builder__menu__save" onClick={props.onSave}>
         {props.savingLoading ? <LoadingIcon /> : <SaveIcon />}
@@ -120,7 +122,7 @@ function Menu(props) {
             <LoadingIcon />
           ) : (
             <>
-              <PublicIcon /> {`${portrait ? "" : "Go Public"}`}
+              <PublicIcon /> <b>{`${portrait ? "" : "Go Public"}`}</b>
             </>
           )}
         </b>
@@ -148,7 +150,7 @@ function Menu(props) {
         )}
       </div>
       <div className="builder__menu__height">
-        {"Height(%)"}
+        <b>{"Height(%)"}</b>
         <input
           type="number"
           ref={props.refHeightSetInput}

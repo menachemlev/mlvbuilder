@@ -53,8 +53,9 @@ function Header(props) {
           <img
             className="logo"
             style={{
-              width: `${portrait ? "3rem" : "1.5rem"}`,
-              margin: `${portrait ? "2rem 0 0 0" : " 0 2rem 0 0"}`,
+              width: `3rem`,
+              margin: `${portrait ? "2rem 0 0 0" : "0 4rem 0 0"}`,
+              transform: "scale(3,3) translateY(-10%)",
             }}
             alt=""
             src={Logo}

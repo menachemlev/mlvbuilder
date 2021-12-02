@@ -199,7 +199,8 @@ function Builder(props) {
             (typeOfNewElement === "video" ? 2 : 1) *
             (100 / height)
           }%`,
-      background,
+      color: "#333",
+      background: isItBackground ? `lightblue` : `violet`,
       forLandspace: isPreviewLandspace,
     };
     updateBackup();
@@ -386,6 +387,7 @@ function Builder(props) {
     });
     setPreviewElements(updatedPreviewElements);
     setHeight(newHeight);
+    setCurrentElementEdited(null);
   };
 
   return (

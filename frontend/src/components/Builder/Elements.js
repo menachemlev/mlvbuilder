@@ -138,12 +138,8 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "button")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-button"
-        style={{
-          color: "white",
-          background: "linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219))",
-        }}
       >
-        &#129480;Button
+        🔘 Button
       </div>
 
       <div
@@ -178,9 +174,6 @@ function Elements(props) {
         onTouchMove={(e) => handleOnTouchMove(e, "Background")}
         onTouchEnd={handleOnTouchEnd}
         className="builder__elements-element builder__elements-element-background"
-        style={{
-          background: "linear-gradient(rgb(96, 167, 190), rgb(67, 115, 219))",
-        }}
       >
         💻Background
       </div>

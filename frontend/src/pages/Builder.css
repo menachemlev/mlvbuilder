@@ -1,6 +1,6 @@
 .builder {
   display: grid;
-  grid-template-rows: 20vh 80vh;
+  grid-template-rows: 12vh 88vh;
   grid-template-columns: 100%;
   font-family: Arial, Helvetica, sans-serif;
   position: relative;
@@ -44,6 +44,6 @@
     width: 65vw;
   }
   .builder {
-    grid-template-rows: 20vh 80vh;
+    grid-template-rows: 12vh 88vh;
   }
 }
