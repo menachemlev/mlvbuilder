@@ -19,13 +19,22 @@ function Home(props) {
 
   useEffect(() => {
     setInterval(() => {
-      if (document.documentElement.scrollTop > 100)
-        !ctx.loggedIn &&
+      if (document.documentElement.scrollTop > 100) {
+        if (ctx.loggedIn)
           ctx.logIn({
             email: "guest@mlvbuilder.com",
             password: "12345678",
             name: "guest",
           });
+        setLoading(
+          <>
+            <LoadingIcon />
+          </>
+        );
+        setTimeout(() => {
+          history.push("/builder");
+        }, 222);
+      }
     }, 300);
   }, []);
   return (
