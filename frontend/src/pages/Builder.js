@@ -51,7 +51,7 @@ function Builder(props) {
   const heightInputRef = useRef(null);
 
   useEffect(() => {
-    ctx.setShowHeader(false);
+    ctx.setShowHeader(!document.documentURI.includes("builder"));
     window.addEventListener("keydown", (e) => {
       if (e.keyCode === 46) handleOnDeleteElement();
     });

@@ -6,6 +6,9 @@
   position: relative;
   color: var(--color-text);
 }
+.home__scrolld {
+  animation: fadeInComponent 1s 4s backwards;
+}
 .home__content-container {
   width: max-content;
   height: max-content;
@@ -18,7 +21,6 @@
   background: white;
   padding: 1.5em;
   border-radius: 1em;
-  animation: fadeInComponent 1.5s backwards;
 }
 
 .home h1,
@@ -28,14 +30,18 @@ h2 {
   color: var(--color-text);
 }
 .home h1 {
-  font-size: 2em;
+  font-size: 2.5em;
   font-family: "Pacifico", cursive;
+  animation: fadeInComponent 1s backwards;
 }
 .home h2 {
-  margin: 2em 0;
-  font-size: 1em;
+  margin: 1em 0;
+  font-size: 1.5em;
+  animation: fadeInComponent 1s 1s backwards;
 }
 .home button {
+  animation: fadeInComponent 1s 2.3s backwards;
+
   padding: 0.6em 0.9em;
   border-radius: 0.3em;
   color: white;
@@ -70,5 +76,15 @@ h2 {
   .home__content-container {
     width: 95%;
     box-sizing: border-box;
+  }
+  .home h2,
+  .home button {
+    font-size: 90%;
+  }
+  .home h1 {
+    font-size: 2em;
+  }
+  .home__content-container {
+    padding: 0.5em;
   }
 }

@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import LoadingIcon from "./../components/UI/LoadingIcon";
-
+import KeyboardArrowDownSharpIcon from "@mui/icons-material/KeyboardArrowDownSharp";
+import Builder from "./Builder";
 import Auth from "../Auth/Auth";
 import "./Home.css";
 function Home(props) {
@@ -15,35 +16,56 @@ function Home(props) {
       }, delay / 10);
     });
   }, []);
-  return (
-    <div className="home">
-      <div className="home__content-container">
-        <h1>Build your website</h1>
-        <h2>Easy, fast and free</h2>
-        <button
-          onClick={() => {
-            ctx.logIn({
-              email: "guest@mlvbuilder.com",
-              password: "12345678",
-              name: "guest",
-            });
-            setLoading(
-              <>
-                <LoadingIcon />
-              </>
-            );
-            setTimeout(() => {
-              history.push("/builder");
-            }, 1000);
-          }}
-        >
-          Builder
-          <span>{" >"}</span>
-        </button>
 
-        <div>{loading}</div>
+  useEffect(() => {
+    setInterval(() => {
+      if (document.documentElement.scrollTop > 100)
+        !ctx.loggedIn &&
+          ctx.logIn({
+            email: "guest@mlvbuilder.com",
+            password: "12345678",
+            name: "guest",
+          });
+    }, 300);
+  }, []);
+  return (
+    <>
+      <div className="home">
+        <div className="home__content-container">
+          <h1>Build your website</h1>
+          <h2>Easy, fast and free</h2>
+          <button
+            onClick={() => {
+              ctx.logIn({
+                email: "guest@mlvbuilder.com",
+                password: "12345678",
+                name: "guest",
+              });
+              setLoading(
+                <>
+                  <LoadingIcon />
+                </>
+              );
+              setTimeout(() => {
+                history.push("/builder");
+              }, 1000);
+            }}
+          >
+            Builder
+            <span>{" >"}</span>
+          </button>
+          <span className="home__scrolld">
+            <b>Or scroll down</b>
+            <br />{" "}
+            <center>
+              <KeyboardArrowDownSharpIcon />
+            </center>
+          </span>
+          <div>{loading}</div>
+        </div>
       </div>
-    </div>
+      <Builder />
+    </>
   );
 }
 
