@@ -39,13 +39,7 @@ button:hover{
 button{
   font-size:140%;
 }
-@media screen and (max-width: 64em) {
-  .landspace{
-    font-size:110%;
-  }
-  .portrait{
-    font-size:230%;
-  }
+
 
 }
 </style></head><body>`;
