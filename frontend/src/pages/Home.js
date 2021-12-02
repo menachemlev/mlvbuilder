@@ -18,29 +18,42 @@ function Home(props) {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (document.documentElement.scrollTop > 100) {
-        if (ctx.loggedIn)
-          ctx.logIn({
-            email: "guest@mlvbuilder.com",
-            password: "12345678",
-            name: "guest",
-          });
+    /* const interval = setInterval(() => {
+      if (
+        document.documentElement.scrollTop > 100 &&
+        !document.documentURI.includes("websites-list") &&
+        !document.documentURI.includes("login") &&
+        !document.documentURI.includes("account") &&
+        !document.documentURI.includes("builder")
+      ) {
+        ctx.logIn({
+          email: "guest@mlvbuilder.com",
+          password: "12345678",
+          name: "guest",
+        });
         setLoading(
           <>
             <LoadingIcon />
           </>
         );
         setTimeout(() => {
+          clearInterval(interval);
           history.push("/builder");
-        }, 222);
+        }, 200);
       }
-    }, 300);
+    }, 200);
+     <span className="home__scrolld">
+            <b>Or scroll down</b>
+            <br />{" "}
+            <center>
+              <KeyboardArrowDownSharpIcon />
+            </center>
+          </span>
+                <Builder />
 
-    return () => {
-      clearInterval(interval);
-    };
+    */
   }, []);
+
   return (
     <>
       <div className="home">
@@ -67,17 +80,10 @@ function Home(props) {
             Builder
             <span>{" >"}</span>
           </button>
-          <span className="home__scrolld">
-            <b>Or scroll down</b>
-            <br />{" "}
-            <center>
-              <KeyboardArrowDownSharpIcon />
-            </center>
-          </span>
+
           <div>{loading}</div>
         </div>
       </div>
-      <Builder />
     </>
   );
 }
