@@ -2,9 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 :root {
-  --color-primary: rgb(50, 126, 240);
-  --color-primary-light: rgb(91, 154, 248);
-  --color-primary-dark: rgb(42, 102, 190);
+  --color-primary: #f7941e;
+  --color-primary-light: #fca842;
+  --color-primary-dark: #d17e19;
   --color-text: #444;
   --color-secondary: violet;
 }

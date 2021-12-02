@@ -18,7 +18,7 @@
   align-items: center;
   flex-direction: column;
   position: relative;
-  background: #333;
+  background: rgb(255, 255, 255);
   padding: 1.5em;
   border-radius: 1em;
   animation: fadeInComponent 1s backwards;
@@ -29,7 +29,7 @@
   text-align: center;
   font-family: "Poppins", sans-serif;
   color: var(--color-text);
-  color: white;
+  color: #333;
 }
 .home h1 {
   font-size: 2.5em;
@@ -42,9 +42,9 @@
 .home button {
   padding: 0.6em 0.9em;
   border-radius: 0.3em;
-  color: #333;
+  color: rgb(255, 255, 255);
   border: 0;
-  background: white;
+  background: var(--color-primary);
   transition: all 0.3s;
   font-size: 1.5em;
   margin-bottom: 1em;
@@ -53,7 +53,7 @@
   font-weight: bolder;
 }
 .home button:hover {
-  background: rgb(199, 199, 199);
+  background: var(--color-primary);
 }
 .home button span {
   font-family: inherit;
@@ -65,12 +65,14 @@
 
 .home button:hover span {
   margin-left: 1rem;
+  transform: translateY(0%);
+  font-weight: bolder;
 }
 
 .home__link:visited,
 .home__link:link,
 .home__link {
-  color: white;
+  color: #333;
   font-family: "Pacifico", cursive;
 }
 @media screen and (max-width: 64em) {
