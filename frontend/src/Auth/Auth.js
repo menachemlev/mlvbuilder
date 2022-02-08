@@ -23,50 +23,18 @@ export const AuthProvider = (props) => {
       ? "http://localhost:8000"
       : "https://mlvbuilder.herokuapp.com"
   }/api`;
-  useEffect(() => {
-    if (typeof localStorage === undefined) return;
-    if (!localStorage.getItem("loginData")) return;
-    const { email, password, date, name } = JSON.parse(
-      localStorage.getItem("loginData")
-    );
-    if (Date.now() > date + 90 * 24 * 60 * 60 * 1000) return logOut(); //30 days
-
-    fetch(`${fetchProviderURL}/users/auto-login`, {
-      method: "POST",
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-      headers: {
-        "Content-type": "Application/json",
-      },
-    })
-      .then((res) => {
-        if (!res) throw new Error("Something went wrong...");
-        return res.json();
-      })
-      .then((res) => logIn({ email, password, name }))
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
 
   const logIn = ({ email, password, name }) => {
     setName(name);
     setEmail(email);
     setPassword(password);
     setLoggedIn(true);
-    if (typeof localStorage === undefined) return;
-    localStorage.setItem(
-      "loginData",
-      JSON.stringify({ email, password, name, date: Date.now() })
-    );
   };
+
   const logOut = () => {
     setEmail("");
     setPassword("");
     setName("");
-    localStorage.removeItem("loginData");
     setLoggedIn(false);
   };
 
