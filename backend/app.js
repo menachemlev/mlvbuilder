@@ -8,25 +8,22 @@ const errorController = require('./controlles/errorController');
 const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const compression = require('compression');
+const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
+const xss = require('xss-clean');
+const hpp = require('hpp');
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const AppError = require('./util/appError');
 
 const s3 = new aws.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 });
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, __dirname + '\\uploads');
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(
-      null,
-      file.fieldname + '-' + uniqueSuffix + '.' + file.mimetype.split('/')[1]
-    );
-  },
-});
-const upload = multer({ storage });
 const uploadS3 = multer({
   fileFilter: (req, file, cb) => {
     const type = file.mimetype;
@@ -46,16 +43,6 @@ const uploadS3 = multer({
     },
   }),
 });
-const compression = require('compression');
-const cors = require('cors');
-const rateLimit = require('express-rate-limit');
-const helmet = require('helmet');
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
-const hpp = require('hpp');
-const cookieParser = require('cookie-parser');
-const path = require('path');
-const AppError = require('./util/appError');
 
 const app = express();
 
@@ -79,12 +66,6 @@ app.use(hpp());
 app.use(
   cors({
     origin: '*',
-  })
-);
-app.options(
-  '*',
-  cors({
-    credentials: true,
   })
 );
 

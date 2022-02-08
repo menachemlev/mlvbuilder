@@ -81,7 +81,6 @@ exports.createWebsite = catchAsync(async (req, res, next) => {
     heightToWidthRatioLandspace,
     heightToWidthRatioPortrait,
   } = req.body;
-  console.log(heightToWidthRatioLandspace, heightToWidthRatioPortrait);
   const html_new = public
     ? addHeaderAndEnderHTML(
         html.replace(/none/g, '').replace(/block/g, ''),
