@@ -7,9 +7,11 @@ import TitleEditor from "./elementEditors/TitleEditor";
 import ParagraphEditor from "./elementEditors/ParagraphEditor";
 import BackgroundEditor from "./elementEditors/BackgroundEditor";
 import VideoEditor from "./elementEditors/VideoEditor";
+import HtmlEditor from "./elementEditors/HtmlEditor";
 import Card from "./../UI/Card";
 
 function EditorPop(props) {
+  const type = props.data.currentElementEdited?.type;
   return ReactDOM.createPortal(
     <div
       style={{
@@ -26,44 +28,50 @@ function EditorPop(props) {
       }}
     >
       <Card>
-        {props.data.currentElementEdited?.type === "img" && (
+        {type === "img" && (
           <ImgEditor
             currentElementEdited={props.data.currentElementEdited}
             onFormSubmit={props.handleFormSubmit}
           />
         )}
-        {props.data.currentElementEdited?.type === "link" && (
+        {type === "link" && (
           <LinkEditor
             currentElementEdited={props.data.currentElementEdited}
             onFormSubmit={props.handleFormSubmit}
           />
         )}
-        {props.data.currentElementEdited?.type === "button" && (
+        {type === "button" && (
           <ButtonEditor
             currentElementEdited={props.data.currentElementEdited}
             onFormSubmit={props.handleFormSubmit}
           />
         )}
-        {props.data.currentElementEdited?.type === "title" && (
+        {type === "title" && (
           <TitleEditor
             currentElementEdited={props.data.currentElementEdited}
             onFormSubmit={props.handleFormSubmit}
           />
         )}
-        {props.data.currentElementEdited?.type === "paragraph" && (
+        {type === "paragraph" && (
           <ParagraphEditor
             currentElementEdited={props.data.currentElementEdited}
             onFormSubmit={props.handleFormSubmit}
           />
         )}
-        {props.data.currentElementEdited?.type === "background" && (
+        {type === "background" && (
           <BackgroundEditor
             currentElementEdited={props.data.currentElementEdited}
             onFormSubmit={props.handleFormSubmit}
           />
         )}
-        {props.data.currentElementEdited?.type === "video" && (
+        {type === "video" && (
           <VideoEditor
+            currentElementEdited={props.data.currentElementEdited}
+            onFormSubmit={props.handleFormSubmit}
+          />
+        )}
+        {type === "html" && (
+          <HtmlEditor
             currentElementEdited={props.data.currentElementEdited}
             onFormSubmit={props.handleFormSubmit}
           />

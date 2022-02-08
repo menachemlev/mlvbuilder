@@ -7,7 +7,10 @@ function WebsiteWidget(props) {
   const iframeRef = useRef(null);
 
   const { html, _id } = props.website;
-  const srcdoc = html.replace(/&lt;/g, "<").split("<script>")[0];
+  const srcdoc = html
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .split("<script>")[0];
 
   useEffect(() => {
     const iframeDocument = iframeRef.current.contentDocument;

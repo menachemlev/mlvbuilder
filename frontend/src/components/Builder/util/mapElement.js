@@ -363,6 +363,37 @@ const generateVideoElement = (elm, props) => {
     </div>
   );
 };
+const generateHtmlElement = (elm, props) => {
+  return (
+    <div
+      className={`preview__element ${
+        props.currentElementEdited?.id === elm.id
+          ? "preview__element-active"
+          : ""
+      }`}
+      id={elm.id}
+      key={elm.id}
+      style={{
+        position: "absolute",
+        top: elm.top,
+        left: elm.left,
+        zIndex: 1,
+        width: elm.width,
+        height: elm.height,
+        display: "inline-block",
+        overflowWrap: "break-word",
+        wordWrap: "break-word",
+      }}
+      dangerouslySetInnerHTML={{
+        __html:
+          elm.html?.replace(/&lt;/g, "<").replace(/&gt;/g, ">") ||
+          "<center><code><b>HTML code goes here</b></code></center>",
+      }}
+      alt={""}
+      {...generateDraggingElemProps(elm, props)}
+    ></div>
+  );
+};
 
 const mapElements = (elm, props) => {
   if (!elm?.type) return;
@@ -387,6 +418,9 @@ const mapElements = (elm, props) => {
   }
   if (elm.type === "video") {
     elementToReturn = generateVideoElement(elm, props);
+  }
+  if (elm.type === "html") {
+    elementToReturn = generateHtmlElement(elm, props);
   }
   return elementToReturn;
 };

@@ -177,6 +177,18 @@ function Elements(props) {
       >
         💻Background
       </div>
+
+      <div
+        draggable={true}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onTouchStart={handleOnTouchStart}
+        onTouchMove={(e) => handleOnTouchMove(e, "Background")}
+        onTouchEnd={handleOnTouchEnd}
+        className="builder__elements-element builder__elements-element-html"
+      >
+        👨‍💻 HTML
+      </div>
     </div>
   );
 }
