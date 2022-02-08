@@ -34,7 +34,6 @@ function ImgEditor(props) {
         })
         .then((res) => {
           if (res.status === "fail") throw new Error(res.message);
-          console.log(res.location);
           setLoading(false);
           props.onFormSubmit({
             src: res.location,

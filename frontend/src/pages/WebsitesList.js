@@ -42,7 +42,6 @@ function WebsitesList(props) {
       {websites
         .sort((websiteA, websiteB) => {
           if (!localStorageWebsites) return 0;
-          console.log(localStorageWebsites);
           if (
             localStorageWebsites.includes(websiteA._id) &&
             !localStorageWebsites.includes(websiteB._id)

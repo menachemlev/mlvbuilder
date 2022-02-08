@@ -51,7 +51,7 @@ function Builder(props) {
   const heightInputRef = useRef(null);
 
   useEffect(() => {
-    ctx.setShowHeader(!document.documentURI.includes("builder"));
+    ctx.setShowHeader(false);
     window.addEventListener("keydown", (e) => {
       if (e.keyCode === 46) handleOnDeleteElement();
     });
@@ -98,7 +98,7 @@ function Builder(props) {
           setPreviewElements(previewElements);
           setBackup([previewElements]);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.error(err));
 
       setID(params.id);
       setPublishedWebsiteURL(`${ctx.fetchProviderURL}/web/${params.id}`);
@@ -109,9 +109,7 @@ function Builder(props) {
       setBackup([]);
     }
 
-    return () => {
-      ctx.setShowHeader(true);
-    };
+    return () => ctx.setShowHeader(true);
   }, [params]);
 
   useEffect(() => {
@@ -321,7 +319,7 @@ function Builder(props) {
         if (response.status === "fail") throw new Error(response.message);
         history.push(`/builder/${response.id}`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   const handleOnSave = () => {
@@ -350,7 +348,7 @@ function Builder(props) {
         if (response.status === "fail") throw new Error(response.message);
         history.push(`/builder/${response.id}`);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   const handleOnDelete = () => {

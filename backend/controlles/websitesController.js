@@ -36,11 +36,6 @@ font-family:inherit;
 button:hover{
   filter:brightness(0.85);
 }
-button{
-  font-size:140%;
-}
-
-
 }
 </style></head><body>`;
   const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {

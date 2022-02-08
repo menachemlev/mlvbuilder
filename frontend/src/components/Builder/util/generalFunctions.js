@@ -63,12 +63,9 @@ font-family:inherit;
 button:hover{
   filter:brightness(0.85);
 }
-button{
-  font-size:140%;
-}
+
 
 </style></head><body>`;
-  console.log(heightToWidthRatioPortrait);
   const htmlEnder = `<script>const checkIfLandspaceAndUpdate = () => {
     document.querySelectorAll(".portrait").forEach((div) => {
       div.style.height = "${heightToWidthRatioPortrait * 100}vw";

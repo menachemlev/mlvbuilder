@@ -11,7 +11,7 @@ const userScheme = new mongoose.Schema(
     email: {
       type: String,
       required: [true, 'A user must have an E-mail!'],
-      unique: true,
+      unique: [true, 'This email is already in use'],
       validate: {
         validator: function (val) {
           return validator.isEmail(val);
@@ -32,7 +32,7 @@ const userScheme = new mongoose.Schema(
         validator: function (val) {
           return val === this.password;
         },
-        message: 'Passwords are not the same!',
+        message: 'Passwords are not the same !',
       },
     },
     active: {
