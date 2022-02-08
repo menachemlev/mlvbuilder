@@ -1,6 +1,6 @@
 import { toPercentages } from "./generalFunctions";
 
-import React, { useState } from "react";
+import React from "react";
 
 const draggingPosition = { left: 0, top: 0 };
 const lastTouchPosition = { left: 0, top: 0 };

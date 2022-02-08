@@ -166,8 +166,6 @@ function Builder(props) {
       ];
 
     const widthElm = elementDragged.getBoundingClientRect().width;
-    const background = elementDragged.style.background;
-
     const isItImage = typeOfNewElement === "img";
     const isItBackground = typeOfNewElement === "background";
     //Preparing data

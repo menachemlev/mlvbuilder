@@ -3,14 +3,10 @@ import { useRef, useState, useEffect } from "react";
 function VideoEditor(props) {
   const height = useRef(null);
   const width = useRef(null);
-  const fontSize = useRef(null);
-  const title = useRef(null);
   const url = useRef(null);
   const top = useRef(null);
   const left = useRef(null);
-  const color = useRef(null);
   const [defaultValues, setDefaultValues] = useState({});
-  const [colorWasChanged, setColorWasChanged] = useState(false);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();

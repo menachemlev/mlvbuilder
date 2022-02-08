@@ -1,11 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-
-import ReactDOM from "react-dom";
-
 import { isItMobile } from "./util/generalFunctions";
 
 export default function EditElem(props) {
@@ -17,7 +14,6 @@ export default function EditElem(props) {
   }, []);
 
   const width = Number.parseFloat(props.currentElementEdited?.width);
-  const height = Number.parseFloat(props.currentElementEdited?.height);
   const top = Number.parseFloat(props.currentElementEdited?.top);
   const left = Number.parseFloat(props.currentElementEdited?.left);
 

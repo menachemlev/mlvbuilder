@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import ReactPlayer from "react-player";
 import helpVid from "./help.mp4";
-import { isItMobile } from "./generalFunctions";
 import CloseIcon from "@mui/icons-material/Close";
+import VideoPlayer from "./../../UI/VideoPlayer/VideoPlayer";
 
 function Help(props) {
   const [fadeInAnimation, setFadeInAnimation] = useState("");
@@ -43,19 +42,7 @@ function Help(props) {
         }}
       />
 
-      <video
-        style={{
-          position: "absolute",
-          left: "0",
-          top: "0",
-          width: "90%",
-          height: "100%",
-          border: "ridge 3px cyan",
-        }}
-        controls={true}
-      >
-        <source src={helpVid} type={"video/mp4"} />
-      </video>
+      <VideoPlayer src={helpVid} type="video/mp4" />
     </div>,
     document.getElementById("modals")
   );

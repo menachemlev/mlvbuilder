@@ -75,7 +75,6 @@ function ButtonEditor(props) {
           min="0"
           max="100"
           step="0.1"
-          step="0.1"
         />
       </div>
       <div>
@@ -88,7 +87,6 @@ function ButtonEditor(props) {
           min="0"
           max="100"
           step="0.1"
-          step="0.1"
         />
       </div>
       <div>
@@ -98,7 +96,6 @@ function ButtonEditor(props) {
           type="number"
           min="0"
           max="100"
-          step="0.1"
           step="0.1"
           defaultValue={defaultValues.width}
         />
@@ -111,7 +108,6 @@ function ButtonEditor(props) {
           type="number"
           min="0"
           max="100"
-          step="0.1"
           step="0.1"
           defaultValue={defaultValues.height}
         />

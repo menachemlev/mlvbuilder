@@ -20,7 +20,6 @@ import { useHistory } from "react-router-dom";
 
 function Menu(props) {
   const history = useHistory();
-  const currentElementEditedType = props.currentElementEdited?.type;
   const [showHelp, setShowHelp] = useState(false);
   const [portrait, setPortrait] = useState(
     window.innerWidth < window.innerHeight

@@ -2,9 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Auth from "./../Auth/Auth";
 import "./Account.css";
-
 import AdminAccess from "../components/Account/AdminAccess";
-import { isItMobile } from "./../components/Builder/util/generalFunctions";
 
 function Account(props) {
   const ctx = useContext(Auth);
