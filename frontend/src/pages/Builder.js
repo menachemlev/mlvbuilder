@@ -291,81 +291,61 @@ function Builder(props) {
     );
   };
 
-  const handleGoPublic = () => {
+  const _publish_helper = async (is_it_publish) => {
     if (previewElements.length === 0) return;
-    setPublishingLoading(true);
+    is_it_publish ? setPublishingLoading(true) : setSavingLoading(true);
     setCurrentElementEdited(null);
-    fetch(`${ctx.fetchProviderURL}${id ? `/web/${id}` : `/web/`}`, {
-      method: `${id ? "PATCH" : "POST"}`,
-      body: JSON.stringify({
-        public: true,
-        password: ctx.password,
-        email: ctx.email,
-        height,
-        html: previewRef.current.innerHTML,
-        previewElements: JSON.stringify(previewElements),
-        heightToWidthRatioLandspace: getHeightToWidthRatio(true),
-        heightToWidthRatioPortrait: getHeightToWidthRatio(),
-      }),
-      headers: generateHeaders(ctx),
-    })
-      .then((res) => {
-        if (!res) throw new Error("Something went wrong");
-        return res.json();
-      })
-      .then((response) => {
-        if (response.status === "fail") throw new Error(response.message);
-        history.push(`/builder/${response.id}`);
-      })
-      .catch((err) => console.error(err));
+    try {
+      const res = await fetch(
+        `${ctx.fetchProviderURL}${id ? `/web/${id}` : `/web/`}`,
+        {
+          method: `${id ? "PATCH" : "POST"}`,
+          body: JSON.stringify({
+            public: is_it_publish,
+            password: ctx.password,
+            email: ctx.email,
+            height,
+            html: previewRef.current.innerHTML,
+            previewElements: JSON.stringify(previewElements),
+            heightToWidthRatioLandspace: getHeightToWidthRatio(true),
+            heightToWidthRatioPortrait: getHeightToWidthRatio(),
+          }),
+          headers: generateHeaders(ctx),
+        }
+      );
+      if (!res) throw new Error("Something went wrong");
+      const response = await res.json();
+      if (response.status === "fail") throw new Error(response.message);
+      history.push(`/builder/${response.id}`);
+    } catch (err) {
+      alert(err);
+      console.error(err);
+    }
+    is_it_publish ? setPublishingLoading(false) : setSavingLoading(false);
   };
 
-  const handleOnSave = () => {
-    if (previewElements.length === 0) return;
-    setSavingLoading(true);
-    setCurrentElementEdited(null);
-    fetch(`${ctx.fetchProviderURL}${id ? `/web/${id}` : `/web/`}`, {
-      method: `${id ? "PATCH" : "POST"}`,
-      body: JSON.stringify({
-        public: false,
-        password: ctx.password,
-        email: ctx.email,
-        height,
-        html: previewRef.current.innerHTML,
-        previewElements: JSON.stringify(previewElements),
-        heightToWidthRatioLandspace: getHeightToWidthRatio(true),
-        heightToWidthRatioPortrait: getHeightToWidthRatio(),
-      }),
-      headers: generateHeaders(ctx),
-    })
-      .then((res) => {
-        if (!res) throw new Error("Something went wrong");
-        return res.json();
-      })
-      .then((response) => {
-        if (response.status === "fail") throw new Error(response.message);
-        history.push(`/builder/${response.id}`);
-      })
-      .catch((err) => console.error(err));
-  };
+  const handleGoPublic = () => _publish_helper(true);
+  const handleOnSave = () => _publish_helper(false);
 
-  const handleOnDelete = () => {
+  const handleOnDelete = async () => {
     setDeletingLoading(true);
     setCurrentElementEdited(null);
-    fetch(`${ctx.fetchProviderURL}/web/${id}`, {
-      method: "DELETE",
-      body: JSON.stringify({ password: ctx.password, email: ctx.email }),
-      headers: generateHeaders(ctx),
-    })
-      .then((res) => {
-        if (!res) throw new Error("Something went wrong");
-        return res.json();
-      })
-      .then((response) => {
-        if (response.status === "fail") throw new Error(response.message);
-        history.push(`/builder`);
-      })
-      .catch((err) => err.message);
+    try {
+      const res = await fetch(`${ctx.fetchProviderURL}/web/${id}`, {
+        method: "DELETE",
+        body: JSON.stringify({ password: ctx.password, email: ctx.email }),
+        headers: generateHeaders(ctx),
+      });
+      if (!res) throw new Error("Something went wrong");
+      const response = await res.json();
+      if (response.status === "fail") throw new Error(response.message);
+      history.push(`/builder`);
+      history.push(`/builder`);
+    } catch (err) {
+      alert(err);
+      console.error(err);
+    }
+    setDeletingLoading(false);
   };
 
   const handleOnSetIsPreviewLandspace = (isPreviewLandspace) => {
